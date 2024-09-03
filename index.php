@@ -6,7 +6,7 @@ require_once 'controllers/MemberController.php';
 // Database connection setup (replace with your own connection details)
 $db = new mysqli('localhost', 'root', '', 'esport_fullstack');
 
-$memberModel = new MemberModel($db);
+$memberModel = new Member($db);
 $memberController = new MemberController($memberModel);
 
 // Get the request URI, trim it, and split it into parts
@@ -21,7 +21,7 @@ switch ($uriSegments[0]) {
                 case 'add':
                     $memberController->addAccount();
                     break;
-                // Add more cases here for other member-related actions
+                    // Add more cases here for other member-related actions
                 default:
                     require_once 'views/member_home.php';
                     break;
@@ -31,7 +31,7 @@ switch ($uriSegments[0]) {
         }
         break;
 
-    // Add more cases here for other base routes like 'account', 'team', etc.
+        // Add more cases here for other base routes like 'account', 'team', etc.
 
     default:
         require_once 'views/home.php';

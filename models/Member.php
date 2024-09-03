@@ -1,30 +1,26 @@
 <?php
 
-
-class Mahasiswa_model{
-
-    private $table = "mahasiswa";
+class Member
+{
     private $db;
 
-    public function __construct(){
-        $this->db = new Database();
-    }
-    
-
-    public function getMahasiswa(){
-       $this->db->query("SELECT*FROM " . $this->table);
-       return $this->db->resultSet();
-
+    public function __construct($database)
+    {
+        $this->db = $database;
     }
 
-    public function getMahasiswaByID($id){
-        $this->db->query("SELECT*FROM " . $this->table . " WHERE ID =:ID");
-        $this->db->bind(":ID", $id);
+    public function addAccount($username, $email, $password)
+    {
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-        return $this->db->single();
+        $sql = "INSERT INTO accounts (username, email, password) VALUES (?, ?, ?)";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param("sss", $username, $email, $hashedPassword);
 
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
     }
-
-
 }
-
