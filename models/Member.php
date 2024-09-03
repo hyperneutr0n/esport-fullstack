@@ -9,13 +9,14 @@ class Member
         $this->db = $database;
     }
 
-    public function addAccount($username, $email, $password)
+    public function addMember($fname, $lname, $username, $password)
     {
+        $profile = 'member';
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-        $sql = "INSERT INTO accounts (username, email, password) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO member (fname, lname, username, password, profile) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param("sss", $username, $email, $hashedPassword);
+        $stmt->bind_param("sssss", $fname, $lname, $username, $hashedPassword, $profile);
 
         if ($stmt->execute()) {
             return true;
