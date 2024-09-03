@@ -2,9 +2,10 @@
 
 require_once 'models/Member.php';
 require_once 'controllers/MemberController.php';
-
+require_once 'models/Database.php';
 // Database connection setup (replace with your own connection details)
-$db = new mysqli('localhost', 'root', '', 'esport');
+$conn = new Database();
+$db = $conn->getConnection();
 
 $memberModel = new Member($db);
 $memberController = new MemberController($memberModel);
