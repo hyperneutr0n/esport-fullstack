@@ -1,15 +1,19 @@
-class Database {
+<?php
+class Database
+{
     private $host = 'localhost';
-    private $dbName = 'esport';
+    private $dbName = '';
     private $username = 'root';
     private $password = '';
     private $connection;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->connect();
     }
 
-    private function connect() {
+    private function connect()
+    {
         $this->connection = new mysqli($this->host, $this->username, $this->password, $this->dbName);
 
         if ($this->connection->connect_error) {
@@ -17,7 +21,8 @@ class Database {
         }
     }
 
-    public function getConnection() {
+    public function getConnection()
+    {
         return $this->connection;
     }
 }
