@@ -14,4 +14,9 @@ class MemberController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
+
+    public function showRegisterForm()
+    {
+        require_once 'views/register.php';
+    }
 }

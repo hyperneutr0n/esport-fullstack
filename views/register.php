@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registration</title>
 </head>
 
 <body>
-    <h1>This is Home</h1>
-    <a href="/member/register">Register</a>
+    <h1>This it register page</h1>
+
+    <a href="/">Home</a>
 
 </body>
 
