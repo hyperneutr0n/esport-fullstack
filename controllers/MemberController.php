@@ -9,9 +9,15 @@ class MemberController
         $this->model = $model;
     }
 
-    public function addMember()
+    public function Register()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
+            $fname = $_POST["fname"];
+            $lname = $_POST["lname"];
+            $username = $_POST["username"];
+            $password = $_POST["password"];
+
+            $this->model->Register($fname, $lname, $username, $password);
         }
     }
 

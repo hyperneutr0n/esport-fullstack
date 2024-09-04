@@ -9,7 +9,7 @@ class Member
         $this->db = $database;
     }
 
-    public function addMember($fname, $lname, $username, $password)
+    public function Register($fname, $lname, $username, $password)
     {
         $profile = 'member';
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
