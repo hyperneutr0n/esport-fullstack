@@ -21,6 +21,15 @@ class MemberController
         }
     }
 
+    public function Logout()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
+            $this->model->Logout();
+            require_once 'views/home.php';
+        }
+    }
+
+
     public function showRegisterForm()
     {
         require_once 'views/register.php';
