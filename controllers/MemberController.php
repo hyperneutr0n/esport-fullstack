@@ -1,12 +1,15 @@
 <?php
+require_once 'Middleware.php';
 
 class MemberController
 {
     private $model;
+    private $middleware;
 
     public function __construct($model)
     {
         $this->model = $model;
+        $this->middleware = new Middleware();
     }
 
     public function Register()
@@ -33,5 +36,15 @@ class MemberController
     public function showRegisterForm()
     {
         require_once 'views/register.php';
+    }
+
+    public function showAdminHome()
+    {
+        $check = $this->middleware->checkAdmin();
+
+        if (!$check) {
+            require_once 'views/home.php';
+        }
+        require_once 'views/admin/home.php';
     }
 }

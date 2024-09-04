@@ -10,6 +10,7 @@
 <body>
     <h1>This is Home</h1>
     <a href="/member/register">Register</a>
+    <a href="/admin/home">Admin home</a>
 
 </body>
 

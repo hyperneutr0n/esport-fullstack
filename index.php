@@ -34,6 +34,14 @@ switch ($uriSegments[0]) {
             require_once 'views/home.php';
         }
         break;
+    case 'admin':
+        if (isset($uriSegments[1])) {
+            switch ($uriSegments[1]) {
+                case 'home':
+                    $memberController->showAdminHome();
+                    break;
+            }
+        }
 
         // Other cases
 
