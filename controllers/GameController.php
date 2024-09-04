@@ -1,11 +1,14 @@
 <?php
+require_once 'Middleware.php';
 class GameController
 {
   private $model;
+  private $middleware;
 
   public function __construct($model)
   {
     $this->model = $model;
+    $this->middleware = new Middleware();
   }
 
   public function addGame()
@@ -53,7 +56,12 @@ class GameController
 
   public function showAddGameForm()
   {
-    require_once 'views/add_game.php';
+    $check = $this->middleware->checkAdmin();
+    if (!$check) {
+      require_once 'views/add_game.php';
+    } else {
+      require_once 'views/admin/home.php';
+    }
 
     //page ta buat gini ?
   }
