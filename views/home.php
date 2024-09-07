@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php require __DIR__ . '/components/header.php'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
+<div>
     <h1>This is Home</h1>
     <a href="/member/register">Register</a>
     <a href="/admin/home">Admin home</a>
+</div>
 
-</body>
-
-</html>
+<?php require __DIR__ . '/components/footer.php'; ?>
