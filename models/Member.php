@@ -10,7 +10,7 @@ class Member
         $this->db = Database::getInstance()->getConnection();
     }
 
-    public function Login($username, $password)
+    public function Login($username, $password): bool
     {
         $sql = "SELECT username,password,profile FROM member WHERE username = ?";
 
@@ -34,10 +34,12 @@ class Member
                     $_SESSION["adminLogged"] = true;
                     $_SESSION["userLogged"] = false;
                 }
+                return true;
             } else {
+                return false;
             }
         } else {
-            echo "Wrong username or password";
+            return false;
         }
     }
 
@@ -51,7 +53,7 @@ class Member
         }
     }
 
-    public function Register($fname, $lname, $username, $password)
+    public function Register($fname, $lname, $username, $password): bool
     {
         $profile = 'member';
         $hashedPassword = PasswordHash($password);

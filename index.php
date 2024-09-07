@@ -89,6 +89,11 @@ switch ($uriSegments[0]) {
     case 'process':
         if (isset($uriSegments[1])) {
             switch ($uriSegments[1]) {
+                case 'login':
+                    $memberController->Login();
+                    break;
+                case 'register':
+                    $memberController->Register();
                 case 'addgame':
                     $gameController->addGame();
                     break;
