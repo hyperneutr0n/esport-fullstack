@@ -12,9 +12,12 @@ class MemberController
         $this->middleware = new Middleware();
     }
 
+    public function Login() {}
+
     public function Register()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
+
+        if ($this->middleware->checkPostMethod()) {
             $fname = $_POST["fname"];
             $lname = $_POST["lname"];
             $username = $_POST["username"];
@@ -26,7 +29,7 @@ class MemberController
 
     public function Logout()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
+        if ($this->middleware->checkPostMethod()) {
             $this->model->Logout();
             require_once 'views/home.php';
         }

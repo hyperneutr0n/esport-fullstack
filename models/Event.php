@@ -1,12 +1,13 @@
 <?php
+require_once 'Database.php';
 
 class Event
 {
     private $db;
 
-    public function __construct($database)
+    public function __construct()
     {
-        $this->db = $database;
+        $this->db = Database::getInstance()->getConnection();
     }
 
     public function addEvent($name, $date, $description)

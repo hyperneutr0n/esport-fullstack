@@ -1,12 +1,13 @@
 <?php
+require_once 'Database.php';
 
 class Game
 {
   private $db;
 
-  public function __construct($database)
+  public function __construct()
   {
-    $this->db = $database;
+    $this->db = Database::getInstance()->getConnection();
   }
 
   public function addGame($name, $description)
@@ -38,7 +39,7 @@ class Game
   public function updateGame($idgame, $name, $description)
   {
     $sql = "UPDATE game SET name = ?, description = ?, WHERE idgame =?";
-    $stmt = $this->db->preaper($sql);
+    $stmt = $this->db->prepare($sql);
     $stmt->bind_param("ssi", $name, $description, $idgame);
 
     if ($stmt->execute()) {

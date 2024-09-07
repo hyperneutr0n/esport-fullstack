@@ -1,28 +1,33 @@
 <?php
 class Database
 {
-    private $host = 'localhost';
-    private $dbName = '';
-    private $username = 'root';
-    private $password = '';
-    private $connection;
+
+    private static $instance = null;
+    private $conn;
+
 
     public function __construct()
     {
-        $this->connect();
-    }
+        $host = 'localhost';
+        $dbName = '';
+        $username = 'root';
+        $password = '';
+        $this->conn = new mysqli($host, $username, $password, $dbName);
 
-    private function connect()
-    {
-        $this->connection = new mysqli($this->host, $this->username, $this->password, $this->dbName);
-
-        if ($this->connection->connect_error) {
-            die('Connection failed: ' . $this->connection->connect_error);
+        if ($this->conn->connect_error) {
+            die('Connection failed: ' . $this->conn->connect_error);
         }
+    }
+    public static function getInstance()
+    {
+        if (self::$instance === null) {
+            self::$instance = new self();
+        }
+        return self::$instance;
     }
 
     public function getConnection()
     {
-        return $this->connection;
+        return $this->conn;
     }
 }

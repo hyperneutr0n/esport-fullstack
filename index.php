@@ -12,23 +12,17 @@ require_once 'controllers/GameController.php';
 require_once 'controllers/EventController.php';
 
 
-//DATABASE
-require_once 'models/Database.php';
-// DB CONN
-$conn = new Database();
-$db = $conn->getConnection();
-
 
 //MEMBER
-$memberModel = new Member($db);
+$memberModel = new Member();
 $memberController = new MemberController($memberModel);
 
 //GAME
-$gameModel = new Game($db);
+$gameModel = new Game();
 $gameController = new GameController($gameModel);
 
 //EVENT
-$eventModel = new Event($db);
+$eventModel = new Event();
 $eventController = new EventController($eventModel);
 
 // Request handling

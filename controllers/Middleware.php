@@ -23,7 +23,7 @@ class Middleware
 
     public function checkPostMethod(): bool
     {
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
             return true;
         } else {
             return false;

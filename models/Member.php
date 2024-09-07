@@ -1,12 +1,13 @@
 <?php
-
+require_once 'Cryptography.php';
+require_once 'Database.php';
 class Member
 {
     private $db;
 
-    public function __construct($database)
+    public function __construct()
     {
-        $this->db = $database;
+        $this->db = Database::getInstance()->getConnection();
     }
 
     public function Login($username, $password)
@@ -18,11 +19,12 @@ class Member
         $stmt->bind_param("s", $username);
 
         if ($stmt->execute()) {
-            $result = $stmt->fetch_assoc();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
 
-            if ($result["password"] == $password) {
+            if (PasswordVerify($password, $row["password"])) {
                 session_start();
-                $role = $result["profile"];
+                $role = $row["profile"];
 
                 if ($role == "member") {
                     $_SESSION["memberLogged"] = true;
@@ -41,6 +43,7 @@ class Member
 
     public function Logout()
     {
+        session_start();
         if (isset($_SESSION["adminLogged"])) {
             unset($_SESSION["adminLogged"]);
         } else if (isset($_SESSION["userLogged"])) {
@@ -51,7 +54,7 @@ class Member
     public function Register($fname, $lname, $username, $password)
     {
         $profile = 'member';
-        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+        $hashedPassword = PasswordHash($password);
 
         $sql = "INSERT INTO member (fname, lname, username, password, profile) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($sql);
