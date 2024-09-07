@@ -27,15 +27,13 @@
 </div>
 
 <script>
-    document.getElementById("showPassword").addEventListener("change", function() {
-        const passwordInput = document.getElementById("password");
-
+    $("#showPassword").click(function() {
+        const passwordInput = $("#password");
         if (this.checked) {
-            passwordInput.type = "text";
+            passwordInput.attr("type", "text");
         } else {
-            passwordInput.type = "password";
+            passwordInput.attr("type", "password");
         }
-
     });
 </script>
 

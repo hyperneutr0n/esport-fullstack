@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Esport</title>
-    <link rel="stylesheet" href="././assets/custom.css">
+    <link rel="stylesheet" href="../../assets/custom.css">
+    <script src="../../assets/jquery.min.js"></script>
 </head>
 
 <body>
