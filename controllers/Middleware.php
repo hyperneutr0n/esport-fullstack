@@ -20,4 +20,13 @@ class Middleware
             return false;
         }
     }
+
+    public function checkPostMethod(): bool
+    {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

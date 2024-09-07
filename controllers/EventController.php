@@ -1,6 +1,7 @@
 <?php
+require_once 'Middleware.php';
 
-class MemberController
+class EventController
 {
     private $model;
 
@@ -21,6 +22,10 @@ class MemberController
         }
     }
 
+    public function showAddEventForm()
+    {
+        require_once 'views/admin/add_event.php';
+    }
     public function showEventForm()
     {
         // require_once 'views/admin/event.php';

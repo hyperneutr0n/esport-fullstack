@@ -56,12 +56,15 @@ class GameController
 
   public function showAddGameForm()
   {
-    $check = $this->middleware->checkAdmin();
+    /* $check = $this->middleware->checkAdmin();
     if (!$check) {
-      require_once 'views/add_game.php';
-    } else {
       require_once 'views/admin/home.php';
-    }
+    } else {
+      require_once 'views/add_game.php';
+    } */
+
+    require_once 'views/admin/add_game.php';
+
 
     //page ta buat gini ?
   }
