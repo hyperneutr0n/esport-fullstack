@@ -14,8 +14,8 @@
         <nav>
 
             <a href="">Home</a>
-            <a href="">test</a>
-            <a href="">test</a>
+            <a href="">Game</a>
+            <a href="">Team</a>
             <a href="">Profile</a>
 
 
@@ -23,8 +23,8 @@
     <?php } else { ?>
         <nav>
             <a href="">Home</a>
-            <a href="">test</a>
-            <a href="">test</a>
+            <a href="">Game</a>
+            <a href="">Team</a>
             <a href="">Login</a>
         </nav>
     <?php } ?>
