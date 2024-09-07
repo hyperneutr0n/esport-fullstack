@@ -35,6 +35,10 @@ class MemberController
         }
     }
 
+    public function showLoginForm()
+    {
+        require_once 'views/login.php';
+    }
 
     public function showRegisterForm()
     {

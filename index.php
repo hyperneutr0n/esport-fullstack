@@ -38,6 +38,7 @@ switch ($uriSegments[0]) {
         if (isset($uriSegments[1])) {
             switch ($uriSegments[1]) {
                 case 'login':
+                    $memberController->showLoginForm();
                     break;
                 case 'register':
                     $memberController->showRegisterForm();
