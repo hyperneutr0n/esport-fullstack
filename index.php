@@ -37,15 +37,21 @@ $uriSegments = explode('/', $requestUri);
 
 // Simple routing using switch case
 switch ($uriSegments[0]) {
-        // ROLE = MEMBER
+
+
+        // MEMBER ROUTES
     case 'member':
         if (isset($uriSegments[1])) {
             switch ($uriSegments[1]) {
-                case 'add':
-                    $memberController->Register();
+                case 'login':
                     break;
                 case 'register':
                     $memberController->showRegisterForm();
+                    break;
+                case 'add':
+                    $memberController->Register();
+                    break;
+                case 'joinproposal':
                     break;
                 default:
                     require_once 'views/home.php';
@@ -55,6 +61,8 @@ switch ($uriSegments[0]) {
             require_once 'views/home.php';
         }
         break;
+
+        //ADMIN ROUTES
     case 'admin':
         if (isset($uriSegments[1])) {
             switch ($uriSegments[1]) {
@@ -68,7 +76,10 @@ switch ($uriSegments[0]) {
                     $eventController->showAddEventForm();
                     break;
                 case 'addteam':
-                    require_once 'views/admin/add_team.php';
+                    break;
+                case 'addachievement':
+                    break;
+                case 'addeventteams':
                     break;
                 default:
                     require_once 'views/home.php';
@@ -78,11 +89,21 @@ switch ($uriSegments[0]) {
             require_once 'views/home.php';
         }
         break;
+
+        //PROCESS ROUTES
     case 'process':
         if (isset($uriSegments[1])) {
             switch ($uriSegments[1]) {
                 case 'addgame':
                     $gameController->addGame();
+                    break;
+                case 'addevent':
+                    break;
+                case 'addteam':
+                    break;
+                case 'addachievement':
+                    break;
+                case 'addeventteams':
                     break;
 
                 default:
@@ -91,7 +112,7 @@ switch ($uriSegments[0]) {
             }
         }
 
-        // Other cases
+
 
 
 
