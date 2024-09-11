@@ -12,13 +12,34 @@ class EventController
 
     public function addEvent()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"])) {
-            $name = $_POST["name"];
-            $date = $_POST["date"];
+        if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
+            $name = $_POST['name'];
+            $date = $_POST['date'];
             $stringdate = $date->format('Y-m-d H:i:s');
-            $description = $_POST["description"];
+            $description = $_POST['description'];
 
-            $this->model->AddEvent($name, $stringdate, $description);
+            $this->model->AddEvent($name, $stringdate, $description); //blm selesai
+        }
+    }
+
+    public function editEvent()
+    {
+        if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
+            $id = $_POST['id'];
+            $name = $_POST['name'];
+            $date = $_POST['date'];
+            $stringdate = $date->format('Y-m-d H:i:s');
+            $description = $_POST['description'];
+
+            $this->model->EditEvent($id, $name, $stringdate, $description);
+        }
+    }
+
+    public function deleteEvent() {
+        if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
+            $id = $_POST['id'];
+
+            $this->model->EditEvent($id);
         }
     }
 
@@ -26,6 +47,7 @@ class EventController
     {
         require_once 'views/admin/add_event.php';
     }
+
     public function showEventForm()
     {
         // require_once 'views/admin/event.php';

@@ -3,17 +3,15 @@ require_once 'Middleware.php';
 class GameController
 {
   private $model;
-  private $middleware;
 
   public function __construct($model)
   {
     $this->model = $model;
-    $this->middleware = new Middleware();
   }
 
   public function addGame()
   {
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["add"])) {
+    if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
       $name = $_POST["name"];
       $description = $_POST["description"];
 
@@ -27,7 +25,7 @@ class GameController
 
   public function deleteGame($idgame)
   {
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["delete"])) {
+    if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
       if ($this->model->deleteGame($idgame)) {
         echo "Game Deleted";
       } else {
@@ -40,7 +38,7 @@ class GameController
 
   public function editGame($idgame)
   {
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["edit"])) {
+    if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
       $name = $_POST["name"];
       $description = $_POST["description"];
 

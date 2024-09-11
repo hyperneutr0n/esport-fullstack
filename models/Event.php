@@ -10,16 +10,42 @@ class Event
         $this->db = Database::getInstance()->getConnection();
     }
 
-    public function addEvent($name, $date, $description)
+    public function AddEvent($name, $date, $description)
     {
         $sql = "INSERT INTO event (name, date, description) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param("sss", $name, $date, $description);
+        $stmt->bind_param('sss', $name, $date, $description);
 
         if ($stmt->execute()) {
             return true;
         } else {
             return false;
         }
+    }
+
+    public function EditEvent($id, $name, $date, $description)
+    {
+        $sql = "UPDATE event SET name=?, date=?, description=? WHERE idevent=?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('sssi', $name, $date, $description, $id);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function DeleteEvent($id) {
+        $sql = "DELETE FROM event WHERE idevent=?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('i', $id);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 }

@@ -22,7 +22,7 @@ class Member
             $result = $stmt->get_result();
             $row = $result->fetch_assoc();
 
-            if (PasswordVerify($password, $row["password"])) {
+            if (Cryptography::PasswordVerify($password, $row["password"])) {
                 session_start();
                 $role = $row["profile"];
 
@@ -56,7 +56,7 @@ class Member
     public function Register($fname, $lname, $username, $password): bool
     {
         $profile = 'member';
-        $hashedPassword = PasswordHash($password);
+        $hashedPassword = Cryptography::PasswordHash($password);
 
         $sql = "INSERT INTO member (fname, lname, username, password, profile) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($sql);

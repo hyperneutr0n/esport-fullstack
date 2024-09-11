@@ -3,7 +3,7 @@
 class Middleware
 {
 
-    public function checkAdmin(): bool
+    public static function checkAdmin(): bool
     {
         if (isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"] == true) {
             return true;
@@ -12,7 +12,7 @@ class Middleware
         }
     }
 
-    public function checkMember(): bool
+    public static function checkMember(): bool
     {
         if (isset($_SESSION["userLogged"]) && $_SESSION["userLogged"] == true) {
             return true;
@@ -21,7 +21,7 @@ class Middleware
         }
     }
 
-    public function checkPostMethod(): bool
+    public static function checkPostMethod(): bool
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
             return true;

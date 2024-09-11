@@ -4,17 +4,15 @@ require_once 'Middleware.php';
 class MemberController
 {
     private $model;
-    private $middleware;
 
     public function __construct($model)
     {
         $this->model = $model;
-        $this->middleware = new Middleware();
     }
 
     public function Login()
     {
-        if ($this->middleware->checkPostMethod()) {
+        if (Middleware::checkPostMethod()) {
             $username = $_POST["username"];
             $password = $_POST["password"];
 
@@ -29,7 +27,7 @@ class MemberController
     public function Register()
     {
 
-        if ($this->middleware->checkPostMethod()) {
+        if (Middleware::checkPostMethod()) {
             $fname = $_POST["fname"];
             $lname = $_POST["lname"];
             $username = $_POST["username"];
@@ -44,7 +42,7 @@ class MemberController
 
     public function Logout()
     {
-        if ($this->middleware->checkPostMethod()) {
+        if (Middleware::checkPostMethod()) {
             $this->model->Logout();
             require_once 'views/home.php';
         }
@@ -52,7 +50,7 @@ class MemberController
 
     public function showLoginForm()
     {
-        if ($this->middleware->checkMember() || $this->middleware->checkAdmin()) {
+        if (Middleware::checkMember() || Middleware::checkAdmin()) {
             require_once 'views/home.php';
         }
         require_once 'views/login.php';
@@ -60,7 +58,7 @@ class MemberController
 
     public function showRegisterForm()
     {
-        if ($this->middleware->checkMember() || $this->middleware->checkAdmin()) {
+        if (Middleware::checkMember() || Middleware::checkAdmin()) {
             require_once 'views/home.php';
         }
         require_once 'views/register.php';
@@ -68,7 +66,7 @@ class MemberController
 
     public function showAdminHome()
     {
-        $check = $this->middleware->checkAdmin();
+        $check = Middleware::checkAdmin();
 
         if (!$check) {
             require_once 'views/home.php';
