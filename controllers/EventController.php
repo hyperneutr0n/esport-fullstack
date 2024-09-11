@@ -1,13 +1,14 @@
 <?php
 require_once 'Middleware.php';
+require_once '../models/Event.php';
 
 class EventController
 {
     private $model;
 
-    public function __construct($model)
+    public function __construct()
     {
-        $this->model = $model;
+        $this->model = new Event();
     }
 
     public function addEvent()
@@ -35,7 +36,8 @@ class EventController
         }
     }
 
-    public function deleteEvent() {
+    public function deleteEvent()
+    {
         if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
             $id = $_POST['id'];
 

@@ -1,13 +1,14 @@
 <?php
 require_once 'Middleware.php';
+require_once '../models/Member.php';
 
 class MemberController
 {
     private $model;
 
-    public function __construct($model)
+    public function __construct()
     {
-        $this->model = $model;
+        $this->model = new Member();
     }
 
     public function Login()

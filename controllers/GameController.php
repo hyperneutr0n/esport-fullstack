@@ -1,12 +1,13 @@
 <?php
 require_once 'Middleware.php';
+require_once '../models/Game.php';
 class GameController
 {
   private $model;
 
-  public function __construct($model)
+  public function __construct()
   {
-    $this->model = $model;
+    $this->model = new Game();
   }
 
   public function addGame()

@@ -13,17 +13,10 @@ require_once 'controllers/EventController.php';
 
 
 
-//MEMBER
-$memberModel = new Member();
-$memberController = new MemberController($memberModel);
-
-//GAME
-$gameModel = new Game();
-$gameController = new GameController($gameModel);
-
-//EVENT
-$eventModel = new Event();
-$eventController = new EventController($eventModel);
+//CONTROLLERS INITIALIZATION
+$memberController = new MemberController();
+$gameController = new GameController();
+$eventController = new EventController();
 
 // Request handling
 $requestUri = trim($_SERVER['REQUEST_URI'], '/');
