@@ -10,7 +10,7 @@ class GameController
     $this->model = new Game();
   }
 
-  public function addGame()
+  public function AddGame()
   {
     if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
       $name = $_POST["name"];
@@ -24,7 +24,7 @@ class GameController
     }
   }
 
-  public function deleteGame($idgame)
+  public function DeleteGame($idgame)
   {
     if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
       if ($this->model->deleteGame($idgame)) {
@@ -37,7 +37,7 @@ class GameController
     }
   }
 
-  public function editGame($idgame)
+  public function EditGame($idgame)
   {
     if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
       $name = $_POST["name"];
@@ -55,27 +55,13 @@ class GameController
 
   public function showAddGameForm()
   {
-    /* $check = $this->middleware->checkAdmin();
-    if (!$check) {
-      require_once 'views/admin/home.php';
-    } else {
-      require_once 'views/add_game.php';
-    } */
+    // intinya bikin method buat select semua game
 
     require_once 'views/admin/add_game.php';
-
-
-    //page ta buat gini ?
   }
 
   public function showEditGameForm($idgame)
   {
-    $game = $this->model->getGameById($idgame);
-    if ($game) {
-      require_once 'views/edit_game.php';
-      // ini juga 
-    } else {
-      echo "Game not found.";
-    }
+    // harusnya require once
   }
 }

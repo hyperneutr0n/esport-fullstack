@@ -11,7 +11,7 @@ class EventController
         $this->model = new Event();
     }
 
-    public function addEvent()
+    public function AddEvent()
     {
         if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
             $name = $_POST['name'];
@@ -19,11 +19,13 @@ class EventController
             $stringdate = $date->format('Y-m-d H:i:s');
             $description = $_POST['description'];
 
-            $this->model->AddEvent($name, $stringdate, $description); //blm selesai
+            $this->model->AddEvent($name, $stringdate, $description);
+            session_start();
+            $_SESSION['message'] = "berhasil";
         }
     }
 
-    public function editEvent()
+    public function EditEvent()
     {
         if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
             $id = $_POST['id'];
@@ -36,22 +38,25 @@ class EventController
         }
     }
 
-    public function deleteEvent()
+    public function DeleteEvent()
     {
         if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
             $id = $_POST['id'];
 
-            $this->model->EditEvent($id);
+            $this->model->DeleteEvent($id);
         }
+    }
+
+    public function showEventForm()
+    {
+        if (Middleware::checkAdmin()) {
+            $listEvents = $this->model->SelectEvent();
+        }
+        require_once 'views/admin/event.php';
     }
 
     public function showAddEventForm()
     {
         require_once 'views/admin/add_event.php';
-    }
-
-    public function showEventForm()
-    {
-        // require_once 'views/admin/event.php';
     }
 }

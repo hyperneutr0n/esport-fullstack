@@ -46,6 +46,14 @@ class Event
         } else {
             return false;
         }
+    }
 
+    public function SelectEvent() {
+        $sql = "SELECT * FROM event";
+        $stmt = $this->db->prepare($sql);
+        
+        $resultset = $this->db->query($sql);
+        $resultarray = mysqli_fetch_assoc($resultset);
+        return $resultarray;
     }
 }
