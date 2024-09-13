@@ -1,7 +1,7 @@
 <?php
 require_once 'Database.php';
 
-class Event
+class TeamMembers
 {
     private $db;
 
@@ -10,11 +10,11 @@ class Event
         $this->db = Database::getInstance()->getConnection();
     }
 
-    public function AddEvent($name, $date, $description)
+    public function AddTeamMember($idteam, $idmember, $description)
     {
-        $sql = 'INSERT INTO event (name, date, description) VALUES (?, ?, ?)';
+        $sql = 'INSERT INTO team_members VALUES(?,?,?)';
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('sss', $name, $date, $description);
+        $stmt->bind_param('iis', $idteam, $idmember, $description);
 
         if ($stmt->execute()) {
             return true;
@@ -23,11 +23,11 @@ class Event
         }
     }
 
-    public function EditEvent($id, $name, $date, $description)
+    public function EditTeamMember($idteam_before, $idmember_before, $idteam_after, $idmember_after, $description_after)
     {
-        $sql = 'UPDATE event SET name=?, date=?, description=? WHERE idevent=?';
+        $sql = 'UPDATE team_members SET idteam=?, idmember=?, description=? WHERE idteam=? AND idmember=?';
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('sssi', $name, $date, $description, $id);
+        $stmt->bind_param('iisii', $idteam_after, $idmember_after, $description_after, $idteam_before, $idmember_before);
 
         if ($stmt->execute()) {
             return true;
@@ -36,11 +36,11 @@ class Event
         }
     }
 
-    public function DeleteEvent($id)
+    public function DeleteTeamMember($idteam, $idmember)
     {
-        $sql = 'DELETE FROM event WHERE idevent=?';
+        $sql = 'DELETE FROM team_members WHERE idteam=? AND idmember=?';
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('i', $id);
+        $stmt->bind_param('ii', $idteam, $idmember);
 
         if ($stmt->execute()) {
             return true;
@@ -49,20 +49,20 @@ class Event
         }
     }
 
-    public function SelectEvent()
+    public function SelectTeamMember()
     {
-        $sql = 'SELECT * FROM event';
+        $sql = 'SELECT * FROM team_members';
 
         $resultset = $this->db->query($sql);
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
         return $resultarray;
     }
 
-    public function SelectEventId($id)
+    public function SelectTeamMemberId($idteam, $idmember)
     {
-        $sql = 'SELECT * FROM event WHERE idevent=?';
+        $sql = 'SELECT * FROM team_members WHERE idteam=? AND idmember=?';
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('i', $id);
+        $stmt->bind_param('ii', $idteam, $idmember);
         $stmt->execute();
 
         $resultset = $stmt->get_result();

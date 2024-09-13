@@ -1,7 +1,7 @@
 <?php
 require_once 'Database.php';
 
-class Game
+class EventTeams
 {
     private $db;
 
@@ -10,11 +10,11 @@ class Game
         $this->db = Database::getInstance()->getConnection();
     }
 
-    public function AddGame($name, $description)
+    public function AddEventTeam($idevent, $idteam)
     {
-        $sql =  'INSERT INTO game (name, description) VALUES (?, ?)';
+        $sql = 'INSERT INTO event_teams VALUES (?,?)';
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('ss', $name, $description);
+        $stmt->bind_param('ii', $idevent, $idteam);
 
         if ($stmt->execute()) {
             return true;
@@ -23,11 +23,12 @@ class Game
         }
     }
 
-    public function UpdateGame($idgame, $name, $description)
+    public function EditEventTeam($idevent_before, $idteam_before, $idevent_after, $idteam_after)
     {
-        $sql = 'UPDATE game SET name=?, description=?, WHERE idgame=?';
+        $sql = 'UPDATE event_teams SET idevent=?, idteam=? WHERE idevent=? AND idteam=?';
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('ssi', $name, $description, $idgame);
+        $stmt->bind_param('iiii', $idevent_after, $idteam_after, $idevent_before, $idteam_before);
+
 
         if ($stmt->execute()) {
             return true;
@@ -36,11 +37,11 @@ class Game
         }
     }
 
-    public function DeleteGame($idgame)
+    public function DeleteEventTeam($idevent, $idteam)
     {
-        $sql = 'DELETE FROM game WHERE idgame=?';
+        $sql = 'DELETE FROM event_teams WHERE idevent=? AND idteam=?';
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('i', $idgame);
+        $stmt->bind_param('ii', $idevent, $idteam);
 
         if ($stmt->execute()) {
             return true;
@@ -49,19 +50,20 @@ class Game
         }
     }
 
-    public function SelectGame()
+    public function SelectEventTeam()
     {
-        $sql = 'SELECT * FROM game';
+        $sql = 'SELECT * FROM event_teams';
 
         $resultset = $this->db->query($sql);
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+        return $resultarray;
     }
 
-    public function SelectGameId($id)
+    public function SelectEventTeamId($idevent, $idteam)
     {
-        $sql = 'SELECT * FROM game WHERE idgame=?';
+        $sql = 'SELECT * FROM event_teams WHERE idevent=? AND idteam=?';
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('i', $id);
+        $stmt->bind_param('ii', $idevent, $idteam);
         $stmt->execute();
 
         $resultset = $stmt->get_result();

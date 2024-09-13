@@ -1,7 +1,7 @@
 <?php
 require_once 'Database.php';
 
-class Game
+class JoinProposal
 {
     private $db;
 
@@ -10,11 +10,11 @@ class Game
         $this->db = Database::getInstance()->getConnection();
     }
 
-    public function AddGame($name, $description)
+    public function AddJoinProposal($idteam, $idmember, $description, $status)
     {
-        $sql =  'INSERT INTO game (name, description) VALUES (?, ?)';
+        $sql = 'INSERT INTO join_proposal (idmember, idteam, description, status) VALUES (?,?,?,?)';
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('ss', $name, $description);
+        $stmt->bind_param('iiss', $idteam, $idmember, $description, $status);
 
         if ($stmt->execute()) {
             return true;
@@ -23,11 +23,11 @@ class Game
         }
     }
 
-    public function UpdateGame($idgame, $name, $description)
+    public function EditJoinProposal($id, $idteam, $idmember, $description, $status)
     {
-        $sql = 'UPDATE game SET name=?, description=?, WHERE idgame=?';
+        $sql = 'UPDATE join_proposal SET idteam=?, idmember=?, description=?, status=? WHERE idjoin_proposal=?';
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('ssi', $name, $description, $idgame);
+        $stmt->bind_param('iissi', $idteam, $idmember, $description, $status, $id);
 
         if ($stmt->execute()) {
             return true;
@@ -36,11 +36,11 @@ class Game
         }
     }
 
-    public function DeleteGame($idgame)
+    public function DeleteJoinProposal($id)
     {
-        $sql = 'DELETE FROM game WHERE idgame=?';
+        $sql = 'DELETE FROM join_proposal WHERE idjoin_proposal=?';
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('i', $idgame);
+        $stmt->bind_param('i', $id);
 
         if ($stmt->execute()) {
             return true;
@@ -49,22 +49,24 @@ class Game
         }
     }
 
-    public function SelectGame()
+    public function SelectJoinProposal()
     {
-        $sql = 'SELECT * FROM game';
+        $sql = 'SELECT * FROM join_proposal';
 
         $resultset = $this->db->query($sql);
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+        return $resultarray;
     }
 
-    public function SelectGameId($id)
+    public function SelectJoinProposalId($id)
     {
-        $sql = 'SELECT * FROM game WHERE idgame=?';
+        $sql = 'SELECT * FROM join_proposal WHERE idjoin_proposal=?';
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('i', $id);
         $stmt->execute();
 
         $resultset = $stmt->get_result();
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+        return $resultarray;
     }
 }
