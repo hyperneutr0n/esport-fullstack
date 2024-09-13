@@ -53,9 +53,11 @@ class MemberController
     public function showMemberForm()
     {
         if (Middleware::checkAdmin()) {
+            $members = $this->model->SelectMember();
             require_once 'views/admin/read/member.php';
         }
     }
+
 
     public function showLoginForm()
     {

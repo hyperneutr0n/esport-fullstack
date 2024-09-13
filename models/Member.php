@@ -97,7 +97,8 @@ class Member
 
     public function SelectMember()
     {
-        $sql = 'SELECT fname,lname,username FROM member';
+        //$sql = 'SELECT fname,lname,username FROM member';
+        $sql = 'SELECT*FROM member';
 
         $resultset = $this->db->query($sql);
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);

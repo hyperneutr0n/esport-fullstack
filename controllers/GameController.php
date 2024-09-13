@@ -53,9 +53,11 @@ class GameController
       echo "Game not found";
     }
   }
+
   public function showGameForm()
   {
-    if(Middleware::checkAdmin()){
+    if (Middleware::checkAdmin()) {
+      $games = $this->model->SelectGame();
       require_once 'views/admin/read/game.php';
     }
   }

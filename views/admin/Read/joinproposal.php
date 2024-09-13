@@ -9,7 +9,7 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($listJoinProposal as $joinproposal) { ?>
+        <?php foreach ($joinProposals as $joinproposal) { ?>
 
             <?php $id = $joinproposal["id"] ?>
             <tr>

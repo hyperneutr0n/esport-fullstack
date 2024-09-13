@@ -10,6 +10,11 @@ require_once 'models/Event.php';
 require_once 'controllers/MemberController.php';
 require_once 'controllers/GameController.php';
 require_once 'controllers/EventController.php';
+require_once 'controllers/AchievementController.php';
+require_once 'controllers/EventTeamsController.php';
+require_once 'controllers/JoinProposalController.php';
+require_once 'controllers/TeamController.php';
+require_once 'controllers/TeamMembersController.php';
 
 
 
@@ -17,6 +22,11 @@ require_once 'controllers/EventController.php';
 $memberController = new MemberController();
 $gameController = new GameController();
 $eventController = new EventController();
+$achievementController = new AchievementController();
+$eventTeamsController = new EventTeamsController();
+$joinProposalController = new JoinProposalController();
+$teamController = new TeamController();
+$teamMembersController = new TeamMembersController();
 
 // Request handling
 $requestUri = trim($_SERVER['REQUEST_URI'], '/');
@@ -57,22 +67,32 @@ switch ($uriSegments[0]) {
                 case 'home':
                     $memberController->showAdminHome();
                     break;
+                    //READ DATA
+                case 'member':
+                    $memberController->showMemberForm();
+                    break;
                 case 'game':
                     $gameController->showGameForm();
                     break;
                 case 'team':
+                    $teamController->showTeamForm();
                     break;
                 case 'event':
                     $eventController->showEventForm();
                     break;
                 case 'achievement':
+                    $achievementController->showAchievementForm();
                     break;
                 case 'joinproposal':
+                    $joinProposalController->showJoinProposalForm();
                     break;
                 case 'teammembers':
+                    $teamMembersController->showTeamMembersForm();
                     break;
                 case 'eventteams':
+                    $eventTeamsController->showJoinProposalForm();
                     break;
+                    //ADD DATA FORM
                 case 'addgame':
                     $gameController->showAddGameForm();
                     break;

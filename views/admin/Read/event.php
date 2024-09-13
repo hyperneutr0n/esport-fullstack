@@ -9,7 +9,7 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($listEvents as $event) { ?>
+        <?php foreach ($events as $event) { ?>
             <tr>
                 <?php $id = $event["idevent"] ?>
                 <th><?= $id ?></th>

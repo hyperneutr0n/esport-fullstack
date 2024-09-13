@@ -8,7 +8,7 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($listTeamMembers as $teammember) { ?>
+        <?php foreach ($teamMembers as $teammember) { ?>
             <?php
 
             $idteam = $teammember["idteam"];

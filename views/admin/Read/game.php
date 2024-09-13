@@ -18,7 +18,7 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($listGames as $game) { ?>
+            <?php foreach ($games as $game) { ?>
 
                 <?php $id = $game["id"] ?>
                 <tr>

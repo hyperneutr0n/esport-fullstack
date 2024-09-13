@@ -11,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($listMembers as $member) { ?>
+        <?php foreach ($members as $member) { ?>
             <tr>
                 <?php $id = $member["idmember"] ?>
                 <th><?= $id ?></th>

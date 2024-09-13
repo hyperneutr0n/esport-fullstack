@@ -10,7 +10,7 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($listAchievements as $achievement) { ?>
+        <?php foreach ($achievements as $achievement) { ?>
 
             <?php $id = $achievement["id"] ?>
             <tr>

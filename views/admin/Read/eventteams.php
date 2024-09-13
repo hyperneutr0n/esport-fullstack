@@ -7,7 +7,7 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($listEventTeams as $eventteams) { ?>
+        <?php foreach ($eventTeams as $eventteams) { ?>
 
             <?php $idevent = $eventteams["idevent"];
             $idteam = $eventteams["idteam"] ?>
