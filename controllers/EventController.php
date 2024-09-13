@@ -52,8 +52,8 @@ class EventController
     {
         if (Middleware::checkAdmin()) {
             $listEvents = $this->model->SelectEvent();
+            require_once 'views/admin/read/event.php';
         }
-        require_once 'views/admin/event.php';
     }
 
     public function showAddEventForm()

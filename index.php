@@ -63,6 +63,7 @@ switch ($uriSegments[0]) {
                 case 'team':
                     break;
                 case 'event':
+                    $eventController->showEventForm();
                     break;
                 case 'achievement':
                     break;

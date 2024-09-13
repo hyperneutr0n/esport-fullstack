@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +28,7 @@
                 <li>
                     <a href="#">Member</a>
                     <ul>
-                        <li><a href="#">Show All</a></li>
+                        <li><a href="/admin/member">Show All</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Game</a>
@@ -37,32 +38,32 @@
                 </li>
                 <li><a href="#">Team</a>
                     <ul>
-                        <li><a href="#">Show All</a></li>
+                        <li><a href="/admin/team">Show All</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Event</a>
                     <ul>
-                        <li><a href="#">Show All</a></li>
+                        <li><a href="/admin/event">Show All</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Achievement</a>
                     <ul>
-                        <li><a href="#">Show All</a></li>
+                        <li><a href="/admin/achievement">Show All</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Join Proposal</a>
                     <ul>
-                        <li><a href="#">Show All</a></li>
+                        <li><a href="/admin/joinproposal">Show All</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Team members</a>
                     <ul>
-                        <li><a href="#">Show All</a></li>
+                        <li><a href="/admin/teammembers">Show All</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Event teams</a>
                     <ul>
-                        <li><a href="#">Show All</a></li>
+                        <li><a href="/admin/eventteams">Show All</a></li>
                     </ul>
                 </li>
             </ul>

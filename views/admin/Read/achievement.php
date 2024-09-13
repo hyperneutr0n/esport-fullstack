@@ -10,14 +10,18 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>ID</td>
-            <td>ID Team</td>
-            <td>Name</td>
-            <td>Date</td>
-            <td>Description</td>
-            <td><a href="process/updateachievement?id=1">Update</a></td>
-            <td><a href="process/deleteachievement?id=2">Delete</a></td>
-        </tr>
+        <?php foreach ($listAchievements as $achievement) { ?>
+
+            <?php $id = $achievement["id"] ?>
+            <tr>
+                <td><?= $id ?></td>
+                <td><?= $achievement["name"] ?></td>
+                <td><?= $achievement["date"] ?></td>
+                <td><?= $achievement["description"] ?></td>
+                <td><a href="process/updateachievement?id=<?= $id ?>">Update</a></td>
+                <td><a href="process/deleteachievement?id=<?= $id ?>">Delete</a></td>
+            </tr>
+        <?php } ?>
+
     </tbody>
 </table>

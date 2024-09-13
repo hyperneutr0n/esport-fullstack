@@ -18,13 +18,18 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>ID</td>
-                <td>Name</td>
-                <td>Description</td>
-                <td><a href="process/updategame?id=1">Update</a></td>
-                <td><a href="process/deletegame?id=2">Delete</a></td>
-            </tr>
+            <?php foreach ($listGames as $game) { ?>
+
+                <?php $id = $game["id"] ?>
+                <tr>
+                    <td><?= $id ?></td>
+                    <td><?= $game["name"] ?></td>
+                    <td><?= $game["description"] ?></td>
+                    <td><a href="process/updategame?id=<?= $id ?>">Update</a></td>
+                    <td><a href="process/deletegame?id=<?= $id ?>">Delete</a></td>
+                </tr>
+            <?php } ?>
+
         </tbody>
     </table>
 

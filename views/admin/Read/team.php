@@ -8,12 +8,17 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>ID Team</td>
-            <td>ID Game</td>
-            <td>Name</td>
-            <td><a href="process/updateteam?id=1">Update</a></td>
-            <td><a href="process/deleteteam?id=2">Delete</a></td>
-        </tr>
+        <?php foreach ($listTeam as $team) { ?>
+
+            <tr>
+                <?php $id = $team["idteam"] ?>
+                <td><?= $id ?></td>
+                <td><?= $team["idgame"] ?></td>
+                <td><?= $team["name"] ?></td>
+                <td><a href="process/updateteam?id=<?= $id ?>">Update</a></td>
+                <td><a href="process/deleteteam?id=<?= $id ?>">Delete</a></td>
+            </tr>
+        <?php } ?>
+
     </tbody>
-</table>    
+</table>

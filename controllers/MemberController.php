@@ -50,6 +50,13 @@ class MemberController
         }
     }
 
+    public function showMemberForm()
+    {
+        if (Middleware::checkAdmin()) {
+            require_once 'views/admin/read/member.php';
+        }
+    }
+
     public function showLoginForm()
     {
         if (Middleware::checkMember() || Middleware::checkAdmin()) {

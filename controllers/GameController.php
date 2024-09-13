@@ -55,7 +55,9 @@ class GameController
   }
   public function showGameForm()
   {
-    require_once 'views/admin/game.php';
+    if(Middleware::checkAdmin()){
+      require_once 'views/admin/read/game.php';
+    }
   }
 
   public function showAddGameForm()

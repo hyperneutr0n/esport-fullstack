@@ -11,15 +11,19 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th>ID Member</th>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Username</th>
-            <th>Password</th>
-            <th>Profile</th>
-            <td><a href="process/updateteam?id=1">Update</a></td>
-            <td><a href="process/deleteteam?id=2">Delete</a></td>
-        </tr>
+        <?php foreach ($listMembers as $member) { ?>
+            <tr>
+                <?php $id = $member["idmember"] ?>
+                <th><?= $id ?></th>
+                <th><?= $member["fname"] ?></th>
+                <th><?= $member["lname"] ?></th>
+                <th><?= $member["username"] ?></th>
+                <th><?= $member["password"] ?></th>
+                <th><?= $member["profile"] ?></th>
+                <td><a href="process/updateteam?id=<?= $id ?>">Update</a></td>
+                <td><a href="process/deleteteam?id=<?= $id ?>">Delete</a></td>
+            </tr>
+        <?php } ?>
+
     </tbody>
 </table>

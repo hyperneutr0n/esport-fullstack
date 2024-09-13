@@ -7,11 +7,18 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th>ID Event</th>
-            <th>ID Team </th>
-            <td><a href="process/updateeventteams?id=1">Update</a></td>
-            <td><a href="process/deleteeventteams?id=2">Delete</a></td>
-        </tr>
+        <?php foreach ($listEventTeams as $eventteams) { ?>
+
+            <?php $idevent = $eventteams["idevent"];
+            $idteam = $eventteams["idteam"] ?>
+
+            <tr>
+                <th><?= $idevent ?></th>
+                <th><?= $idteam ?></th>
+                <td><a href="process/updateeventteams?idevent=<?= $idevent ?>?idteam=<?= $idteam ?>">Update</a></td>
+                <td><a href="process/deleteeventteams?idevent=<?= $idevent ?>?idteam=<?= $idteam ?>">Delete</a></td>
+            </tr>
+        <?php } ?>
+
     </tbody>
 </table>

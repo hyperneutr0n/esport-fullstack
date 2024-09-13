@@ -9,13 +9,18 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th>ID Proposal</th>
-            <th>ID Member </th>
-            <th>ID Team</th>
-            <th>Description</th>
-            <td><a href="process/updatejoinproposal?id=1">Update</a></td>
-            <td><a href="process/deletejoinproposal?id=2">Delete</a></td>
-        </tr>
+        <?php foreach ($listJoinProposal as $joinproposal) { ?>
+
+            <?php $id = $joinproposal["id"] ?>
+            <tr>
+                <th><?= $id ?></th>
+                <th><?= $joinproposal["idmember"] ?></th>
+                <th><?= $joinproposal["idteam"] ?></th>
+                <th><?= $joinproposal["description"] ?></th>
+                <td><a href="process/updatejoinproposal?id=<?= $id ?>">Update</a></td>
+                <td><a href="process/deletejoinproposal?id=<?= $id ?>">Delete</a></td>
+            </tr>
+        <?php } ?>
+
     </tbody>
 </table>
