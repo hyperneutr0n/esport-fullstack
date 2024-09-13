@@ -9,7 +9,7 @@ class Database
     public function __construct()
     {
         $host = 'localhost';
-        $dbName = '';
+        $dbName = 'esport';
         $username = 'root';
         $password = '';
         $this->conn = new mysqli($host, $username, $password, $dbName);

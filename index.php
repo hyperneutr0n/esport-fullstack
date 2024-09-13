@@ -57,6 +57,21 @@ switch ($uriSegments[0]) {
                 case 'home':
                     $memberController->showAdminHome();
                     break;
+                case 'game':
+                    $gameController->showGameForm();
+                    break;
+                case 'team':
+                    break;
+                case 'event':
+                    break;
+                case 'achievement':
+                    break;
+                case 'joinproposal':
+                    break;
+                case 'teammembers':
+                    break;
+                case 'eventteams':
+                    break;
                 case 'addgame':
                     $gameController->showAddGameForm();
                     break;

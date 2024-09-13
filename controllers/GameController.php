@@ -1,6 +1,7 @@
 <?php
 require_once 'Middleware.php';
-require_once '../models/Game.php';
+require_once __DIR__ . '/../models/Game.php';
+
 class GameController
 {
   private $model;
@@ -51,6 +52,10 @@ class GameController
     } else {
       echo "Game not found";
     }
+  }
+  public function showGameForm()
+  {
+    require_once 'views/admin/game.php';
   }
 
   public function showAddGameForm()

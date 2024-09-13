@@ -22,7 +22,7 @@ class Member
             $result = $stmt->get_result();
             $row = $result->fetch_assoc();
 
-            if (Cryptography::PasswordVerify($password, $row['password'])) {
+            if ($password == $row["password"]) {
                 session_start();
                 $role = $row['profile'];
 
@@ -55,12 +55,12 @@ class Member
 
     public function Register($fname, $lname, $username, $password): bool
     {
-        $profile = 'member';
-        $hashedPassword = Cryptography::PasswordHash($password);
+        $profile = 'admin';
+        //$hashedPassword = Cryptography::PasswordHash($password);
 
         $sql = 'INSERT INTO member (fname, lname, username, password, profile) VALUES (?, ?, ?, ?, ?)';
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('sssss', $fname, $lname, $username, $hashedPassword, $profile);
+        $stmt->bind_param('sssss', $fname, $lname, $username, $password, $profile);
 
         if ($stmt->execute()) {
             return true;
@@ -95,9 +95,10 @@ class Member
         }
     }
 
-    public function SelectMember() {
+    public function SelectMember()
+    {
         $sql = 'SELECT fname,lname,username FROM member';
-        
+
         $resultset = $this->db->query($sql);
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
         return $resultarray;

@@ -1,6 +1,7 @@
 <?php
 require_once 'Middleware.php';
-require_once '../models/Event.php';
+require_once __DIR__ . '/../models/Event.php';
+
 
 class EventController
 {

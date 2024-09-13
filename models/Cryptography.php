@@ -33,4 +33,7 @@ class Cryptography
         $result = sodium_crypto_pwhash_str_verify($hashed, $password);
         return $result;
     }
+
+  
 }
+    

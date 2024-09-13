@@ -1,6 +1,6 @@
 <?php
 require_once 'Middleware.php';
-require_once '../models/Member.php';
+require_once __DIR__ . '/../models/Member.php';
 
 class MemberController
 {
@@ -18,11 +18,11 @@ class MemberController
             $password = $_POST["password"];
 
             if (!$this->model->Login($username, $password)) {
-                require_once 'views/home.php';
+                //require_once 'views/home.php';
             }
-            require_once 'views/home.php';
+            //require_once 'views/home.php';
         }
-        require_once 'views/home.php';
+        //require_once 'views/home.php';
     }
 
     public function Register()
@@ -37,6 +37,7 @@ class MemberController
             if (!$this->model->Register($fname, $lname, $username, $password)) {
                 require_once 'views/register.php';
             }
+            header("Location: /");
             require_once 'views/register.php';
         }
     }
