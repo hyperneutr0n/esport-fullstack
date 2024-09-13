@@ -5,7 +5,7 @@
             <th>ID Member </th>
             <th>ID Team</th>
             <th>Description</th>
-            <th colspan="2">Aksi</th>
+            <th colspan="3">Aksi</th>
         </tr>
     </thead>
     <tbody>
@@ -17,6 +17,7 @@
                 <th><?= $joinproposal["idmember"] ?></th>
                 <th><?= $joinproposal["idteam"] ?></th>
                 <th><?= $joinproposal["description"] ?></th>
+                <td><a href="process/updatejoinproposal?id=<?= $id ?>">Setujui</a></td>
                 <td><a href="process/updatejoinproposal?id=<?= $id ?>">Update</a></td>
                 <td><a href="process/deletejoinproposal?id=<?= $id ?>">Delete</a></td>
             </tr>

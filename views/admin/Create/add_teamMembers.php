@@ -1,13 +1,12 @@
 <?php require __DIR__ . '/../components/header.php'; ?>
 
 <div>
-    <h1>This is join proposal form</h1>
+    <h1>This is add team members form</h1>
 
-    <form action="/process/joinproposal" method="POST" id="addteamForm">
-
+    <form action="/process/addteammembers" method="POST">
         <div>
-            <label for="">Select team: </label>
-            <select name="idteam" id="idteam" required>
+            <label for="">Select ID Team: </label>
+            <select name="idgame" id="idgame" required>
                 <option value=""></option>
                 <option value=""></option>
                 <option value=""></option>
@@ -17,18 +16,16 @@
 
         <div>
             <label for="">Select ID Member: </label>
-            <select name="idMember" id="idMember" required>
+            <select name="idgame" id="idgame" required>
                 <option value=""></option>
                 <option value=""></option>
                 <option value=""></option>
                 <option value=""></option>
             </select>
         </div>
-
-
         <div>
-            <label for="">Description: </label>
-            <input type="text" id="description" name="description">
+            <label for="">Description:</label>
+            <input type="text" id="name" name="name" required>
         </div>
 
         <input type="submit" id="submit" name="submit">
