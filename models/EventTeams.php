@@ -68,5 +68,6 @@ class EventTeams
 
         $resultset = $stmt->get_result();
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+        return $resultarray;
     }
 }

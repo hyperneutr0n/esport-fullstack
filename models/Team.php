@@ -55,6 +55,7 @@ class Team
 
         $resultset = $this->db->query($sql);
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+        return $resultarray;
     }
 
     public function SelectTeamId($id)
@@ -66,5 +67,6 @@ class Team
 
         $resultset = $stmt->get_result();
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+        return $resultarray;
     }
 }

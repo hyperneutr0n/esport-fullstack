@@ -55,6 +55,7 @@ class Game
 
         $resultset = $this->db->query($sql);
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+        return $resultarray;
     }
 
     public function SelectGameId($id)
@@ -66,5 +67,6 @@ class Game
 
         $resultset = $stmt->get_result();
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+        return $resultarray;
     }
 }
