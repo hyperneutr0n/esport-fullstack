@@ -8,20 +8,18 @@
         <div>
             <label for="">Select team: </label>
             <select name="idteam" id="idteam" required>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
+                <?php foreach ($teams as $team) { ?>
+                    <option value="<?= $team["idteam"] ?>"><?= $team["name"] ?></option>
+                <?php } ?>
             </select>
         </div>
 
         <div>
             <label for="">Select ID Member: </label>
             <select name="idMember" id="idMember" required>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
+                <?php foreach ($members as $member) { ?>
+                    <option value="<?= $team["idmember"] ?>"><?= $team["username"] ?></option>
+                <?php } ?>
             </select>
         </div>
 

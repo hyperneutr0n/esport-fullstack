@@ -1,13 +1,16 @@
 <?php
 require_once 'Middleware.php';
 require_once __DIR__ . '/../models/Team.php';
+require_once __DIR__ . '/../models/Game.php';
 class  TeamController
 {
     private $model;
+    private $game;
 
     public function __construct()
     {
         $this->model = new Team();
+        $this->game = new Game();
     }
 
     public function showTeamForm()
@@ -18,12 +21,17 @@ class  TeamController
         }
     }
 
-    public function showAddTeamForm(){
-        require_once 'views/admin/Create/add_team.php';
+    public function showAddTeamForm()
+    {
+        if (Middleware::checkAdmin()) {
+            $games = $this->game->SelectGame();
+            require_once 'views/admin/Create/add_team.php';
+        }
     }
 
-    public function addTeam(){
-        if(Middleware::checkPostMethod() && Middleware::checkAdmin()){
+    public function addTeam()
+    {
+        if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
             $idgame = $_POST['idgame'];
             $name = $_POST['name'];
 
@@ -33,8 +41,9 @@ class  TeamController
         }
     }
 
-    public function editTeam(){
-        if(Middleware::checkPostMethod() && Middleware::checkAdmin()){
+    public function editTeam()
+    {
+        if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
             $id = $_POST['id'];
             $idgame = $_POST['idgame'];
             $name = $_POST['name'];
@@ -44,9 +53,10 @@ class  TeamController
             $_SESSION['message'] = "Edit berhasil";
         }
     }
-    
-    public function deleteTeam(){
-        if(Middleware::checkPostMethod() && Middleware::checkAdmin()){
+
+    public function deleteTeam()
+    {
+        if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
             $id = $_POST['id'];
 
             $this->model->DeleteTeam($id);

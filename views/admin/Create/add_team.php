@@ -7,10 +7,9 @@
         <div>
             <label for="">Select game: </label>
             <select name="idgame" id="idgame" required>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
+                <?php foreach ($games as $game) { ?>
+                    <option value="<?= $game["idgame"] ?>"><?= $team["name"] ?></option>
+                <?php } ?>
             </select>
         </div>
         <div>

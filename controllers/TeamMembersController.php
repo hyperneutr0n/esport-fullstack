@@ -1,13 +1,31 @@
 <?php
 require_once 'Middleware.php';
 require_once __DIR__ . '/../models/TeamMembers.php';
+require_once __DIR__ . '/../models/Team.php';
+require_once __DIR__ . '/../models/Member.php';
 class TeamMembersController
 {
     private $model;
 
+    private $team;
+
+    private $member;
+
     public function __construct()
     {
         $this->model = new TeamMembers();
+        $this->team = new Team();
+        $this->member = new Member();
+    }
+
+    public function addTeamMemberForm()
+    {
+        if (Middleware::checkAdmin()) {
+            $teams = $this->team->SelectTeam();
+            $members = $this->member->SelectMember();
+
+            require_once 'views/admin/create/add_teamMembers.php';
+        }
     }
 
     public function showTeamMembersForm()
@@ -38,16 +56,15 @@ class TeamMembersController
         }
     }
 
-    public function deleteTeamMembers(){
-        if(Middleware::checkPostMethod() && Middleware::checkAdmin()){
+    public function deleteTeamMembers()
+    {
+        if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
             $idteam = $_POST['idteam'];
             $idmember = $_POST['idmember'];
 
             $this->model->DeleteTeamMember($idteam, $idmember);
             session_start();
-            $_SESSION['message']="Delete berhasil";
+            $_SESSION['message'] = "Delete berhasil";
         }
     }
-
-    
 }

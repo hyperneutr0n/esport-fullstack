@@ -90,7 +90,7 @@ switch ($uriSegments[0]) {
                     $teamMembersController->showTeamMembersForm();
                     break;
                 case 'eventteams':
-                    $eventTeamsController->showJoinProposalForm();
+                    $eventTeamsController->showEventTeamForm();
                     break;
                     //ADD DATA FORM
                 case 'addgame':
@@ -100,10 +100,13 @@ switch ($uriSegments[0]) {
                     $eventController->showAddEventForm();
                     break;
                 case 'addteam':
+                    $teamController->showAddTeamForm();
                     break;
                 case 'addachievement':
+                    $achievementController->showAddAchievementForm();
                     break;
                 case 'addeventteams':
+                    $eventTeamsController->showAddEventTeamForm();
                     break;
                 default:
                     require_once 'views/home.php';

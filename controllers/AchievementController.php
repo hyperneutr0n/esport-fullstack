@@ -1,13 +1,16 @@
 <?php
 require_once 'Middleware.php';
 require_once __DIR__ . '/../models/Achievement.php';
+require_once __DIR__ . '/../models/Team.php';
 class  AchievementController
 {
     private $model;
+    private $team;
 
     public function __construct()
     {
         $this->model = new Achievement();
+        $this->team = new Team();
     }
 
     public function showAchievementForm()
@@ -20,7 +23,10 @@ class  AchievementController
 
     public function showAddAchievementForm()
     {
-        require_once 'views/admin/Create/add_achievement.php';
+        if (Middleware::checkAdmin()) {
+            $teams = $this->team->SelectTeam();
+            require_once 'views/admin/Create/add_achievement.php';
+        }
     }
 
     public function addAchievement()

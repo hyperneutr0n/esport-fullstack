@@ -6,21 +6,19 @@
     <form action="/process/addteammembers" method="POST">
         <div>
             <label for="">Select ID Team: </label>
-            <select name="idgame" id="idgame" required>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
+            <select name="idteam" id="idteam" required>
+                <?php foreach ($teams as $team) { ?>
+                    <option value="<?= $team["idteam"] ?>"><?= $team["name"] ?></option>
+                <?php } ?>
             </select>
         </div>
 
         <div>
             <label for="">Select ID Member: </label>
-            <select name="idgame" id="idgame" required>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
+            <select name="idmember" id="idmember" required>
+                <?php foreach ($members as $member) { ?>
+                    <option value="<?= $member["idmember"] ?>"><?= $member["username"] ?></option>
+                <?php } ?>
             </select>
         </div>
         <div>
