@@ -27,7 +27,7 @@ class Member
                 $role = $row['profile'];
 
                 if ($role == 'member') {
-                    $_SESSION['memberLogged'] = true;
+                    $_SESSION['userLogged'] = true;
                     $_SESSION['adminLogged'] = false;
                 } else {
                     $role == 'admin';
@@ -55,7 +55,7 @@ class Member
 
     public function Register($fname, $lname, $username, $password): bool
     {
-        $profile = 'admin';
+        $profile = 'member';
         //$hashedPassword = Cryptography::PasswordHash($password);
 
         $sql = 'INSERT INTO member (fname, lname, username, password, profile) VALUES (?, ?, ?, ?, ?)';

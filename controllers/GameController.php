@@ -66,7 +66,7 @@ class GameController
   {
     // intinya bikin method buat select semua game
 
-    require_once 'views/admin/add_game.php';
+    require_once  'views/admin/create/add_game.php';
   }
 
   public function showEditGameForm($idgame)

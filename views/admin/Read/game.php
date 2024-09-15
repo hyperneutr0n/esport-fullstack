@@ -20,7 +20,7 @@
         <tbody>
             <?php foreach ($games as $game) { ?>
 
-                <?php $id = $game["id"] ?>
+                <?php $id = $game["idgame"] ?>
                 <tr>
                     <td><?= $id ?></td>
                     <td><?= $game["name"] ?></td>

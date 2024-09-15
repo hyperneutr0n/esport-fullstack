@@ -11,7 +11,7 @@
     <tbody>
         <?php foreach ($joinProposals as $joinproposal) { ?>
 
-            <?php $id = $joinproposal["id"] ?>
+            <?php $id = $joinproposal["idjoin_proposal"] ?>
             <tr>
                 <th><?= $id ?></th>
                 <th><?= $joinproposal["idmember"] ?></th>

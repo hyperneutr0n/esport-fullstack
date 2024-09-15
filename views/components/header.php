@@ -1,4 +1,6 @@
-<?php session_start() ?>
+<?php if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+} ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +17,7 @@
         <nav>
 
             <a href="">Home</a>
+            <a href="/member/joinproposal">Join proposal</a>
             <a href="">Game</a>
             <a href="">Team</a>
             <a href="">Profile</a>
@@ -34,21 +37,28 @@
                 <li><a href="#">Game</a>
                     <ul>
                         <li><a href="/admin/game">Show All</a></li>
+                        <li><a href="/admin/addgame">Add game</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Team</a>
                     <ul>
                         <li><a href="/admin/team">Show All</a></li>
+                        <li><a href="/admin/addteam">Add team</a></li>
+
                     </ul>
                 </li>
                 <li><a href="#">Event</a>
                     <ul>
                         <li><a href="/admin/event">Show All</a></li>
+                        <li><a href="/admin/addevent">Add event</a></li>
+
                     </ul>
                 </li>
                 <li><a href="#">Achievement</a>
                     <ul>
                         <li><a href="/admin/achievement">Show All</a></li>
+                        <li><a href="/admin/addachievement">Add achievement</a></li>
+
                     </ul>
                 </li>
                 <li><a href="#">Join Proposal</a>
@@ -59,11 +69,15 @@
                 <li><a href="#">Team members</a>
                     <ul>
                         <li><a href="/admin/teammembers">Show All</a></li>
+                        <li><a href="/admin/addteammembers">Add team members</a></li>
+
                     </ul>
                 </li>
                 <li><a href="#">Event teams</a>
                     <ul>
                         <li><a href="/admin/eventteams">Show All</a></li>
+                        <li><a href="/admin/addeventteams">Add event teams</a></li>
+
                     </ul>
                 </li>
             </ul>

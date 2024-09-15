@@ -1,4 +1,4 @@
-<?php require __DIR__ . '/../components/header.php'; ?>
+<?php require __DIR__ . '/../../components/header.php'; ?>
 
 <div>
     <h1>This is add game form</h1>
@@ -19,4 +19,4 @@
 </div>
 
 
-<?php require __DIR__ . '/../components/footer.php'; ?>
+<?php require __DIR__ . '/../../components/footer.php'; ?>

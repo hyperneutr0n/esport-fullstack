@@ -3,7 +3,7 @@
 <div>
     <h1>This is join proposal form</h1>
 
-    <form action="/process/joinproposal" method="POST" id="addteamForm">
+    <form action="/process/addjoinproposal" method="POST" id="addteamForm">
 
         <div>
             <label for="">Select team: </label>
@@ -16,9 +16,9 @@
 
         <div>
             <label for="">Select ID Member: </label>
-            <select name="idMember" id="idMember" required>
+            <select name="idmember" id="idmember" required>
                 <?php foreach ($members as $member) { ?>
-                    <option value="<?= $team["idmember"] ?>"><?= $team["username"] ?></option>
+                    <option value="<?= $member["idmember"] ?>"><?= $member["username"] ?></option>
                 <?php } ?>
             </select>
         </div>

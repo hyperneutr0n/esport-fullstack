@@ -12,7 +12,7 @@
     <tbody>
         <?php foreach ($achievements as $achievement) { ?>
 
-            <?php $id = $achievement["id"] ?>
+            <?php $id = $achievement["idachievement"] ?>
             <tr>
                 <td><?= $id ?></td>
                 <td><?= $achievement["name"] ?></td>

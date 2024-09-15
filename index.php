@@ -105,6 +105,7 @@ switch ($uriSegments[0]) {
                     break;
                 case 'addteammembers':
                     $teamMembersController->showAddTeamMemberForm();
+                    break;
                 case 'addachievement':
                     $achievementController->showAddAchievementForm();
                     break;
@@ -112,7 +113,8 @@ switch ($uriSegments[0]) {
                     $eventTeamsController->showAddEventTeamForm();
                     break;
                 case 'addjoinproposal':
-                    $joinProposalController->add
+                    $joinProposalController->showAddJoinProposalForm();
+                    break;
                 default:
                     require_once 'views/home.php';
                     break;
@@ -149,6 +151,8 @@ switch ($uriSegments[0]) {
                 case 'addteammembers':
                     $teamMembersController->AddTeamMembers();
                     break;
+                case 'addjoinproposal':
+                    $joinProposalController->addJoinProposal();
 
                 default:
                     require_once 'views/home.php';

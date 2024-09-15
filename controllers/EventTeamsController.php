@@ -19,7 +19,7 @@ class EventTeamsController
     public function showEventTeamForm()
     {
         if (Middleware::checkAdmin()) {
-            $listEventTeams = $this->model->SelectEventTeam();
+            $eventTeams = $this->model->SelectEventTeam();
             require_once 'views/admin/read/eventteams.php';
         }
     }
@@ -29,7 +29,7 @@ class EventTeamsController
         if (Middleware::checkAdmin()) {
             $events = $this->event->SelectEvent();
             $teams = $this->team->SelectTeam();
-            require_once 'views/admin/add/add_eventTeams.php';
+            require_once 'views/admin/create/add_eventTeams.php';
         }
     }
     public function showEditEventTeamForm()

@@ -17,7 +17,17 @@ class EventController
         if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
             $name = $_POST['name'];
             $date = $_POST['date'];
-            $stringdate = $date->format('Y-m-d H:i:s');
+
+            // Convert the date string to a DateTime object
+            $dateObject = DateTime::createFromFormat('Y-m-d', $date);
+            if (!$dateObject) {
+                // Handle invalid date format
+                die("Invalid date format");
+            }
+
+            // Format the date to the required format
+            $stringdate = $dateObject->format('Y-m-d H:i:s');
+
             $description = $_POST['description'];
 
             $this->model->AddEvent($name, $stringdate, $description);
@@ -25,6 +35,7 @@ class EventController
             $_SESSION['message'] = "berhasil";
         }
     }
+
 
     public function EditEvent()
     {
@@ -51,13 +62,15 @@ class EventController
     public function showEventForm()
     {
         if (Middleware::checkAdmin()) {
-            $listEvents = $this->model->SelectEvent();
+            $events = $this->model->SelectEvent();
             require_once 'views/admin/read/event.php';
         }
     }
 
     public function showAddEventForm()
     {
-        require_once 'views/admin/add_event.php';
+        if (Middleware::checkAdmin()) {
+            require_once 'views/admin/create/add_event.php';
+        }
     }
 }

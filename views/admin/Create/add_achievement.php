@@ -1,4 +1,4 @@
-<?php require __DIR__ . '/../components/header.php'; ?>
+<?php require __DIR__ . '/../../components/header.php'; ?>
 
 <div>
     <h1>This is add achievement form</h1>
@@ -31,4 +31,4 @@
     </form>
 </div>
 
-<?php require __DIR__ . '/../components/footer.php'; ?>
+<?php require __DIR__ . '/../../components/footer.php'; ?>

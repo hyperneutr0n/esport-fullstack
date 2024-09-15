@@ -1,4 +1,4 @@
-<?php require __DIR__ . '/../components/header.php'; ?>
+<?php require __DIR__ . '/../../components/header.php'; ?>
 
 <div>
     <h1>This is add team form</h1>
@@ -8,7 +8,7 @@
             <label for="">Select game: </label>
             <select name="idgame" id="idgame" required>
                 <?php foreach ($games as $game) { ?>
-                    <option value="<?= $game["idgame"] ?>"><?= $team["name"] ?></option>
+                    <option value="<?= $game["idgame"] ?>"><?= $game["name"] ?></option>
                 <?php } ?>
             </select>
         </div>
@@ -21,4 +21,4 @@
     </form>
 </div>
 
-<?php require __DIR__ . '/../components/footer.php'; ?>
+<?php require __DIR__ . '/../../components/footer.php'; ?>
