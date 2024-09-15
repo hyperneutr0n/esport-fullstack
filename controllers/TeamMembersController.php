@@ -18,7 +18,7 @@ class TeamMembersController
         $this->member = new Member();
     }
 
-    public function addTeamMemberForm()
+    public function showAddTeamMemberForm()
     {
         if (Middleware::checkAdmin()) {
             $teams = $this->team->SelectTeam();
@@ -65,6 +65,17 @@ class TeamMembersController
             $this->model->DeleteTeamMember($idteam, $idmember);
             session_start();
             $_SESSION['message'] = "Delete berhasil";
+        }
+    }
+
+    public function AddTeamMembers()
+    {
+        if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
+            $idteam = $_POST["idteam"];
+            $idmember = $_POST["idmember"];
+            $description = $_POST["description"];
+
+            $this->model->AddTeamMember($idteam, $idmember, $description);
         }
     }
 }

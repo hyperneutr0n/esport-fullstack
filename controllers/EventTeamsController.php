@@ -37,6 +37,17 @@ class EventTeamsController
         require_once 'views/admin/create/add_eventTeams.php';
     }
 
+    public function addEventTeam()
+    {
+
+        if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
+            $idevent = $_POST["idevent"];
+            $idteam = $_POST["idteam"];
+
+            $this->model->AddEventTeam($idevent, $idteam);
+        }
+    }
+
     public function editEventTeam()
     {
         if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {

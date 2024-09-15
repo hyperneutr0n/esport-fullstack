@@ -50,6 +50,7 @@ switch ($uriSegments[0]) {
                     $memberController->Register();
                     break;
                 case 'joinproposal':
+                    $joinProposalController->showAddJoinProposalForm();
                     break;
                 default:
                     require_once 'views/home.php';
@@ -102,12 +103,16 @@ switch ($uriSegments[0]) {
                 case 'addteam':
                     $teamController->showAddTeamForm();
                     break;
+                case 'addteammembers':
+                    $teamMembersController->showAddTeamMemberForm();
                 case 'addachievement':
                     $achievementController->showAddAchievementForm();
                     break;
                 case 'addeventteams':
                     $eventTeamsController->showAddEventTeamForm();
                     break;
+                case 'addjoinproposal':
+                    $joinProposalController->add
                 default:
                     require_once 'views/home.php';
                     break;
@@ -130,12 +135,19 @@ switch ($uriSegments[0]) {
                     $gameController->addGame();
                     break;
                 case 'addevent':
+                    $eventController->AddEvent();
                     break;
                 case 'addteam':
+                    $teamController->addTeam();
                     break;
                 case 'addachievement':
+                    $achievementController->addAchievement();
                     break;
                 case 'addeventteams':
+                    $eventTeamsController->addEventTeam();
+                    break;
+                case 'addteammembers':
+                    $teamMembersController->AddTeamMembers();
                     break;
 
                 default:
@@ -143,10 +155,6 @@ switch ($uriSegments[0]) {
                     break;
             }
         }
-
-
-
-
 
         // Default route
     default:
