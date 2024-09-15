@@ -131,6 +131,8 @@ switch ($uriSegments[0]) {
                 case 'login':
                     $memberController->Login();
                     break;
+                case 'logout':
+                    $memberController->Logout();
                 case 'register':
                     $memberController->Register();
                 case 'addgame':
