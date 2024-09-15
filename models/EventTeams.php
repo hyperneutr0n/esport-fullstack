@@ -67,7 +67,7 @@
             $stmt->execute();
 
             $resultset = $stmt->get_result();
-            $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+            $resultarray = $resultset->fetch_assoc();
             return $resultarray;
         }
     }

@@ -20,8 +20,8 @@
                 <th><?= $member["username"] ?></th>
                 <th><?= $member["password"] ?></th>
                 <th><?= $member["profile"] ?></th>
-                <td><a href="process/updateteam?id=<?= $id ?>">Update</a></td>
-                <td><a href="process/deleteteam?id=<?= $id ?>">Delete</a></td>
+                <td><a href="/admin/updatemember?id=<?= $id ?>">Update</a></td>
+                <td><a href="process/deletemember?id=<?= $id ?>">Delete</a></td>
             </tr>
         <?php } ?>
 

@@ -29,7 +29,7 @@ $teamController = new TeamController();
 $teamMembersController = new TeamMembersController();
 
 // Request handling
-$requestUri = trim($_SERVER['REQUEST_URI'], '/');
+$requestUri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 $uriSegments = explode('/', $requestUri);
 
 // Simple routing using switch case
@@ -115,6 +115,31 @@ switch ($uriSegments[0]) {
                 case 'addjoinproposal':
                     $joinProposalController->showAddJoinProposalForm();
                     break;
+                    //EDIT DATA FORM
+                case 'updatemember':
+                    $memberController->showEditMemberForm();
+                    break;
+                case 'updategame':
+                    $gameController->showEditGameForm();
+                    break;
+                case 'updateevent':
+                    $eventController->showEditEventForm();
+                    break;
+                case 'updateteam':
+                    $teamController->showEditTeamForm();
+                    break;
+                case 'updateteammembers':
+                    $teamMembersController->showEditTeamMembersForm();
+                    break;
+                case 'updateachievement':
+                    $achievementController->showEditAchievementForm();
+                    break;
+                case 'updateeventteams':
+                    $eventTeamsController->showEditEventTeamForm();
+                    break;
+                case 'updatejoinproposal':
+                    $joinProposalController->showEditJoinProposalForm();
+                    break;
                 default:
                     require_once 'views/home.php';
                     break;
@@ -155,6 +180,31 @@ switch ($uriSegments[0]) {
                     break;
                 case 'addjoinproposal':
                     $joinProposalController->addJoinProposal();
+
+
+                    //EDIT
+                case 'updatemember':
+                    //$memberController->editMember();
+                case 'updategame':
+                    $gameController->EditGame();
+                    break;
+                case 'updateevent':
+                    $eventController->EditEvent();
+                    break;
+                case 'updateteam':
+                    $teamController->addTeam();
+                    break;
+                case 'updateachievement':
+                    $achievementController->editAchievement();
+                    break;
+                case 'updateeventteams':
+                    $eventTeamsController->editEventTeam();
+                    break;
+                case 'updateteammembers':
+                    $teamMembersController->editTeamMembers();
+                    break;
+                case 'updatejoinproposal':
+                    $joinProposalController->editJoinProposal();
 
                 default:
                     require_once 'views/home.php';

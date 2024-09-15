@@ -38,7 +38,14 @@ class TeamMembersController
 
     public function showEditTeamMembersForm()
     {
-        require_once 'views/admin/Create/add_teamMembers.php';
+        if (Middleware::checkAdmin()) {
+            $idteam = $_GET["idteam"];
+            $idmember = $_GET["idmember"];
+            $teammember = $this->model->SelectTeamMemberId($idteam, $idmember);
+            $teams = $this->team->SelectTeam();
+            $members = $this->member->SelectMember();
+            require_once 'views/admin/update/edit_teamMembers.php';
+        }
     }
 
     public function editTeamMembers()

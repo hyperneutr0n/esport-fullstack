@@ -40,7 +40,7 @@ class EventController
     public function EditEvent()
     {
         if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
-            $id = $_POST['id'];
+            $id = $_POST['idevent'];
             $name = $_POST['name'];
             $date = $_POST['date'];
             $stringdate = $date->format('Y-m-d H:i:s');
@@ -72,5 +72,15 @@ class EventController
         if (Middleware::checkAdmin()) {
             require_once 'views/admin/create/add_event.php';
         }
+    }
+
+    public function showEditEventForm()
+    {
+        if (Middleware::checkAdmin()) {
+            $id = $_GET["id"];
+            $event = $this->model->SelectEventId($id);
+            require_once 'views/admin/update/edit_event.php';
+        }
+        // harusnya require once
     }
 }

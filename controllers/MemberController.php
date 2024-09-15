@@ -25,6 +25,16 @@ class MemberController
         //require_once 'views/home.php';
     }
 
+    public function Edit()
+    {
+        if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
+            $idmember = $_POST["idmember"];
+            $fname = $_POST["fname"];
+            $lname = $_POST["lname"];
+            $this->model->EditMember($idmember, $fname, $lname);
+        }
+    }
+
     public function Register()
     {
 
@@ -56,6 +66,16 @@ class MemberController
             $members = $this->model->SelectMember();
             require_once 'views/admin/read/member.php';
         }
+    }
+
+    public function showEditMemberForm()
+    {
+        if (Middleware::checkAdmin()) {
+            $id = $_GET["id"];
+            $member = $this->model->SelectMemberId($id);
+            require_once 'views/admin/update/edit_member.php';
+        }
+        // harusnya require once
     }
 
 

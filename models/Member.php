@@ -107,13 +107,13 @@ class Member
 
     public function SelectMemberId($id)
     {
-        $sql = 'SELECT fname,lname,username, profile FROM member';
+        $sql = 'SELECT idmember, fname,lname,username, profile FROM member WHERE idmember = ?';
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('i', $id);
         $stmt->execute();
 
         $resultset = $stmt->get_result();
-        $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+        $resultarray = $resultset->fetch_assoc();
         return $resultarray;
     }
 }

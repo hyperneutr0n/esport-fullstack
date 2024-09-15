@@ -25,7 +25,7 @@
                     <td><?= $id ?></td>
                     <td><?= $game["name"] ?></td>
                     <td><?= $game["description"] ?></td>
-                    <td><a href="process/updategame?id=<?= $id ?>">Update</a></td>
+                    <td><a href="/admin/updategame?id=<?= $id ?>">Update</a></td>
                     <td><a href="process/deletegame?id=<?= $id ?>">Delete</a></td>
                 </tr>
             <?php } ?>

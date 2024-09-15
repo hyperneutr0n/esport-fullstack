@@ -29,6 +29,17 @@ class  TeamController
         }
     }
 
+    public function showEditTeamForm()
+    {
+        if (Middleware::checkAdmin()) {
+            $id = $_GET["id"];
+            $games = $this->game->SelectGame();
+            $team = $this->model->SelectTeamId($id);
+            require_once 'views/admin/update/edit_team.php';
+        }
+        //form nya memang lom ada ya?
+    }
+
     public function addTeam()
     {
         if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {

@@ -1,17 +1,21 @@
 <?php require __DIR__ . '/../../components/header.php'; ?>
 
 <div>
-    <h1>This is add game form</h1>
+    <h1>This is edit game form</h1>
 
-    <form action="/process/addgame" method="POST">
+    <form action="/process/update" method="POST">
+        <div>
+            <label for="">ID Game:</label>
+            <input type="text" id="idgame" name="idgame" disabled value="<?= $game["idgame"] ?>">
+        </div>
         <div>
             <label for="">Name:</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name" value="<?= $game["name"] ?>" required>
         </div>
 
         <div>
             <label for="">Description</label>
-            <input type="text" id="description" name="description" required>
+            <input type="text" id="description" name="description" value="<?= $game["description"] ?>" required>
         </div>
 
         <input type="submit" id="submit" name="submit">

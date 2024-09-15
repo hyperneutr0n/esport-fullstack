@@ -19,8 +19,8 @@
                 <th><?= $idteam ?></th>
                 <th><?= $idmember ?></th>
                 <th><?= $teammember["description"] ?></th>
-                <td><a href="process/updateteammembers?idteam=<?= $idteam ?>?idmember=<?= $idteam ?>">Update</a></td>
-                <td><a href="process/deleteteammembers?idteam=<?= $idteam ?>?idmember=<?= $idteam ?>">Delete</a></td>
+                <td><a href="/admin/updateteammembers?idteam=<?= $idteam ?>&idmember=<?= $idmember ?>">Update</a></td>
+                <td><a href="process/deleteteammembers?idteam=<?= $idteam ?>&idmember=<?= $idmember ?>">Delete</a></td>
             </tr>
         <?php } ?>
 

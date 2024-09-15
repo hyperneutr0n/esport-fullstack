@@ -34,7 +34,14 @@ class EventTeamsController
     }
     public function showEditEventTeamForm()
     {
-        require_once 'views/admin/create/add_eventTeams.php';
+        if (Middleware::checkAdmin()) {
+            $idevent = $_GET["idevent"];
+            $idteam = $_GET["idteam"];
+            $events = $this->event->SelectEvent();
+            $teams = $this->team->SelectTeam();
+            $eventteam = $this->model->SelectEventTeamId($idevent, $idteam);
+            require_once 'views/admin/update/edit_eventTeams.php';
+        }
     }
 
     public function addEventTeam()

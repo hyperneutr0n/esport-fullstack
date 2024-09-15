@@ -35,9 +35,16 @@ class JoinProposalController
             require_once 'views/member/join_proposal.php';
         }
     }
+
     public function showEditJoinProposalForm()
     {
-        require_once 'views/admin/addJoinProposal.php';
+        if (Middleware::checkAdmin()) {
+            $id = $_GET["id"];
+            $members = $this->member->SelectMember();
+            $teams = $this->team->SelectTeam();
+            $joinproposal = $this->model->SelectJoinProposalId($id);
+            require_once 'views/admin/update/edit_join_proposal.php';
+        }
         //form nya memang lom ada ya?
     }
 

@@ -38,9 +38,10 @@ class GameController
     }
   }
 
-  public function EditGame($idgame)
+  public function EditGame()
   {
     if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
+      $idgame = $_POST["idgame"];
       $name = $_POST["name"];
       $description = $_POST["description"];
 
@@ -69,8 +70,13 @@ class GameController
     require_once  'views/admin/create/add_game.php';
   }
 
-  public function showEditGameForm($idgame)
+  public function showEditGameForm()
   {
+    if (Middleware::checkAdmin()) {
+      $id = $_GET["id"];
+      $game = $this->model->SelectGameId($id);
+      require_once 'views/admin/update/edit_game.php';
+    }
     // harusnya require once
   }
 }

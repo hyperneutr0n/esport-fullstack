@@ -29,6 +29,17 @@ class  AchievementController
         }
     }
 
+    public function showEditAchievementForm()
+    {
+        if (Middleware::checkAdmin()) {
+            $id = $_GET["id"];
+            $teams = $this->team->SelectTeam();
+            $achievement = $this->model->SelectAchievementId($id);
+            require_once 'views/admin/update/edit_achievement.php';
+        }
+        // harusnya require once
+    }
+
     public function addAchievement()
     {
         if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {

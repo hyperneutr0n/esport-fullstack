@@ -18,7 +18,7 @@
                 <td><?= $achievement["name"] ?></td>
                 <td><?= $achievement["date"] ?></td>
                 <td><?= $achievement["description"] ?></td>
-                <td><a href="process/updateachievement?id=<?= $id ?>">Update</a></td>
+                <td><a href="/admin/updateachievement?id=<?= $id ?>">Update</a></td>
                 <td><a href="process/deleteachievement?id=<?= $id ?>">Delete</a></td>
             </tr>
         <?php } ?>
