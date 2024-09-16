@@ -20,7 +20,7 @@
                 <th><?= $joinproposal["description"] ?></th>
                 <th><?= $joinproposal["status"] ?></th>
                 <td><a href="/admin/updatejoinproposal?id=<?= $id ?>">Update</a></td>
-                <td><a href="process/deletejoinproposal?id=<?= $id ?>">Delete</a></td>
+                <td><a href="/process/deletejoinproposal?id=<?= $id ?>">Delete</a></td>
             </tr>
         <?php } ?>
 

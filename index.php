@@ -213,6 +213,34 @@ switch ($uriSegments[0]) {
                     $joinProposalController->editJoinProposal();
                     break;
 
+                    //DELETE
+                case 'deletemember':
+                    $memberController->Delete();
+                    break;
+                case 'deletegame':
+                    $gameController->DeleteGame();
+                    break;
+                case 'deleteevent':
+                    $eventController->DeleteEvent();
+                    break;
+                case 'deleteteam':
+                    $teamController->deleteTeam();
+                    break;
+                case 'deleteachievement':
+                    $achievementController->deleteAchievement();
+                    break;
+                case 'deleteeventteams':
+                    $eventTeamsController->deleteEventTeam();
+                    break;
+                case 'deleteteammembers':
+                    $teamMembersController->deleteTeamMembers();
+                    break;
+                case 'deletejoinproposal':
+                    $joinProposalController->deleteJJoinProposal();
+                    break;
+
+
+
                 default:
                     require_once 'views/home.php';
                     break;

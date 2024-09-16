@@ -27,7 +27,8 @@ class GameController
 
   public function DeleteGame($idgame)
   {
-    if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
+    if (Middleware::checkAdmin()) {
+      $idgame = $_GET["id"];
       if ($this->model->deleteGame($idgame)) {
         echo "Game Deleted";
       } else {

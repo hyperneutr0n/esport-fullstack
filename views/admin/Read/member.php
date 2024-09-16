@@ -21,7 +21,7 @@
                 <th><?= $member["password"] ?></th>
                 <th><?= $member["profile"] ?></th>
                 <td><a href="/admin/updatemember?id=<?= $id ?>">Update</a></td>
-                <td><a href="process/deletemember?id=<?= $id ?>">Delete</a></td>
+                <td><a href="/process/deletemember?id=<?= $id ?>">Delete</a></td>
             </tr>
         <?php } ?>
 

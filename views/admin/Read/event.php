@@ -17,7 +17,7 @@
                 <th><?= $event["date"] ?></th>
                 <th><?= $event["description"] ?></th>
                 <td><a href="/admin/updateevent?id=<?= $id ?>">Update</a></td>
-                <td><a href="process/deleteevent?id=<?= $id ?>">Delete</a></td>
+                <td><a href="/process/deleteevent?id=<?= $id ?>">Delete</a></td>
             </tr>
 
         <?php } ?>

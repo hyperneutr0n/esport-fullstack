@@ -35,6 +35,16 @@ class MemberController
         }
     }
 
+    public function Delete()
+    {
+        if (Middleware::checkAdmin()) {
+            $idmember = $_GET["id"];
+            if ($this->model->DeleteMember($idmember)) {
+                echo "Success!";
+            }
+        }
+    }
+
     public function Register()
     {
 
