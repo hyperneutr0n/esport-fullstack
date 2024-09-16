@@ -47,8 +47,8 @@ class  TeamController
             $name = $_POST['name'];
 
             $this->model->AddTeam($idgame, $name);
-            session_start();
-            $_SESSION['message'] = "Tambah berhasil";
+            // session_start();
+            // $_SESSION['message'] = "Tambah berhasil";
         }
     }
 
@@ -60,8 +60,8 @@ class  TeamController
             $name = $_POST['name'];
 
             $this->model->editTeam($id, $idgame, $name);
-            session_start();
-            $_SESSION['message'] = "Edit berhasil";
+            // session_start();
+            // $_SESSION['message'] = "Edit berhasil";
         }
     }
 
@@ -71,8 +71,8 @@ class  TeamController
             $id = $_POST['id'];
 
             $this->model->DeleteTeam($id);
-            session_start();
-            $_SESSION['message'] = "Delete berhasil";
+            // session_start();
+            // $_SESSION['message'] = "Delete berhasil";
         }
     }
 }

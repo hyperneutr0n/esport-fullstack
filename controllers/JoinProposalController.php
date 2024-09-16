@@ -70,8 +70,8 @@ class JoinProposalController
             $status = $_POST['status'];
 
             $this->model->EditJoinProposal($id, $idteam, $idmember, $description, $status);
-            session_start();
-            $_SESSION['message'] = "Proposal has been changed successfully";
+            // session_start();
+            // $_SESSION['message'] = "Proposal has been changed successfully";
         }
     }
 
@@ -81,8 +81,8 @@ class JoinProposalController
             $id = $_POST['id'];
 
             $this->model->DeleteJoinProposal($id);
-            session_start();
-            $_SESSION['message'] = "Proposal berhasil";
+            // session_start();
+            // $_SESSION['message'] = "Proposal berhasil";
         }
     }
 }

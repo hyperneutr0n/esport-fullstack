@@ -31,8 +31,8 @@ class EventController
             $description = $_POST['description'];
 
             $this->model->AddEvent($name, $stringdate, $description);
-            session_start();
-            $_SESSION['message'] = "berhasil";
+            // session_start();
+            // $_SESSION['message'] = "berhasil";
         }
     }
 
@@ -43,7 +43,16 @@ class EventController
             $id = $_POST['idevent'];
             $name = $_POST['name'];
             $date = $_POST['date'];
-            $stringdate = $date->format('Y-m-d H:i:s');
+
+            $dateObject = DateTime::createFromFormat('Y-m-d', $date);
+            if (!$dateObject) {
+                // Handle invalid date format
+                die("Invalid date format");
+            }
+
+            // Format the date to the required format
+            $stringdate = $dateObject->format('Y-m-d H:i:s');
+
             $description = $_POST['description'];
 
             $this->model->EditEvent($id, $name, $stringdate, $description);

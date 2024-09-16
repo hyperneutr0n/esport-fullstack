@@ -3,11 +3,12 @@
 <div>
     <h1>This is join proposal form</h1>
 
-    <form action="/process/addjoinproposal" method="POST" id="addteamForm">
+    <form action="/process/updatejoinproposal" method="POST" id="addteamForm">
 
         <div>
             <label for="">ID Join Proposal:</label>
-            <input type="text" name="id" value="<?= $joinproposal["idjoin_proposal"] ?>" disabled>
+            <input type="text" name="id1" value="<?= $joinproposal["idjoin_proposal"] ?>" disabled>
+            <input type="hidden" name="id" value="<?= $joinproposal["idjoin_proposal"] ?>">
         </div>
 
         <div>

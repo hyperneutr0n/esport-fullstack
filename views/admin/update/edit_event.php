@@ -3,10 +3,11 @@
 <div>
     <h1>This is edit event form</h1>
 
-    <form action="/process/addevent" method="POST">
+    <form action="/process/updateevent" method="POST">
         <div>
             <label for="">ID:</label>
-            <input type="text" id="idevent" name="idevent" value="<?= $event["idevent"] ?>" required disabled>
+            <input type="text" id="idevent1" name="idevent1" value="<?= $event["idevent"] ?>" required disabled>
+            <input type="hidden" id="idevent" name="idevent" value="<?= $event["idevent"] ?>" required>
         </div>
         <div>
             <label for="">Name:</label>

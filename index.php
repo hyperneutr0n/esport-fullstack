@@ -158,8 +158,11 @@ switch ($uriSegments[0]) {
                     break;
                 case 'logout':
                     $memberController->Logout();
+                    break;
                 case 'register':
                     $memberController->Register();
+                    break;
+
                 case 'addgame':
                     $gameController->addGame();
                     break;
@@ -180,11 +183,14 @@ switch ($uriSegments[0]) {
                     break;
                 case 'addjoinproposal':
                     $joinProposalController->addJoinProposal();
+                    break;
+
 
 
                     //EDIT
                 case 'updatemember':
-                    //$memberController->editMember();
+                    $memberController->Edit();
+                    break;
                 case 'updategame':
                     $gameController->EditGame();
                     break;
@@ -192,7 +198,7 @@ switch ($uriSegments[0]) {
                     $eventController->EditEvent();
                     break;
                 case 'updateteam':
-                    $teamController->addTeam();
+                    $teamController->editTeam();
                     break;
                 case 'updateachievement':
                     $achievementController->editAchievement();
@@ -205,6 +211,7 @@ switch ($uriSegments[0]) {
                     break;
                 case 'updatejoinproposal':
                     $joinProposalController->editJoinProposal();
+                    break;
 
                 default:
                     require_once 'views/home.php';

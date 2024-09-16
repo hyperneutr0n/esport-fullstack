@@ -6,7 +6,8 @@
         <form action="/process/updatemember" method="POST" id="registrationForm">
             <div>
                 <label for="">ID:</label>
-                <input type="text" id="idmember" name="idmember" value="<?= $member["idmember"] ?>" disabled>
+                <input type="text" id="idmembers" name="idmembers" value="<?= $member["idmember"] ?>" disabled>
+                <input type="hidden" id="idmember" name="idmember" value="<?= $member["idmember"] ?>">
             </div>
             <div>
                 <label for="">First name:</label>
@@ -20,7 +21,7 @@
 
             <div>
                 <label for="">Username:</label>
-                <input type="text" id="username" name="username" value="<?= $member["username"] ?>" required>
+                <input type="text" id="username" name="username" value="<?= $member["username"] ?>" disabled>
             </div>
 
 

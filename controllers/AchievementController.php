@@ -33,7 +33,7 @@ class  AchievementController
     {
         if (Middleware::checkAdmin()) {
             $id = $_GET["id"];
-            $teams = $this->team->SelectTeam();
+            $teams = $this->team->SelectTeamWithAchievement();
             $achievement = $this->model->SelectAchievementId($id);
             require_once 'views/admin/update/edit_achievement.php';
         }
@@ -61,11 +61,20 @@ class  AchievementController
             $idteam = $_POST['idteam'];
             $name = $_POST['name'];
             $date = $_POST['date'];
+
+            $dateObject = DateTime::createFromFormat('Y-m-d', $date);
+            if (!$dateObject) {
+                // Handle invalid date format
+                die("Invalid date format");
+            }
+
+            // Format the date to the required format
+            $stringdate = $dateObject->format('Y-m-d H:i:s');
             $description = $_POST['description'];
 
-            $this->model->EditAchievement($id, $idteam, $name, $date, $description);
-            session_start();
-            $_SESSION['message'] = "Edit berhasil";
+            $this->model->EditAchievement($id, $idteam, $name, $stringdate, $description);
+            // session_start();
+            // $_SESSION['message'] = "Edit berhasil";
         }
     }
 
@@ -75,8 +84,8 @@ class  AchievementController
             $id = $_POST['id'];
 
             $this->model->DeleteAchievement($id);
-            session_start();
-            $_SESSION['message'] = "Delete berhasil";
+            // session_start();
+            // $_SESSION['message'] = "Delete berhasil";
         }
     }
 }

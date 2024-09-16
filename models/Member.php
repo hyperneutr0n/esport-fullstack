@@ -116,4 +116,12 @@ class Member
         $resultarray = $resultset->fetch_assoc();
         return $resultarray;
     }
+
+    public function SelectMemberInTeamMembers()
+    {
+        $sql = "SELECT member.idmember, member.username FROM team_members INNER JOIN member on member.idmember = team_members.idmember;";
+        $resultset = $this->db->query($sql);
+        $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+        return $resultarray;
+    }
 }

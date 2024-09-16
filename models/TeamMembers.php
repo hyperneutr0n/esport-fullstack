@@ -67,7 +67,8 @@ class TeamMembers
 
         $resultset = $stmt->get_result();
         $resultarray = $resultset->fetch_assoc();
-        var_dump($resultarray);
         return $resultarray;
     }
+
+   
 }

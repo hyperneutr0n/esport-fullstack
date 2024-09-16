@@ -3,7 +3,7 @@
 <div>
     <h1>This is edit team members form</h1>
 
-    <form action="/process/addteammembers" method="POST">
+    <form action="/process/updateteammembers" method="POST">
         <div>
             <label for="">Select ID Team: </label>
             <input type="hidden" value="<?= $teammember["idteam"] ?>" name="idteam_before">
@@ -25,7 +25,7 @@
         </div>
         <div>
             <label for="">Description:</label>
-            <input type="text" id="description" name="description" required value="<?= $teammember["description"] ?>">
+            <input type="text" id="description" name="description_after" required value="<?= $teammember["description"] ?>">
         </div>
 
         <input type="submit" id="submit" name="submit">

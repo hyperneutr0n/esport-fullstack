@@ -3,9 +3,16 @@
 class Middleware
 {
 
+    public static function initSession()
+    {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+    }
+
     public static function checkAdmin(): bool
     {
-        session_start();
+        self::initSession();
         if (isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"] == true) {
             return true;
         } else {
@@ -15,7 +22,7 @@ class Middleware
 
     public static function checkMember(): bool
     {
-        session_start();
+        self::initSession();
         if (isset($_SESSION["userLogged"]) && $_SESSION["userLogged"] == true) {
             return true;
         } else {

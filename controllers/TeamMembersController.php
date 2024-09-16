@@ -42,7 +42,7 @@ class TeamMembersController
             $idteam = $_GET["idteam"];
             $idmember = $_GET["idmember"];
             $teammember = $this->model->SelectTeamMemberId($idteam, $idmember);
-            $teams = $this->team->SelectTeam();
+            $teams = $this->team->SelectTeamInTeamMembers();
             $members = $this->member->SelectMember();
             require_once 'views/admin/update/edit_teamMembers.php';
         }
@@ -58,8 +58,8 @@ class TeamMembersController
             $description_after = $_POST['description_after'];
 
             $this->model->EditTeamMember($idteam_before, $idmember_before, $idteam_after, $idmember_after, $description_after);
-            session_start();
-            $_SESSION['message'] = "Edit berhasil";
+            // session_start();
+            // $_SESSION['message'] = "Edit berhasil";
         }
     }
 
@@ -70,8 +70,8 @@ class TeamMembersController
             $idmember = $_POST['idmember'];
 
             $this->model->DeleteTeamMember($idteam, $idmember);
-            session_start();
-            $_SESSION['message'] = "Delete berhasil";
+            // session_start();
+            // $_SESSION['message'] = "Delete berhasil";
         }
     }
 

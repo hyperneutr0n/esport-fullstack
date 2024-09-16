@@ -64,8 +64,8 @@ class EventTeamsController
             $idteam_after = $_POST['idteam_after'];
 
             $this->model->EditEventTeam($idevent_before, $idteam_before, $idevent_after, $idteam_after);
-            session_start();
-            $_SESSION['message'] = "Edit berhasil";
+            // session_start();
+            // $_SESSION['message'] = "Edit berhasil";
         }
     }
 
@@ -76,8 +76,8 @@ class EventTeamsController
             $idteam = $_POST['idteam'];
             $this->model->DeleteEventTeam($idevent, $idteam);
 
-            session_start();
-            $_SESSION['message'] = "Delete behasil";
+            // session_start();
+            // $_SESSION['message'] = "Delete behasil";
         }
     }
 }

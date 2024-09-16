@@ -25,7 +25,7 @@ class Game
 
     public function UpdateGame($idgame, $name, $description)
     {
-        $sql = 'UPDATE game SET name=?, description=?, WHERE idgame=?';
+        $sql = 'UPDATE game SET name=?, description=? WHERE idgame=?';
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('ssi', $name, $description, $idgame);
 

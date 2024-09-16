@@ -1,12 +1,13 @@
 <?php require __DIR__ . '/../../components/header.php'; ?>
 
 <div>
-    <h1>This is add team form</h1>
+    <h1>This is edit team form</h1>
 
-    <form action="/process/addteam" method="POST" id="addteamForm">
+    <form action="/process/updateteam" method="POST" id="addteamForm">
         <div>
             <label for="">ID team:</label>
-            <input type="text" name="id" disabled value="<?= $team["idteam"] ?>">
+            <input type="text" name="ids" disabled value="<?= $team["idteam"] ?>">
+            <input type="hidden" name="id" value="<?= $team["idteam"] ?>">
         </div>
         <div>
             <label for="">Select game: </label>

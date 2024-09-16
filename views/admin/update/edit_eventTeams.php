@@ -3,7 +3,7 @@
 <div>
     <h1>This is edit event teams form</h1>
 
-    <form action="/process/addeventteams" method="POST" id="addteamForm">
+    <form action="/process/updateeventteams" method="POST" id="addteamForm">
 
         <div>
             <label for="">Select event: </label>

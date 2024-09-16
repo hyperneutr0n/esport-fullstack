@@ -21,7 +21,7 @@
             <a href="">Game</a>
             <a href="">Team</a>
             <a href="">Profile</a>
-            <a href="/logout">Logout</a>
+            <a href="/process/logout">Logout</a>
 
 
         </nav>
@@ -81,7 +81,7 @@
 
                     </ul>
                 </li>
-                <li><a href="/logout">Logout</a></li>
+                <li><a href="/process/logout">Logout</a></li>
             </ul>
         </nav>
 

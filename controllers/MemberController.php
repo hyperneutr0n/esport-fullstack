@@ -54,10 +54,8 @@ class MemberController
 
     public function Logout()
     {
-        if (Middleware::checkPostMethod()) {
-            $this->model->Logout();
-            require_once 'views/home.php';
-        }
+        $this->model->Logout();
+        require_once 'views/home.php';
     }
 
     public function showMemberForm()

@@ -3,10 +3,11 @@
 <div>
     <h1>This is edit game form</h1>
 
-    <form action="/process/update" method="POST">
+    <form action="/process/updategame" method="POST">
         <div>
             <label for="">ID Game:</label>
-            <input type="text" id="idgame" name="idgame" disabled value="<?= $game["idgame"] ?>">
+            <input type="text" id="idgames" name="idgames" disabled value="<?= $game["idgame"] ?>">
+            <input type="hidden" id="idgame" name="idgame" value="<?= $game["idgame"] ?>">
         </div>
         <div>
             <label for="">Name:</label>

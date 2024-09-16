@@ -69,4 +69,20 @@ class Team
         $resultarray = $resultset->fetch_assoc();
         return $resultarray;
     }
+
+    public function SelectTeamWithAchievement()
+    {
+        $sql = "SELECT team.* FROM achievement INNER JOIN team on achievement.idteam = team.idteam;";
+        $resultset = $this->db->query($sql);
+        $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+        return $resultarray;
+    }
+
+    public function SelectTeamInTeamMembers()
+    {
+        $sql = "SELECT team.* FROM team_members INNER JOIN team on team.idteam = team_members.idteam;";
+        $resultset = $this->db->query($sql);
+        $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+        return $resultarray;
+    }
 }

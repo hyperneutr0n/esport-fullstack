@@ -1,12 +1,13 @@
 <?php require __DIR__ . '/../../components/header.php'; ?>
 
 <div>
-    <h1>This is add achievement form</h1>
+    <h1>This is edit achievement form</h1>
 
-    <form action="/process/addachievement" method="POST" id="addteamForm">
+    <form action="/process/updateachievement" method="POST" id="addteamForm">
         <div>
             <label for="">ID Achievement:</label>
-            <input type="text" name="id" disabled value="<?= $achievement["idachievement"] ?>">
+            <input type="text" name="id1" disabled value="<?= $achievement["idachievement"] ?>">
+            <input type="hidden" name="id" value="<?= $achievement["idachievement"] ?>">
         </div>
         <div>
             <label for="">Select team: </label>

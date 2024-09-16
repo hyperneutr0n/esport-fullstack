@@ -1,8 +1,8 @@
 <table>
     <thead>
         <tr>
-            <th>ID</th>
-            <th>ID Team</th>
+            <th>ID Achievement</th>
+            <th>ID Team</th> 
             <th>Name</th>
             <th>Date</th>
             <th>Description</th>
@@ -11,10 +11,10 @@
     </thead>
     <tbody>
         <?php foreach ($achievements as $achievement) { ?>
-
-            <?php $id = $achievement["idachievement"] ?>
+            <?php $id = $achievement["idachievement"]; ?>
             <tr>
-                <td><?= $id ?></td>
+                <td><?= $achievement["idachievement"] ?></td> 
+                <td><?= $achievement["idteam"] ?></td> 
                 <td><?= $achievement["name"] ?></td>
                 <td><?= $achievement["date"] ?></td>
                 <td><?= $achievement["description"] ?></td>
@@ -22,6 +22,5 @@
                 <td><a href="process/deleteachievement?id=<?= $id ?>">Delete</a></td>
             </tr>
         <?php } ?>
-
     </tbody>
 </table>
