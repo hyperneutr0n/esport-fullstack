@@ -25,7 +25,7 @@ class GameController
     }
   }
 
-  public function DeleteGame($idgame)
+  public function DeleteGame()
   {
     if (Middleware::checkAdmin()) {
       $idgame = $_GET["id"];

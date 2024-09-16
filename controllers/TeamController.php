@@ -67,7 +67,7 @@ class  TeamController
 
     public function deleteTeam()
     {
-        if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
+        if (Middleware::checkAdmin()) {
             $id = $_POST['id'];
 
             $this->model->DeleteTeam($id);

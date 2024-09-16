@@ -77,7 +77,7 @@ class JoinProposalController
 
     public function deleteJJoinProposal()
     {
-        if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
+        if (Middleware::checkAdmin()) {
             $id = $_POST['id'];
 
             $this->model->DeleteJoinProposal($id);

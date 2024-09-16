@@ -80,7 +80,7 @@ class  AchievementController
 
     public function deleteAchievement()
     {
-        if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
+        if (Middleware::checkAdmin()) {
             $id = $_POST['id'];
 
             $this->model->DeleteAchievement($id);

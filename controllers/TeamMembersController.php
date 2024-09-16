@@ -65,7 +65,7 @@ class TeamMembersController
 
     public function deleteTeamMembers()
     {
-        if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
+        if (Middleware::checkAdmin()) {
             $idteam = $_POST['idteam'];
             $idmember = $_POST['idmember'];
 

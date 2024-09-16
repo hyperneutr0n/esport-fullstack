@@ -71,7 +71,7 @@ class EventTeamsController
 
     public function deleteEventTeam()
     {
-        if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
+        if (Middleware::checkAdmin()) {
             $idevent = $_POST['idevent'];
             $idteam = $_POST['idteam'];
             $this->model->DeleteEventTeam($idevent, $idteam);
