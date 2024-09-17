@@ -33,7 +33,7 @@ class  AchievementController
     {
         if (Middleware::checkAdmin()) {
             $id = $_GET["id"];
-            $teams = $this->team->SelectTeamWithAchievement();
+            $teams = $this->team->SelectTeam();
             $achievement = $this->model->SelectAchievementId($id);
             require_once 'views/admin/update/edit_achievement.php';
         }

@@ -17,6 +17,7 @@
             $stmt = $this->db->prepare($sql);
             $stmt->bind_param('iiss', $idteam, $idmember, $description, $status);
 
+
             if ($stmt->execute()) {
                 return true;
             } else {

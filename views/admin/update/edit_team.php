@@ -13,7 +13,16 @@
             <label for="">Select game: </label>
             <select name="idgame" id="idgame" required value="<?= $team["idgame"] ?>">
                 <?php foreach ($games as $game) { ?>
-                    <option value="<?= $game["idgame"] ?>"><?= $game["name"] ?></option>
+                    <?php
+
+                    if ($game["idgame"] == $team["idgame"]) { ?>
+                        <option value="<?= $game["idgame"] ?>" selected><?= $game["name"] ?></option>
+
+                    <?php
+                    } else { ?>
+                        <option value="<?= $game["idgame"] ?>"><?= $game["name"] ?></option>
+                    <?php } ?>
+
                 <?php } ?>
             </select>
         </div>

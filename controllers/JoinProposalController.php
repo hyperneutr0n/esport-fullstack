@@ -48,17 +48,17 @@ class JoinProposalController
         //form nya memang lom ada ya?
     }
 
-    public function addJoinProposal()
-    {
-        if (Middleware::checkPostMethod() && Middleware::checkMember()) {
-            $idmember = $_POST["idmember"];
-            $idteam = $_POST["idteam"];
-            $description = $_POST["description"];
-            $status = "waiting";
+public function addJoinProposal()
+{
+    if (Middleware::checkPostMethod() && Middleware::checkMember()) {
+        $idmember = $_POST["idmember"];
+        $idteam = $_POST["idteam"];
+        $description = $_POST["description"];
+        $status = "waiting";
 
-            $this->model->AddJoinProposal($idteam, $idmember, $description, $status);
-        }
+        $this->model->AddJoinProposal($idteam, $idmember, $description, $status);
     }
+}
 
     public function editJoinProposal()
     {

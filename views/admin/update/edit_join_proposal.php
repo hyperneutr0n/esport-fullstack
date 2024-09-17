@@ -15,7 +15,15 @@
             <label for="">Select team: </label>
             <select name="idteam" id="idteam" required value="<?= $joinproposal["idteam"] ?>">
                 <?php foreach ($teams as $team) { ?>
-                    <option value="<?= $team["idteam"] ?>"><?= $team["name"] ?></option>
+
+                    <?php
+
+                    if ($team["idteam"] == $joinproposal["idteam"]) { ?>
+                        <option value="<?= $team["idteam"] ?>" selected><?= $team["name"] ?></option>
+                    <?php
+                    } else { ?>
+                        <option value="<?= $team["idteam"] ?>"><?= $team["name"] ?></option>
+                    <?php } ?>
                 <?php } ?>
             </select>
         </div>
@@ -24,7 +32,15 @@
             <label for="">Select ID Member: </label>
             <select name="idmember" id="idmember" required value="<?= $joinproposal["idmember"] ?>">
                 <?php foreach ($members as $member) { ?>
-                    <option value="<?= $member["idmember"] ?>"><?= $member["username"] ?></option>
+
+                    <?php
+
+                    if ($member["idmember"] == $joinproposal["idmember"]) { ?>
+                        <option value="<?= $member["idmember"] ?>" selected><?= $member["username"] ?></option>
+                    <?php
+                    } else { ?>
+                        <option value="<?= $member["idmember"] ?>"><?= $member["username"] ?></option>
+                    <?php } ?>
                 <?php } ?>
             </select>
         </div>

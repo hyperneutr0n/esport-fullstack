@@ -1,3 +1,5 @@
+<?php require __DIR__ . '/../../components/header.php'; ?>
+
 <table>
     <thead>
         <tr>
@@ -26,3 +28,4 @@
 
     </tbody>
 </table>
+<?php require __DIR__ . '/../../components/footer.php'; ?>

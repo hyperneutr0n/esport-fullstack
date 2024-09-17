@@ -9,7 +9,14 @@
             <input type="hidden" value="<?= $teammember["idteam"] ?>" name="idteam_before">
             <select name="idteam_after" id="idteam" required value="<?= $teammember["idteam"] ?>">
                 <?php foreach ($teams as $team) { ?>
-                    <option value="<?= $team["idteam"] ?>"><?= $team["name"] ?></option>
+                    <?php
+
+                    if ($team["idteam"] == $teammember["idteam"]) { ?>
+                        <option value="<?= $team["idteam"] ?>" selected><?= $team["name"] ?></option>
+                    <?php
+                    } else { ?>
+                        <option value="<?= $team["idteam"] ?>"><?= $team["name"] ?></option>
+                    <?php } ?>
                 <?php } ?>
             </select>
         </div>
@@ -19,7 +26,18 @@
             <input type="hidden" name="idmember_before" value="<?= $teammember["idmember"] ?>">
             <select name="idmember_after" id="idmember_after" required value="<?= $teammember["idmember"] ?>">
                 <?php foreach ($members as $member) { ?>
-                    <option value="<?= $member["idmember"] ?>"><?= $member["username"] ?></option>
+
+                    <?php
+
+                    if ($member["idmember"] == $teammember["idmember"]) { ?>
+                        <option value="<?= $member["idmember"] ?>" selected><?= $member["username"] ?></option>
+
+                    <?php
+                    } else { ?>
+                        <option value="<?= $member["idmember"] ?>"><?= $member["username"] ?></option>
+
+                    <?php } ?>
+
                 <?php } ?>
             </select>
         </div>
