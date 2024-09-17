@@ -72,8 +72,8 @@ class EventTeamsController
     public function deleteEventTeam()
     {
         if (Middleware::checkAdmin()) {
-            $idevent = $_POST['idevent'];
-            $idteam = $_POST['idteam'];
+            $idevent = $_GET['idevent'];
+            $idteam = $_GET['idteam'];
             $this->model->DeleteEventTeam($idevent, $idteam);
 
             // session_start();

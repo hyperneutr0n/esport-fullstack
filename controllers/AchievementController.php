@@ -49,8 +49,8 @@ class  AchievementController
             $description = $_POST['description'];
 
             $this->model->AddAchievement($idteam, $name, $date, $description);
-            session_start();
-            $_SESSION['message'] = "berhasil";
+            // session_start();
+            // $_SESSION['message'] = "berhasil";
         }
     }
 
@@ -81,7 +81,7 @@ class  AchievementController
     public function deleteAchievement()
     {
         if (Middleware::checkAdmin()) {
-            $id = $_POST['id'];
+            $id = $_GET['id'];
 
             $this->model->DeleteAchievement($id);
             // session_start();

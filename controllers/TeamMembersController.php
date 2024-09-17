@@ -66,8 +66,8 @@ class TeamMembersController
     public function deleteTeamMembers()
     {
         if (Middleware::checkAdmin()) {
-            $idteam = $_POST['idteam'];
-            $idmember = $_POST['idmember'];
+            $idteam = $_GET['idteam'];
+            $idmember = $_GET['idmember'];
 
             $this->model->DeleteTeamMember($idteam, $idmember);
             // session_start();

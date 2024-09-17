@@ -62,7 +62,7 @@ class EventController
     public function DeleteEvent()
     {
         if (Middleware::checkAdmin()) {
-            $id = $_POST['id'];
+            $id = $_GET['id'];
 
             $this->model->DeleteEvent($id);
         }
