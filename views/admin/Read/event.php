@@ -1,6 +1,6 @@
 <?php require __DIR__ . '/../../components/header.php'; ?>
 
-<table>
+<table border="1">
     <thead>
         <tr>
             <th>ID Event</th>
