@@ -1,4 +1,6 @@
 <?php
+require_once 'database.config.php';
+
 class Database
 {
 
@@ -12,7 +14,7 @@ class Database
         $dbName = 'esport';
         $username = 'root';
         $password = '';
-        $this->conn = new mysqli($host, $username, $password, $dbName);
+        $this->conn = new mysqli(DATABASE_HOST, DATABASE_USERNAME, DATABASE_PASSWORD, DATABASE_NAME);
 
         if ($this->conn->connect_error) {
             die('Connection failed: ' . $this->conn->connect_error);
