@@ -12,10 +12,9 @@
 
         public function AddJoinProposal($idteam, $idmember, $description, $status)
         {
-            $status = "waiting";
             $sql = 'INSERT INTO join_proposal (idmember, idteam, description, status) VALUES (?,?,?,?)';
             $stmt = $this->db->prepare($sql);
-            $stmt->bind_param('iiss', $idteam, $idmember, $description, $status);
+            $stmt->bind_param('iiss', $idmember, $idteam, $description, $status);
 
 
             if ($stmt->execute()) {
