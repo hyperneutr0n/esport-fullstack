@@ -3,19 +3,18 @@ require_once 'Middleware.php';
 require_once __DIR__ . '/../models/JoinProposal.php';
 require_once __DIR__ . '/../models/Member.php';
 require_once __DIR__ . '/../models/Team.php';
+
 class JoinProposalController
 {
     private $model;
-
     private $member;
-
     private $team;
 
     public function __construct()
     {
         $this->model = new JoinProposal();
         $this->member = new Member();
-        $this->team =  new Team();
+        $this->team = new Team();
     }
 
     public function showJoinProposalForm()
@@ -25,7 +24,6 @@ class JoinProposalController
             require_once 'views/admin/read/joinproposal.php';
         }
     }
-
 
     public function showAddJoinProposalForm()
     {
@@ -50,15 +48,21 @@ class JoinProposalController
 
 public function addJoinProposal()
 {
-    if (Middleware::checkPostMethod() && Middleware::checkMember()) {
-        $idmember = $_POST["idmember"];
-        $idteam = $_POST["idteam"];
-        $description = $_POST["description"];
-        $status = "waiting";
+    public function addJoinProposal()
+    {
+        if (Middleware::checkPostMethod() && Middleware::checkMember()) {
+            $idmember = $_POST["idmember"];
+            $idteam = $_POST["idteam"];
+            $description = $_POST["description"];
+            $status = "waiting";
 
-        $this->model->AddJoinProposal($idteam, $idmember, $description, $status);
+            if ($this->model->AddJoinProposal($idteam, $idmember, $description, $status)) {
+                echo "<script>alert('Join Proposal Added Successfully');</script>"; 
+            } else {
+                echo "<script>alert('Failed to add Join Proposal.');</script>"; 
+            }
+        }
     }
-}
 
     public function editJoinProposal()
     {
@@ -69,9 +73,14 @@ public function addJoinProposal()
             $description = $_POST['description'];
             $status = $_POST['status'];
 
-            $this->model->EditJoinProposal($id, $idteam, $idmember, $description, $status);
             // session_start();
             // $_SESSION['message'] = "Proposal has been changed successfully";
+
+            if ($this->model->EditJoinProposal($id, $idteam, $idmember, $description, $status)) {
+                echo "<script>alert('Proposal has been changed successfully');</script>"; 
+            } else {
+                echo "<script>alert('Failed to edit Proposal.');</script>"; 
+            }
         }
     }
 
@@ -80,9 +89,14 @@ public function addJoinProposal()
         if (Middleware::checkAdmin()) {
             $id = $_GET['id'];
 
-            $this->model->DeleteJoinProposal($id);
             // session_start();
             // $_SESSION['message'] = "Proposal berhasil";
+            
+            if ($this->model->DeleteJoinProposal($id)) {
+                echo "<script>alert('Proposal successfully deleted');</script>"; 
+            } else {
+                echo "<script>alert('Failed to delete Proposal.');</script>";
+            }
         }
     }
 }

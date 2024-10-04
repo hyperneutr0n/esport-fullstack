@@ -2,7 +2,8 @@
 require_once 'Middleware.php';
 require_once __DIR__ . '/../models/Achievement.php';
 require_once __DIR__ . '/../models/Team.php';
-class  AchievementController
+
+class AchievementController
 {
     private $model;
     private $team;
@@ -19,6 +20,7 @@ class  AchievementController
             $achievements = $this->model->SelectAchievement();
             require_once 'views/admin/read/achievement.php';
         }
+        // harusnya require once
     }
 
     public function showAddAchievementForm()
@@ -27,6 +29,7 @@ class  AchievementController
             $teams = $this->team->SelectTeam();
             require_once 'views/admin/Create/add_achievement.php';
         }
+        // harusnya require once
     }
 
     public function showEditAchievementForm()
@@ -37,7 +40,7 @@ class  AchievementController
             $achievement = $this->model->SelectAchievementId($id);
             require_once 'views/admin/update/edit_achievement.php';
         }
-        // harusnya require once
+         // harusnya require once
     }
 
     public function addAchievement()
@@ -48,9 +51,11 @@ class  AchievementController
             $date = $_POST['date'];
             $description = $_POST['description'];
 
-            $this->model->AddAchievement($idteam, $name, $date, $description);
-            // session_start();
-            // $_SESSION['message'] = "berhasil";
+            if ($this->model->AddAchievement($idteam, $name, $date, $description)) {
+                echo "<script>alert('Achievement Added Successfully');</script>";
+            } else {
+                echo "<script>alert('Failed to add achievement');</script>";
+            }
         }
     }
 
@@ -64,17 +69,18 @@ class  AchievementController
 
             $dateObject = DateTime::createFromFormat('Y-m-d', $date);
             if (!$dateObject) {
-                // Handle invalid date format
-                die("Invalid date format");
+                echo "<script>alert('Invalid date format');</script>";
+                die(); 
             }
 
-            // Format the date to the required format
             $stringdate = $dateObject->format('Y-m-d H:i:s');
             $description = $_POST['description'];
 
-            $this->model->EditAchievement($id, $idteam, $name, $stringdate, $description);
-            // session_start();
-            // $_SESSION['message'] = "Edit berhasil";
+            if ($this->model->EditAchievement($id, $idteam, $name, $stringdate, $description)) {
+                echo "<script>alert('Achievement Edited Successfully');</script>";
+            } else {
+                echo "<script>alert('Failed to edit achievement');</script>";
+            }
         }
     }
 
@@ -83,9 +89,13 @@ class  AchievementController
         if (Middleware::checkAdmin()) {
             $id = $_GET['id'];
 
-            $this->model->DeleteAchievement($id);
-            // session_start();
-            // $_SESSION['message'] = "Delete berhasil";
+            if ($this->model->DeleteAchievement($id)) {
+                echo "<script>alert('Achievement Deleted Successfully');</script>";
+            } else {
+                echo "<script>alert('Failed to delete achievement');</script>";
+            }
+        } else {
+            echo "<script>alert('You do not have permission to delete achievements');</script>";
         }
     }
 }

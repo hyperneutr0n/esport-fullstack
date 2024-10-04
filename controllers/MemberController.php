@@ -17,12 +17,17 @@ class MemberController
             $username = $_POST["username"];
             $password = $_POST["password"];
 
-            if (!$this->model->Login($username, $password)) {
-                //require_once 'views/home.php';
+            if ($this->model->Login($username, $password)) {
+                echo "<script>alert('Login successful!');</script>"; 
+                header("Location: /"); 
+                exit;
+            } else {
+                echo "<script>alert('Invalid username or password.');</script>";
+                require_once 'views/login.php'; 
+                return;
             }
-            //require_once 'views/home.php';
         }
-        //require_once 'views/home.php';
+        require_once 'views/login.php';
     }
 
     public function Edit()
@@ -31,7 +36,11 @@ class MemberController
             $idmember = $_POST["idmember"];
             $fname = $_POST["fname"];
             $lname = $_POST["lname"];
-            $this->model->EditMember($idmember, $fname, $lname);
+            if ($this->model->EditMember($idmember, $fname, $lname)) {
+                echo "<script>alert('Member updated successfully.');</script>"; 
+            } else {
+                echo "<script>alert('Failed to update member.');</script>"; 
+            }
         }
     }
 
@@ -40,7 +49,9 @@ class MemberController
         if (Middleware::checkAdmin()) {
             $idmember = $_GET["id"];
             if ($this->model->DeleteMember($idmember)) {
-                echo "Success!";
+                echo "<script>alert('Member deleted successfully.');</script>"; 
+            } else {
+                echo "<script>alert('Failed to delete member.');</script>"; 
             }
         }
     }
@@ -54,17 +65,22 @@ class MemberController
             $username = $_POST["username"];
             $password = $_POST["password"];
 
-            if (!$this->model->Register($fname, $lname, $username, $password)) {
-                require_once 'views/register.php';
+            if ($this->model->Register($fname, $lname, $username, $password)) {
+                echo "<script>alert('Registration successful! You can now log in.');</script>"; 
+                header("Location: /"); 
+                exit;
+            } else {
+                echo "<script>alert('Failed to register. Please try again.');</script>"; 
+                require_once 'views/register.php'; 
+                return;
             }
-            header("Location: /");
-            require_once 'views/register.php';
         }
     }
 
     public function Logout()
     {
         $this->model->Logout();
+        echo "<script>alert('You have logged out.');</script>";
         require_once 'views/home.php';
     }
 
@@ -91,6 +107,7 @@ class MemberController
     {
         if (Middleware::checkMember() || Middleware::checkAdmin()) {
             require_once 'views/home.php';
+            return;
         }
         require_once 'views/login.php';
     }
@@ -109,6 +126,7 @@ class MemberController
 
         if (!$check) {
             require_once 'views/home.php';
+            return;
         }
         require_once 'views/admin/home.php';
     }

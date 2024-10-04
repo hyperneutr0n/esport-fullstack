@@ -2,7 +2,6 @@
 require_once 'Middleware.php';
 require_once __DIR__ . '/../models/Event.php';
 
-
 class EventController
 {
     private $model;
@@ -22,20 +21,21 @@ class EventController
             $dateObject = DateTime::createFromFormat('Y-m-d', $date);
             if (!$dateObject) {
                 // Handle invalid date format
+                echo "<script>alert('Invalid date format');</script>";
                 die("Invalid date format");
             }
 
             // Format the date to the required format
             $stringdate = $dateObject->format('Y-m-d H:i:s');
-
             $description = $_POST['description'];
 
-            $this->model->AddEvent($name, $stringdate, $description);
-            // session_start();
-            // $_SESSION['message'] = "berhasil";
+            if ($this->model->AddEvent($name, $stringdate, $description)) {
+                echo "<script>alert('Event Added Successfully');</script>";
+            } else {
+                echo "<script>alert('Failed to add event');</script>";
+            }
         }
     }
-
 
     public function EditEvent()
     {
@@ -47,15 +47,19 @@ class EventController
             $dateObject = DateTime::createFromFormat('Y-m-d', $date);
             if (!$dateObject) {
                 // Handle invalid date format
+                echo "<script>alert('Invalid date format');</script>";
                 die("Invalid date format");
             }
 
             // Format the date to the required format
             $stringdate = $dateObject->format('Y-m-d H:i:s');
-
             $description = $_POST['description'];
 
-            $this->model->EditEvent($id, $name, $stringdate, $description);
+            if ($this->model->EditEvent($id, $name, $stringdate, $description)) {
+                echo "<script>alert('Event Edited Successfully');</script>";
+            } else {
+                echo "<script>alert('Failed to edit event');</script>";
+            }
         }
     }
 
@@ -64,7 +68,11 @@ class EventController
         if (Middleware::checkAdmin()) {
             $id = $_GET['id'];
 
-            $this->model->DeleteEvent($id);
+            if ($this->model->DeleteEvent($id)) {
+                echo "<script>alert('Event Deleted Successfully');</script>";
+            } else {
+                echo "<script>alert('Failed to delete event');</script>";
+            }
         }
     }
 

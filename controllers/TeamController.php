@@ -46,9 +46,17 @@ class  TeamController
             $idgame = $_POST['idgame'];
             $name = $_POST['name'];
 
-            $this->model->AddTeam($idgame, $name);
-            // session_start();
-            // $_SESSION['message'] = "Tambah berhasil";
+            if ($this->model->AddTeam($idgame, $name)) {
+                session_start();
+                $_SESSION['message'] = "Tim berhasil ditambahkan";
+                $_SESSION['message_type'] = "sukses";
+            } else {
+                session_start();
+                $_SESSION['message'] = "Gagal menambahkan tim";
+                $_SESSION['message_type'] = "error";
+            }
+
+            header('Location: /admin/teams');
         }
     }
 
@@ -58,10 +66,17 @@ class  TeamController
             $id = $_POST['id'];
             $idgame = $_POST['idgame'];
             $name = $_POST['name'];
+            if ($this->model->editTeam($id, $idgame, $name)) {
+                session_start();
+                $_SESSION['message'] = "Tim berhasil diedit";
+                $_SESSION['message_type'] = "sukses";
+            } else {
+                session_start();
+                $_SESSION['message'] = "Gagal menambahkan tim";
+                $_SESSION['message_type'] = "error";
+            }
 
-            $this->model->editTeam($id, $idgame, $name);
-            // session_start();
-            // $_SESSION['message'] = "Edit berhasil";
+            header('Location: /admin/teams');
         }
     }
 
@@ -70,9 +85,17 @@ class  TeamController
         if (Middleware::checkAdmin()) {
             $id = $_GET['id'];
 
-            $this->model->DeleteTeam($id);
-            // session_start();
-            // $_SESSION['message'] = "Delete berhasil";
+            if ($this->model->DeleteTeam($id)) {
+                session_start();
+                $_SESSION['message'] = "Tim terhapus";
+                $_SESSION['message_type'] = "success";
+            } else {
+                session_start();
+                $_SESSION['message'] = "Gagal menghapus";
+                $_SESSION['message_type'] = "error";
+            }
+
+            header('Location: /admin/teams'); //
         }
     }
 }

@@ -3,6 +3,7 @@ require_once 'Middleware.php';
 require_once __DIR__ . '/../models/EventTeams.php';
 require_once __DIR__ . '/../models/Event.php';
 require_once __DIR__ . '/../models/Team.php';
+
 class EventTeamsController
 {
     private $model;
@@ -32,6 +33,7 @@ class EventTeamsController
             require_once 'views/admin/create/add_eventTeams.php';
         }
     }
+
     public function showEditEventTeamForm()
     {
         if (Middleware::checkAdmin()) {
@@ -46,12 +48,15 @@ class EventTeamsController
 
     public function addEventTeam()
     {
-
         if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
             $idevent = $_POST["idevent"];
             $idteam = $_POST["idteam"];
 
-            $this->model->AddEventTeam($idevent, $idteam);
+            if ($this->model->AddEventTeam($idevent, $idteam)) {
+                echo "<script>alert('Event Team Added Successfully');</script>"; 
+            } else {
+                echo "<script>alert('Failed to add Event Team.');</script>"; 
+            }
         }
     }
 
@@ -63,7 +68,11 @@ class EventTeamsController
             $idevent_after = $_POST['idevent_after'];
             $idteam_after = $_POST['idteam_after'];
 
-            $this->model->EditEventTeam($idevent_before, $idteam_before, $idevent_after, $idteam_after);
+            if ($this->model->EditEventTeam($idevent_before, $idteam_before, $idevent_after, $idteam_after)) {
+                echo "<script>alert('Edit Event Team Success.');</script>"; 
+            } else {
+                echo "<script>alert('Failed to edit Event Team.');</script>"; 
+            }
             // session_start();
             // $_SESSION['message'] = "Edit berhasil";
         }
@@ -74,10 +83,15 @@ class EventTeamsController
         if (Middleware::checkAdmin()) {
             $idevent = $_GET['idevent'];
             $idteam = $_GET['idteam'];
-            $this->model->DeleteEventTeam($idevent, $idteam);
+            
+            if ($this->model->DeleteEventTeam($idevent, $idteam)) {
+                echo "<script>alert('Delete Event Team Success.');</script>";
+            } else {
+                echo "<script>alert('Failed to delete Event Team.');</script>"; 
+            }
 
             // session_start();
-            // $_SESSION['message'] = "Delete behasil";
+            // $_SESSION['message'] = "Delete berhasil";
         }
     }
 }

@@ -18,9 +18,9 @@ class GameController
       $description = $_POST["description"];
 
       if ($this->model->addGame($name, $description)) {
-        echo "Game Added Successfully"; //sementara 
+        echo "<script>alert('Game Added Successfully');</script>"; 
       } else {
-        echo "Failed to add game.";
+        echo "<script>alert('Failed to add game');</script>";
       }
     }
   }
@@ -30,12 +30,12 @@ class GameController
     if (Middleware::checkAdmin()) {
       $idgame = $_GET["id"];
       if ($this->model->deleteGame($idgame)) {
-        echo "Game Deleted";
+        echo "<script>alert('Game Deleted');</script>";
       } else {
-        echo "Failed to delete game.";
+        echo "<script>alert('Failed to delete game');</script>";
       }
     } else {
-      echo "Game not found";
+      echo "<script>alert('Game not found');</script>";
     }
   }
 
@@ -47,12 +47,12 @@ class GameController
       $description = $_POST["description"];
 
       if ($this->model->updateGame($idgame, $name, $description)) {
-        echo "Edit game success.";
+        echo "<script>alert('Edit game success');</script>";
       } else {
-        echo "Failed to edit game.";
+        echo "<script>alert('Failed to edit game');</script>";
       }
     } else {
-      echo "Game not found";
+      echo "<script>alert('Game not found');</script>";
     }
   }
 
@@ -68,6 +68,7 @@ class GameController
   {
     // intinya bikin method buat select semua game
 
+     // intinya bikin method buat select semua game
     require_once  'views/admin/create/add_game.php';
   }
 
@@ -78,6 +79,6 @@ class GameController
       $game = $this->model->SelectGameId($id);
       require_once 'views/admin/update/edit_game.php';
     }
-    // harusnya require once
+     // harusnya require once
   }
 }
