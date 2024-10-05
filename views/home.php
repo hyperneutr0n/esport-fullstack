@@ -5,6 +5,10 @@
 <main>
     <h2>Check out our teams!</h2>
     <?php
+
+    foreach ($teams as $team) {
+        echo $team["name"];
+    }
     // query semua game
     // display semua game dalam card2
     // didalam masing2 card bisa lihat team untuk game tsb

@@ -1,6 +1,7 @@
 <?php
 require_once 'Middleware.php';
 require_once __DIR__ . '/../models/Member.php';
+require_once __DIR__ . '/../models/Team.php';
 
 class MemberController
 {
@@ -11,6 +12,13 @@ class MemberController
         $this->model = new Member();
     }
 
+    public function showHome()
+    {
+        $teamModel = new Team();
+        $teams = $teamModel->SelectTeam();
+        require_once 'views/home.php';
+    }
+
     public function Login()
     {
         if (Middleware::checkPostMethod()) {
@@ -18,12 +26,12 @@ class MemberController
             $password = $_POST["password"];
 
             if ($this->model->Login($username, $password)) {
-                echo "<script>alert('Login successful!');</script>"; 
-                header("Location: /"); 
+                echo "<script>alert('Login successful!');</script>";
+                header("Location: /");
                 exit;
             } else {
                 echo "<script>alert('Invalid username or password.');</script>";
-                require_once 'views/login.php'; 
+                require_once 'views/login.php';
                 return;
             }
         }
@@ -37,9 +45,9 @@ class MemberController
             $fname = $_POST["fname"];
             $lname = $_POST["lname"];
             if ($this->model->EditMember($idmember, $fname, $lname)) {
-                echo "<script>alert('Member updated successfully.');</script>"; 
+                echo "<script>alert('Member updated successfully.');</script>";
             } else {
-                echo "<script>alert('Failed to update member.');</script>"; 
+                echo "<script>alert('Failed to update member.');</script>";
             }
         }
     }
@@ -49,9 +57,9 @@ class MemberController
         if (Middleware::checkAdmin()) {
             $idmember = $_GET["id"];
             if ($this->model->DeleteMember($idmember)) {
-                echo "<script>alert('Member deleted successfully.');</script>"; 
+                echo "<script>alert('Member deleted successfully.');</script>";
             } else {
-                echo "<script>alert('Failed to delete member.');</script>"; 
+                echo "<script>alert('Failed to delete member.');</script>";
             }
         }
     }
@@ -66,12 +74,12 @@ class MemberController
             $password = $_POST["password"];
 
             if ($this->model->Register($fname, $lname, $username, $password)) {
-                echo "<script>alert('Registration successful! You can now log in.');</script>"; 
-                header("Location: /"); 
+                echo "<script>alert('Registration successful! You can now log in.');</script>";
+                header("Location: /");
                 exit;
             } else {
-                echo "<script>alert('Failed to register. Please try again.');</script>"; 
-                require_once 'views/register.php'; 
+                echo "<script>alert('Failed to register. Please try again.');</script>";
+                require_once 'views/register.php';
                 return;
             }
         }
@@ -81,7 +89,7 @@ class MemberController
     {
         $this->model->Logout();
         echo "<script>alert('You have logged out.');</script>";
-        require_once 'views/home.php';
+        header("Location: /");
     }
 
     public function showMemberForm()
@@ -106,7 +114,7 @@ class MemberController
     public function showLoginForm()
     {
         if (Middleware::checkMember() || Middleware::checkAdmin()) {
-            require_once 'views/home.php';
+            header("Location: /");
             return;
         }
         require_once 'views/login.php';
@@ -115,7 +123,7 @@ class MemberController
     public function showRegisterForm()
     {
         if (Middleware::checkMember() || Middleware::checkAdmin()) {
-            require_once 'views/home.php';
+            header("Location: /");
         }
         require_once 'views/register.php';
     }
@@ -125,7 +133,7 @@ class MemberController
         $check = Middleware::checkAdmin();
 
         if (!$check) {
-            require_once 'views/home.php';
+            header("Location: /");
             return;
         }
         require_once 'views/admin/home.php';

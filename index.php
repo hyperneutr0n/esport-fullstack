@@ -59,11 +59,11 @@ switch ($uriSegments[0]) {
                     $achievementController->showMemberAchievementForm();
                     break;
                 default:
-                    require_once 'views/home.php';
+                    $memberController->showHome();
                     break;
             }
         } else {
-            require_once 'views/home.php';
+            $memberController->showHome();
         }
         break;
 
@@ -147,11 +147,11 @@ switch ($uriSegments[0]) {
                     $joinProposalController->showEditJoinProposalForm();
                     break;
                 default:
-                    require_once 'views/home.php';
+                    $memberController->showHome();
                     break;
             }
         } else {
-            require_once 'views/home.php';
+            $memberController->showHome();
         }
         break;
 
@@ -248,13 +248,13 @@ switch ($uriSegments[0]) {
 
 
                 default:
-                    require_once 'views/home.php';
+                    $memberController->showHome();
                     break;
             }
         }
 
         // Default route
     default:
-        require_once 'views/home.php';
+        $memberController->showHome();
         break;
 }
