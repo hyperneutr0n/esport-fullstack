@@ -9,87 +9,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Esport</title>
     <link rel="stylesheet" href="../../assets/custom.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <script src="../../assets/jquery.min.js"></script>
 </head>
 
 <body>
-    <?php if (isset($_SESSION["userLogged"]) && $_SESSION["userLogged"] == true) { ?>
+    <header>
         <nav>
-
-            <a href="">Home</a>
-            <a href="/member/joinproposal">Join proposal</a>
-            <a href="">Game</a>
-            <a href="">Team</a>
-            <a href="">Profile</a>
-            <a href="/process/logout">Logout</a>
-
-
-        </nav>
-    <?php } else if (isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"] == true) { ?>
-        <nav>
+            <div class="text-logo">
+                <h2>Informatics Club</h2>
+            </div>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li>
-                    <a href="#">Member</a>
-                    <ul>
-                        <li><a href="/admin/member">Show All</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Game</a>
-                    <ul>
-                        <li><a href="/admin/game">Show All</a></li>
-                        <li><a href="/admin/addgame">Add game</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Team</a>
-                    <ul>
-                        <li><a href="/admin/team">Show All</a></li>
-                        <li><a href="/admin/addteam">Add team</a></li>
+                <?php if (isset($_SESSION["userLogged"]) && $_SESSION["userLogged"] == true) { ?>
 
-                    </ul>
-                </li>
-                <li><a href="#">Event</a>
-                    <ul>
-                        <li><a href="/admin/event">Show All</a></li>
-                        <li><a href="/admin/addevent">Add event</a></li>
+                    <li><a href="">Proposal</a></li>
+                    <li><a href="">Events</a></li>
+                    <li><a href="">Achievements</a></li>
+                    <li><a href="">Logout</a></li>
 
-                    </ul>
-                </li>
-                <li><a href="#">Achievement</a>
-                    <ul>
-                        <li><a href="/admin/achievement">Show All</a></li>
-                        <li><a href="/admin/addachievement">Add achievement</a></li>
+                <?php } else if (isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"] == true) { ?>
 
-                    </ul>
-                </li>
-                <li><a href="#">Join Proposal</a>
-                    <ul>
-                        <li><a href="/admin/joinproposal">Show All</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Team members</a>
-                    <ul>
-                        <li><a href="/admin/teammembers">Show All</a></li>
-                        <li><a href="/admin/addteammembers">Add team members</a></li>
+                    <li><a href="">Admin</a></li>
+                    <li><a href="">Logout</a></li>
 
-                    </ul>
-                </li>
-                <li><a href="#">Event teams</a>
-                    <ul>
-                        <li><a href="/admin/eventteams">Show All</a></li>
-                        <li><a href="/admin/addeventteams">Add event teams</a></li>
+                <?php } else { ?>
 
-                    </ul>
-                </li>
-                <li><a href="/process/logout">Logout</a></li>
+                    <li><a href="">Login</a></li>
+
+                <?php } ?>
             </ul>
         </nav>
-
-    <?php } else { ?>
-        <nav>
-            <a href="">Home</a>
-            <a href="">Game</a>
-            <a href="">Team</a>
-            <a href="/member/login">Login</a>
-        </nav>
-    <?php } ?>
+    </header>

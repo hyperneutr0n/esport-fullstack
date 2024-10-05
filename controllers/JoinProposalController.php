@@ -46,8 +46,6 @@ class JoinProposalController
         //form nya memang lom ada ya?
     }
 
-public function addJoinProposal()
-{
     public function addJoinProposal()
     {
         if (Middleware::checkPostMethod() && Middleware::checkMember()) {
@@ -57,12 +55,13 @@ public function addJoinProposal()
             $status = "waiting";
 
             if ($this->model->AddJoinProposal($idteam, $idmember, $description, $status)) {
-                echo "<script>alert('Join Proposal Added Successfully');</script>"; 
+                echo "<script>alert('Join Proposal Added Successfully');</script>";
             } else {
-                echo "<script>alert('Failed to add Join Proposal.');</script>"; 
+                echo "<script>alert('Failed to add Join Proposal.');</script>";
             }
         }
     }
+
 
     public function editJoinProposal()
     {
@@ -77,9 +76,9 @@ public function addJoinProposal()
             // $_SESSION['message'] = "Proposal has been changed successfully";
 
             if ($this->model->EditJoinProposal($id, $idteam, $idmember, $description, $status)) {
-                echo "<script>alert('Proposal has been changed successfully');</script>"; 
+                echo "<script>alert('Proposal has been changed successfully');</script>";
             } else {
-                echo "<script>alert('Failed to edit Proposal.');</script>"; 
+                echo "<script>alert('Failed to edit Proposal.');</script>";
             }
         }
     }
@@ -91,9 +90,9 @@ public function addJoinProposal()
 
             // session_start();
             // $_SESSION['message'] = "Proposal berhasil";
-            
+
             if ($this->model->DeleteJoinProposal($id)) {
-                echo "<script>alert('Proposal successfully deleted');</script>"; 
+                echo "<script>alert('Proposal successfully deleted');</script>";
             } else {
                 echo "<script>alert('Failed to delete Proposal.');</script>";
             }
