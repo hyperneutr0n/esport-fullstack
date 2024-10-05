@@ -30,10 +30,10 @@
             <ul>
                 <?php if (isset($_SESSION["userLogged"]) && $_SESSION["userLogged"] == true) { ?>
 
-                    <li><a href="">Proposal</a></li>
-                    <li><a href="">Events</a></li>
-                    <li><a href="">Achievements</a></li>
-                    <li><a href="">Logout</a></li>
+                    <li><a href="/member/joinproposal">Proposal</a></li>
+                    <li><a href="/member/event">Events</a></li>
+                    <li><a href="/member/achievement">Achievements</a></li>
+                    <li><a href="/process/logout">Logout</a></li>
 
                 <?php } else if (isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"] == true) { ?>
 

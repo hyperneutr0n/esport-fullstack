@@ -23,6 +23,15 @@ class AchievementController
         // harusnya require once
     }
 
+    public function showMemberAchievementForm()
+    {
+        if (Middleware::checkMember()) {
+            $achievements = $this->model->SelectAchievement();
+            //buat method di modelnya supaya nnti achievement yg muncul hnya yg berelasi 
+            require_once 'views/member/achievement.php';
+        }
+    }
+
     public function showAddAchievementForm()
     {
         if (Middleware::checkAdmin()) {
@@ -32,6 +41,7 @@ class AchievementController
         // harusnya require once
     }
 
+
     public function showEditAchievementForm()
     {
         if (Middleware::checkAdmin()) {
@@ -40,7 +50,7 @@ class AchievementController
             $achievement = $this->model->SelectAchievementId($id);
             require_once 'views/admin/update/edit_achievement.php';
         }
-         // harusnya require once
+        // harusnya require once
     }
 
     public function addAchievement()
@@ -70,7 +80,7 @@ class AchievementController
             $dateObject = DateTime::createFromFormat('Y-m-d', $date);
             if (!$dateObject) {
                 echo "<script>alert('Invalid date format');</script>";
-                die(); 
+                die();
             }
 
             $stringdate = $dateObject->format('Y-m-d H:i:s');

@@ -52,6 +52,12 @@ switch ($uriSegments[0]) {
                 case 'joinproposal':
                     $joinProposalController->showAddJoinProposalForm();
                     break;
+                case 'event':
+                    $eventController->showMemberEventForm();
+                    break;
+                case 'achievement':
+                    $achievementController->showMemberAchievementForm();
+                    break;
                 default:
                     require_once 'views/home.php';
                     break;

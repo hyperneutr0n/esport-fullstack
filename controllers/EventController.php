@@ -11,6 +11,7 @@ class EventController
         $this->model = new Event();
     }
 
+
     public function AddEvent()
     {
         if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
@@ -81,6 +82,13 @@ class EventController
         if (Middleware::checkAdmin()) {
             $events = $this->model->SelectEvent();
             require_once 'views/admin/read/event.php';
+        }
+    }
+    public function showMemberEventForm()
+    {
+        if (Middleware::checkMember()) {
+            $events = $this->model->SelectEvent();
+            require_once 'views/member/event.php';
         }
     }
 
