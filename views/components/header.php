@@ -38,11 +38,11 @@
                 <?php } else if (isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"] == true) { ?>
 
                     <li><a href="">Admin</a></li>
-                    <li><a href="">Logout</a></li>
+                    <li><a href="/process/logout">Logout</a></li>
 
                 <?php } else { ?>
 
-                    <li><a href="">Login</a></li>
+                    <li><a href="/member/login">Login</a></li>
 
                 <?php } ?>
             </ul>
