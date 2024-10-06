@@ -21,10 +21,16 @@
                                 <i class="fa-solid fa-chevron-down arrow"></i>
                             </button>
                             <ul class="team-list">
-                                <?php foreach ($row['teams'] as $team) { ?>
-                                    <li>
-                                        <p><?= $team['team_name'] ?></p>
-                                    </li>
+                                <?php if (count($row['teams']) !== 0) { ?>
+
+                                    <?php foreach ($row['teams'] as $team) { ?>
+                                        <li>
+                                            <p><?= $team['team_name'] ?></p>
+                                        </li>
+                                    <?php } ?>
+
+                                <?php } else { ?>
+                                    <p>We don't have team in this game yet.</p>
                                 <?php } ?>
                             </ul>
                         </div>
