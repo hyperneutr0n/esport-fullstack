@@ -1,7 +1,7 @@
 <?php require __DIR__ . '/../../components/header.php'; ?>
 
-<div>
-    <h1>This is join proposal form</h1>
+<h1>This is join proposal form</h1>
+<div class="d-flex justify-content-center align-items-center mt-5 mb-5">
 
     <form action="/process/updatejoinproposal" method="POST" id="addteamForm">
 
@@ -60,7 +60,7 @@
             </select>
         </div>
 
-        <input type="submit" id="submit" name="submit">
+        <input type="submit" id="submit" name="submit" class="btn-primary">
     </form>
 </div>
 

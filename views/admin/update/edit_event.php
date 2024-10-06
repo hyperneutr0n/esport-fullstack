@@ -1,7 +1,7 @@
 <?php require __DIR__ . '/../../components/header.php'; ?>
 
-<div>
-    <h1>This is edit event form</h1>
+<h1>This is edit event form</h1>
+<div class="d-flex justify-content-center align-items-center mt-5 mb-5">
 
     <form action="/process/updateevent" method="POST">
         <div>
@@ -24,7 +24,7 @@
             <input type="text" id="description" name="description" value="<?= $event["description"] ?>" required>
         </div>
 
-        <input type="submit" id="submit" name="submit">
+        <input type="submit" id="submit" name="submit" class="btn-primary">
     </form>
 </div>
 

@@ -1,7 +1,7 @@
 <?php require __DIR__ . '/../../components/header.php'; ?>
 
-<div>
-    <h1>This is edit team form</h1>
+<h1>This is edit team form</h1>
+<div class="d-flex justify-content-center align-items-center mt-5 mb-5">
 
     <form action="/process/updateteam" method="POST" id="addteamForm">
         <div>
@@ -31,7 +31,7 @@
             <input type="text" id="name" name="name" required value="<?= $team["name"] ?>">
         </div>
 
-        <input type="submit" id="submit" name="submit">
+        <input type="submit" id="submit" name="submit" class="btn-primary">
     </form>
 </div>
 
