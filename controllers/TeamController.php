@@ -47,16 +47,10 @@ class  TeamController
             $name = $_POST['name'];
 
             if ($this->model->AddTeam($idgame, $name)) {
-                session_start();
-                $_SESSION['message'] = "Tim berhasil ditambahkan";
-                $_SESSION['message_type'] = "sukses";
+                header('Location: /admin/team?message=success');
             } else {
-                session_start();
-                $_SESSION['message'] = "Gagal menambahkan tim";
-                $_SESSION['message_type'] = "error";
+                header('Location: /admin/team?message=error');
             }
-
-            header('Location: /admin/teams');
         }
     }
 
@@ -76,7 +70,7 @@ class  TeamController
                 $_SESSION['message_type'] = "error";
             }
 
-            header('Location: /admin/teams');
+            header('Location: /admin/team');
         }
     }
 
@@ -95,7 +89,7 @@ class  TeamController
                 $_SESSION['message_type'] = "error";
             }
 
-            header('Location: /admin/teams'); //
+            header('Location: /admin/team'); //
         }
     }
 }

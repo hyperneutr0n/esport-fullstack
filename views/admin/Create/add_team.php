@@ -4,17 +4,8 @@
     <h1>This is add team form</h1>
 
     <!-- buat nampilin alert notification -->
-    <?php if (isset($_SESSION['message'])): ?>
-        <div class="alert alert-<?= isset($_SESSION['message_type']) ? $_SESSION['message_type'] : 'info' ?>">
-            <?= $_SESSION['message']; ?>
-        </div>
-        <?php
-        unset($_SESSION['message']);
-        unset($_SESSION['message_type']);
-        ?>
-    <?php endif; ?>
 
-
+   
     <form action="/process/addteam" method="POST" id="addteamForm">
         <div>
             <label for="">Select game: </label>

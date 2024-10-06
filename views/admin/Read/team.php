@@ -1,4 +1,25 @@
 <?php require __DIR__ . '/../../components/header.php'; ?>
+
+<?php if (isset($_GET["message"])) {
+
+    $message = $_GET["message"];
+
+    if ($message = "success") {
+        echo '
+    <script>
+    alert("Successfully added a team!");
+    </script> ';
+    } else {
+        echo '
+    <script>
+    alert("Failed to add team!");
+    </script> ';
+    }
+}
+
+?>
+
+
 <div class="d-flex justify-content-center align-items-center mt-5 mb-5">
 
     <table border="1">
