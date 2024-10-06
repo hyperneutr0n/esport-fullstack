@@ -1,7 +1,7 @@
 <?php
 require_once 'Middleware.php';
 require_once __DIR__ . '/../models/Member.php';
-require_once __DIR__ . '/../models/Team.php';
+require_once __DIR__ . '/../models/Game.php';
 
 class MemberController
 {
@@ -14,8 +14,29 @@ class MemberController
 
     public function showHome()
     {
-        $teamModel = new Team();
-        $teams = $teamModel->SelectTeam();
+        $gameModel = new Game();
+        $result = $gameModel->SelectGameAndTeam();
+        $gameAndTeams = [];
+
+        foreach ($result as $row) {
+            $gameId = $row['idgame'];
+
+            if (!isset($games[$gameId])) {
+                $gameAndTeams[$gameId] = [
+                    'name' => $row['game_name'],
+                    'description' => $row['description'],
+                    'teams' => []
+                ];
+            }
+
+            if ($row['team_name'] !== null) {
+                $gameAndTeams[$gameId]['teams'][] = [
+                    'idteam' => $row['idteam'],
+                    'team_name' => $row['team_name']
+                ];
+            }
+        }
+
         require_once 'views/home.php';
     }
 

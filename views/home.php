@@ -6,13 +6,10 @@
     <h2>Check out our teams!</h2>
     <?php
 
-    foreach ($teams as $team) {
-        echo $team["name"];
+    foreach ($gameAndTeams as $row) {
+        
     }
-    // query semua game
-    // display semua game dalam card2
-    // didalam masing2 card bisa lihat team untuk game tsb
-    // perlu controller home untuk query2 nya?
+    
     ?>
 </main>
 

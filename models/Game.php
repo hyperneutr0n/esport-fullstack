@@ -69,4 +69,14 @@ class Game
         $resultarray = $resultset->fetch_assoc();
         return $resultarray;
     }
+
+    public function SelectGameAndTeam() {
+        $sql = 'SELECT g.idgame, g.name AS game_name, g.description, t.idteam, t.name AS team_name
+        FROM game g
+        LEFT JOIN team t ON g.idgame = t.idgame';
+
+        $resultset = $this->db->query($sql);
+        $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+        return $resultarray;
+    }
 }
