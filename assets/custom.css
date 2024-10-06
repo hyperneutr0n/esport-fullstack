@@ -81,6 +81,22 @@ nav li:hover a {
   font-weight: bold;
 }
 
+input {
+  border-radius: 8px;
+  padding: 3px;
+  margin-top: 5px;
+  border-color: black;
+}
+
+input:disabled {
+  border-radius: 8px;
+  padding: 3px;
+  margin-top: 5px;
+  border-color: gray;
+  background-color: gray;
+  color: dark-gray;
+}
+
 .jumbotron {
   background-color: var(--jumbotron-background-color);
   color: var(--jumbotron-text-color);
@@ -176,7 +192,7 @@ table {
   border-collapse: collapse;
   margin: 20px 0;
   font-size: 1em;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -226,7 +242,6 @@ a.action-link:hover {
 td {
   text-align: left;
 }
-
 
 footer {
   padding: 20px;

@@ -47,11 +47,9 @@ class MemberController
             $password = $_POST["password"];
 
             if ($this->model->Login($username, $password)) {
-                echo "<script>alert('Login successful!');</script>";
                 header("Location: /");
                 exit;
             } else {
-                echo "<script>alert('Invalid username or password.');</script>";
                 header("Location: /member/login?error=invalidusernameorpassword");
                 return;
             }
