@@ -1,4 +1,14 @@
-<?php require __DIR__ . '/components/header.php'; ?>
+<?php require __DIR__ . '/components/header.php';
+
+if (isset($_GET["error"])) {
+    echo '
+    <script>
+        alert("Incorrect username or password!");
+    </script>';
+}
+
+
+?>
 
 <div>
     <h1>This is login form</h1>

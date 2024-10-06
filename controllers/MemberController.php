@@ -52,7 +52,7 @@ class MemberController
                 exit;
             } else {
                 echo "<script>alert('Invalid username or password.');</script>";
-                require_once 'views/login.php';
+                header("Location: /member/login?error=invalidusernameorpassword");
                 return;
             }
         }
