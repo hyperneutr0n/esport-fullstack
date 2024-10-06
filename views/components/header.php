@@ -37,7 +37,7 @@
 
                 <?php } else if (isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"] == true) { ?>
 
-                    <li><a href="">Admin</a></li>
+                    <li><a href="/admin/home">Admin</a></li>
                     <li><a href="/process/logout">Logout</a></li>
 
                 <?php } else { ?>

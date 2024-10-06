@@ -1,240 +1,275 @@
 :root {
-    --jumbotron-background-color: #F8F9FA;
-    --jumbotron-text-color: #343A40;
-    --navbar-background-color: #343A40;
-    --navbar-text-color: #FFFFFF;
-    --navbar-hover-background-color: #495057;
-    --site-background-color: #F0F0F0;
-    --cards-background-color: #FFFFFF;
-    --cards-text-color: #212529;
-    --button-background-color: #343A40;
-    --button-text-color: #FFFFFF;
-    --box-shadow-color: rgba(0, 0, 0, 0.1);
-    --footer-background-color: #343A40;
-    --footer-text-color: #FFFFFF;
+  --jumbotron-background-color: #f8f9fa;
+  --jumbotron-text-color: #343a40;
+  --navbar-background-color: #343a40;
+  --navbar-text-color: #ffffff;
+  --navbar-hover-background-color: #495057;
+  --site-background-color: #f0f0f0;
+  --cards-background-color: #ffffff;
+  --cards-text-color: #212529;
+  --button-background-color: #343a40;
+  --button-text-color: #ffffff;
+  --box-shadow-color: rgba(0, 0, 0, 0.1);
+  --footer-background-color: #343a40;
+  --footer-text-color: #ffffff;
 }
-
 
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 [id] {
-    scroll-margin-top: 65px;
+  scroll-margin-top: 65px;
 }
 
 body {
-    font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
 
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 h2,
 p {
-    color: var(--cards-text-color);
+  color: var(--cards-text-color);
 }
 
 header {
-    display: inline;
+  display: inline;
 }
 
 nav {
-    background-color: var(--navbar-background-color);
-    padding: 1.5em;
-    position: sticky;
-    top: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background-color: var(--navbar-background-color);
+  padding: 1.5em;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 nav .text-logo h2 {
-    color: var(--navbar-text-color);
-    font-size: 20px;
+  color: var(--navbar-text-color);
+  font-size: 20px;
 }
 
 nav ul {
-    display: flex;
-    padding-inline: 1rem;
+  display: flex;
+  padding-inline: 1rem;
 }
 
 nav li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 nav li a {
-    font-size: 1.15em;
-    font-weight: 500;
-    text-decoration: none;
-    padding: 1.5rem;
+  font-size: 1.15em;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 1.5rem;
 
-    color: var(--navbar-text-color);
-    transition: all 0.1s ease-in;
+  color: var(--navbar-text-color);
+  transition: all 0.1s ease-in;
 }
 
 nav li:hover a {
-    background-color: var(--navbar-hover-background-color);
-    font-weight: bold;
+  background-color: var(--navbar-hover-background-color);
+  font-weight: bold;
 }
 
 .jumbotron {
-    background-color: var(--jumbotron-background-color);
-    color: var(--jumbotron-text-color);
-    font-size: 1.5em;
-    text-align: center;
-    padding: 3em;
+  background-color: var(--jumbotron-background-color);
+  color: var(--jumbotron-text-color);
+  font-size: 1.5em;
+  text-align: center;
+  padding: 3em;
 }
 
 .jumbotron p {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
 main {
-    padding: 1em;
-    display: flex;
-    gap: 1.5em;
-    margin: 0 auto;
-    background-color: var(--site-background-color);
+  padding: 1em;
+  display: flex;
+  gap: 1.5em;
+  margin: 0 auto;
+  background-color: var(--site-background-color);
 }
 
 #content {
-    display: flex;
-    flex: 5;
-    flex-flow: column nowrap;
-    gap: 1.5em;
+  display: flex;
+  flex: 5;
+  flex-flow: column nowrap;
+  gap: 1.5em;
 }
 
 .cards {
-    box-shadow: 0 0 4px 2px var(--box-shadow-color);
-    padding: 20px 30px;
-    border-radius: 5px;
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 1em;
+  box-shadow: 0 0 4px 2px var(--box-shadow-color);
+  padding: 20px 30px;
+  border-radius: 5px;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1em;
 }
 
 .card-image {
-    flex: 1;
+  flex: 1;
 }
 
 .card-image img {
-    width: 100%;
-    object-fit: cover;
+  width: 100%;
+  object-fit: cover;
 }
 
 .card-content {
-    flex: 6;
+  flex: 6;
 }
 
 .card-content h2 {
-    font-size: 2em;
+  font-size: 2em;
 }
 
 .card-content p {
-    margin-top: 15px;
-    font-size: 1.25em;
+  margin-top: 15px;
+  font-size: 1.25em;
 }
 
 .team-dropdown {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .team-toggle {
-    font-size: 1.1em;
-    padding: 10px;
-    background-color: var(--button-background-color);
-    color: var(--button-text-color);
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    text-align: left;
-    margin-bottom: 10px;
+  font-size: 1.1em;
+  padding: 10px;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
 }
 
 .team-toggle:focus {
-    outline: none;
+  outline: none;
 }
 
 .team-list {
-    display: none;
-    list-style: none;
-    padding-left: 20px;
+  display: none;
+  list-style: none;
+  padding-left: 20px;
 }
 
 .team-list.open {
-    display: block;
+  display: block;
 }
 
 aside {
-    flex: 1;
+  flex: 1;
 }
 
 #profile {
-    flex-flow: column;
-    align-items: center;
-    text-align: center;
-    gap: 0.5em;
+  flex-flow: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5em;
 }
 
 #profile img {
-    max-width: 200px;
-    object-fit: cover;
-    object-position: center;
+  max-width: 200px;
+  object-fit: cover;
+  object-position: center;
 }
 
 #profile h2 {
-    max-width: 200px;
-    margin-top: 10px;
+  max-width: 200px;
+  margin-top: 10px;
 }
 
 #profile li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 footer {
-    padding: 20px;
-    background-color: var(--footer-background-color);
+  padding: 20px;
+  background-color: var(--footer-background-color);
 }
 
 .social-media {
-    display: flex;
-    flex-flow: column;
+  display: flex;
+  flex-flow: column;
 
-    color: var(--footer-text-color);
+  color: var(--footer-text-color);
 }
 
 .social-media p {
-    margin-top: 10px;
-    text-align: center;
-    color: var(--footer-text-color);
-    font-size: 1.15em;
+  margin-top: 10px;
+  text-align: center;
+  color: var(--footer-text-color);
+  font-size: 1.15em;
 }
 
 .social-media ul {
-    padding: 1.5rem 1rem;
-    margin: auto;
+  padding: 1.5rem 1rem;
+  margin: auto;
 
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    gap: 1.5rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  gap: 1.5rem;
 }
 
 .social-media li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .social-media li a {
-    text-decoration: none;
-    font-size: 1.15rem;
-    color: var(--footer-text-color);
+  text-decoration: none;
+  font-size: 1.15rem;
+  color: var(--footer-text-color);
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-end {
+  justify-content: end;
+}
+
+.justify-content-start {
+  justify-content: start;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.btn-primary {
+  padding: 3px;
+  border-radius: 10px;
+  border-color: #343a40;
+  background-color: #343a40;
+  color: #ffffff;
+}
+
+.mt-5 {
+  margin-top: 5%;
+}
+
+.mb-5 {
+  margin-bottom: 5%;
 }
 
 /* @media screen and (max-width: 1200px) {

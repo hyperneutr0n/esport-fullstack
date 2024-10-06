@@ -10,17 +10,16 @@ if (isset($_GET["error"])) {
 
 ?>
 
-<div>
-    <h1>This is login form</h1>
+<div class="d-flex justify-content-center align-items-center mt-5">
 
     <form action="/process/login" method="POST" id="loginForm">
+        <label for="">Username:</label>
         <div>
-            <label for="">Username:</label>
             <input type="text" id="username" name="username" required>
         </div>
 
+        <label for="">Password:</label>
         <div>
-            <label for="">Password:</label>
             <input type="password" id="password" name="password" required>
         </div>
 
@@ -29,12 +28,15 @@ if (isset($_GET["error"])) {
             <input type="checkbox" id="showPassword" name="showPassword">
         </div>
 
-        <input type="submit" id="submit" name="submit">
+        <div class="d-flex justify-content-end mt-5">
+            <input type="submit" id="submit" name="submit" class="btn-primary">
+        </div>
 
     </form>
-
-
 </div>
+
+
+
 
 <script>
     $("#showPassword").click(function() {
