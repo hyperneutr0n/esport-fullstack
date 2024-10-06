@@ -19,13 +19,14 @@
                 <tr>
                     <th><?= $idevent ?></th>
                     <th><?= $idteam ?></th>
-                    <td><a href="/admin/updateeventteams?idevent=<?= $idevent ?>&idteam=<?= $idteam ?>">Update</a></td>
-                    <td><a href="/process/deleteeventteams?idevent=<?= $idevent ?>&idteam=<?= $idteam ?>">Delete</a></td>
+                    <td><a href="/admin/updateeventteams?idevent=<?= $idevent ?>&idteam=<?= $idteam ?>" class="action-link update-link">Update</a></td>
+                    <td><a href="/process/deleteeventteams?idevent=<?= $idevent ?>&idteam=<?= $idteam ?>" class="action-link delete-link">Delete</a></td>
                 </tr>
             <?php } ?>
 
         </tbody>
     </table>
 </div>
+</body>
 
-<?php require __DIR__ . '/../../components/footer.php'; ?>
+</html>

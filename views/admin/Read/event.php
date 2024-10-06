@@ -20,13 +20,14 @@
                     <th><?= $event["name"] ?></th>
                     <th><?= $event["date"] ?></th>
                     <th><?= $event["description"] ?></th>
-                    <td><a href="/admin/updateevent?id=<?= $id ?>">Update</a></td>
-                    <td><a href="/process/deleteevent?id=<?= $id ?>">Delete</a></td>
+                    <td><a href="/admin/updateevent?id=<?= $id ?>" class="action-link update-link">Update</a></td>
+                    <td><a href="/process/deleteevent?id=<?= $id ?>"class="action-link delete-link">Delete</a></td>
                 </tr>
 
             <?php } ?>
         </tbody>
     </table>
 </div>
+</body>
 
-<?php require __DIR__ . '/../../components/footer.php'; ?>
+</html>

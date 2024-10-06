@@ -5,8 +5,8 @@
         <thead>
             <tr>
                 <th>ID Team</th>
-                <th>ID Game </th>
                 <th>Name</th>
+                <th>ID Game </th>
                 <th colspan="2">Aksi</th>
             </tr>
         </thead>
@@ -16,14 +16,24 @@
                 <tr>
                     <?php $id = $team["idteam"] ?>
                     <td><?= $id ?></td>
-                    <td><?= $team["idgame"] ?></td>
                     <td><?= $team["name"] ?></td>
-                    <td><a href="/admin/updateteam?id=<?= $id ?>">Update</a></td>
-                    <td><a href="/process/deleteteam?id=<?= $id ?>">Delete</a></td>
+                    <td><?= $team["idgame"] ?></td>
+                    <td>
+                        <a href="/admin/updateteam?id=<?= $id ?>" class="action-link update-link">
+                            Update
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/process/deleteteam?id=<?= $id ?>" class="action-link delete-link">
+                            Delete
+                        </a>
+                    </td>
                 </tr>
             <?php } ?>
 
         </tbody>
     </table>
 </div>
-<?php require __DIR__ . '/../../components/footer.php'; ?>
+</body>
+
+</html>

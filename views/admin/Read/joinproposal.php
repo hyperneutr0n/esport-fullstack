@@ -22,13 +22,14 @@
                     <th><?= $joinproposal["idteam"] ?></th>
                     <th><?= $joinproposal["description"] ?></th>
                     <th><?= $joinproposal["status"] ?></th>
-                    <td><a href="/admin/updatejoinproposal?id=<?= $id ?>">Update</a></td>
-                    <td><a href="/process/deletejoinproposal?id=<?= $id ?>">Delete</a></td>
+                    <td><a href="">Accept</a></td>
+                    <td><a href="">Reject</a></td>
                 </tr>
             <?php } ?>
 
         </tbody>
     </table>
 </div>
+</body>
 
-<?php require __DIR__ . '/../../components/footer.php'; ?>
+</html>

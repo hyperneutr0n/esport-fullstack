@@ -18,12 +18,14 @@
                     <td><?= $id ?></td>
                     <td><?= $game["name"] ?></td>
                     <td><?= $game["description"] ?></td>
-                    <td><a href="/admin/updategame?id=<?= $id ?>">Update</a></td>
-                    <td><a href="/process/deletegame?id=<?= $id ?>">Delete</a></td>
+                    <td><a href="/admin/updategame?id=<?= $id ?>" class="action-link update-link">Update</a></td>
+                    <td><a href="/process/deletegame?id=<?= $id ?>" class="action-link delete-link">Delete</a></td>
                 </tr>
             <?php } ?>
 
         </tbody>
     </table>
 </div>
-<?php require __DIR__ . '/../../components/footer.php'; ?>
+</body>
+
+</html>

@@ -23,13 +23,14 @@
                     <th><?= $member["username"] ?></th>
                     <th><?= $member["password"] ?></th>
                     <th><?= $member["profile"] ?></th>
-                    <td><a href="/admin/updatemember?id=<?= $id ?>">Update</a></td>
-                    <td><a href="/process/deletemember?id=<?= $id ?>">Delete</a></td>
+                    <td><a href="/admin/updatemember?id=<?= $id ?>" class="action-link update-link">Update</a></td>
+                    <td><a href="/process/deletemember?id=<?= $id ?>" class="action-link delete-link">Delete</a></td>
                 </tr>
             <?php } ?>
 
         </tbody>
     </table>
 </div>
+</body>
 
-<?php require __DIR__ . '/../../components/footer.php'; ?>
+</html>

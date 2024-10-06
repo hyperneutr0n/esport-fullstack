@@ -20,12 +20,13 @@
                     <td><?= $achievement["name"] ?></td>
                     <td><?= $achievement["date"] ?></td>
                     <td><?= $achievement["description"] ?></td>
-                    <td><a href="/admin/updateachievement?id=<?= $id ?>">Update</a></td>
-                    <td><a href="/process/deleteachievement?id=<?= $id ?>">Delete</a></td>
+                    <td><a href="/admin/updateachievement?id=<?= $id ?>" class="action-link update-link">Update</a></td>
+                    <td><a href="/process/deleteachievement?id=<?= $id ?>" class="action-link delete-link">Delete</a></td>
                 </tr>
             <?php } ?>
         </tbody>
     </table>
 </div>
+</body>
 
-<?php require __DIR__ . '/../../components/footer.php'; ?>
+</html>

@@ -22,12 +22,14 @@
                     <th><?= $idteam ?></th>
                     <th><?= $idmember ?></th>
                     <th><?= $teammember["description"] ?></th>
-                    <td><a href="/admin/updateteammembers?idteam=<?= $idteam ?>&idmember=<?= $idmember ?>">Update</a></td>
-                    <td><a href="/process/deleteteammembers?idteam=<?= $idteam ?>&idmember=<?= $idmember ?>">Delete</a></td>
+                    <td><a href="/admin/updateteammembers?idteam=<?= $idteam ?>&idmember=<?= $idmember ?>" class="action-link update-link">Update</a></td>
+                    <td><a href="/process/deleteteammembers?idteam=<?= $idteam ?>&idmember=<?= $idmember ?>" class="action-link delete-link">Delete</a></td>
                 </tr>
             <?php } ?>
 
         </tbody>
     </table>
 </div>
-<?php require __DIR__ . '/../../components/footer.php'; ?>
+</body>
+
+</html>

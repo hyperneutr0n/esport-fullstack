@@ -171,31 +171,62 @@ main {
   display: block;
 }
 
-aside {
-  flex: 1;
+table {
+  width: 90%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 1em;
+  font-family: 'Quicksand', sans-serif;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#profile {
-  flex-flow: column;
-  align-items: center;
+thead tr {
+  background-color: #343a40;
+  color: #ffffff;
   text-align: center;
-  gap: 0.5em;
 }
 
-#profile img {
-  max-width: 200px;
-  object-fit: cover;
-  object-position: center;
+th,
+td {
+  padding: 12px 15px;
 }
 
-#profile h2 {
-  max-width: 200px;
-  margin-top: 10px;
+tbody tr:nth-child(even) {
+  background-color: #f3f3f3;
 }
 
-#profile li {
-  list-style-type: none;
+tbody tr:hover {
+  background-color: #f1f1f1;
 }
+
+a.action-link {
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  font-size: 0.9em;
+  margin: 0 5px;
+}
+
+a.update-link {
+  background-color: #007bff;
+}
+
+a.delete-link {
+  background-color: #dc3545;
+}
+
+a.action-link:hover {
+  opacity: 0.8;
+}
+
+td {
+  text-align: left;
+}
+
 
 footer {
   padding: 20px;
