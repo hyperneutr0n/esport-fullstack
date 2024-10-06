@@ -3,21 +3,10 @@
 <?php if (isset($_GET["message"])) {
 
     $message = $_GET["message"];
-
-    if ($message = "success") {
-        echo '
-    <script>
-    alert("Successfully added a team!");
-    </script> ';
-    } else {
-        echo '
-    <script>
-    alert("Failed to add team!");
-    </script> ';
-    }
-}
-
-?>
+    echo "<script>";
+    echo 'alert(' . json_encode($message) . ')';
+    echo "</script>";
+} ?>
 
 
 <div class="d-flex justify-content-center align-items-center mt-5 mb-5">

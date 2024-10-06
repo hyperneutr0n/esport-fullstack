@@ -47,9 +47,9 @@ class  TeamController
             $name = $_POST['name'];
 
             if ($this->model->AddTeam($idgame, $name)) {
-                header('Location: /admin/team?message=success');
+                header('Location: /admin/team?message=Successfully%20added%20team');
             } else {
-                header('Location: /admin/team?message=error');
+                header('Location: /admin/team?message=Error%20adding%20new%20team');
             }
         }
     }
@@ -61,13 +61,9 @@ class  TeamController
             $idgame = $_POST['idgame'];
             $name = $_POST['name'];
             if ($this->model->editTeam($id, $idgame, $name)) {
-                session_start();
-                $_SESSION['message'] = "Tim berhasil diedit";
-                $_SESSION['message_type'] = "sukses";
+                header('Location: /admin/team?message=Successfully%20edit%20team');
             } else {
-                session_start();
-                $_SESSION['message'] = "Gagal menambahkan tim";
-                $_SESSION['message_type'] = "error";
+                header('Location: /admin/team?message=Error%20editing%20team');
             }
 
             header('Location: /admin/team');
@@ -80,13 +76,9 @@ class  TeamController
             $id = $_GET['id'];
 
             if ($this->model->DeleteTeam($id)) {
-                session_start();
-                $_SESSION['message'] = "Tim terhapus";
-                $_SESSION['message_type'] = "success";
+                header('Location: /admin/team?message=Successfully%20deleted%20team');
             } else {
-                session_start();
-                $_SESSION['message'] = "Gagal menghapus";
-                $_SESSION['message_type'] = "error";
+                header('Location: /admin/team?message=Error%20deleting%20team');
             }
 
             header('Location: /admin/team'); //

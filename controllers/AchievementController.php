@@ -62,9 +62,9 @@ class AchievementController
             $description = $_POST['description'];
 
             if ($this->model->AddAchievement($idteam, $name, $date, $description)) {
-                echo "<script>alert('Achievement Added Successfully');</script>";
+                header("Location: /admin/achievement?message=Successfully%20added%20achievement");
             } else {
-                echo "<script>alert('Failed to add achievement');</script>";
+                header("Location: /admin/achievement?message=Error%20adding%20achievement");
             }
         }
     }
@@ -87,9 +87,9 @@ class AchievementController
             $description = $_POST['description'];
 
             if ($this->model->EditAchievement($id, $idteam, $name, $stringdate, $description)) {
-                echo "<script>alert('Achievement Edited Successfully');</script>";
+                header("Location: /admin/achievement?message=Edit%20Achievement%20success");
             } else {
-                echo "<script>alert('Failed to edit achievement');</script>";
+                header("Location: /admin/achievement?message=Error%20editing%20achievement");
             }
         }
     }
@@ -100,12 +100,12 @@ class AchievementController
             $id = $_GET['id'];
 
             if ($this->model->DeleteAchievement($id)) {
-                echo "<script>alert('Achievement Deleted Successfully');</script>";
+                header("Location: /admin/achievement?message=Delete%20Achievement%20success");
             } else {
-                echo "<script>alert('Failed to delete achievement');</script>";
+                header("Location: /admin/achievement?message=Error%20deleting%20achievement");
             }
         } else {
-            echo "<script>alert('You do not have permission to delete achievements');</script>";
+            header("Location: /");
         }
     }
 }
