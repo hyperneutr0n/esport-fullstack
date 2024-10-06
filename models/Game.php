@@ -70,10 +70,12 @@ class Game
         return $resultarray;
     }
 
-    public function SelectGameAndTeam() {
+    public function SelectGameAndTeam()
+    {
         $sql = 'SELECT g.idgame, g.name AS game_name, g.description, t.idteam, t.name AS team_name
         FROM game g
-        LEFT JOIN team t ON g.idgame = t.idgame';
+        LEFT JOIN team t ON g.idgame = t.idgame
+        ORDER BY g.idgame';
 
         $resultset = $this->db->query($sql);
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);

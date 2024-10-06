@@ -16,13 +16,13 @@ class MemberController
     {
         $gameModel = new Game();
         $result = $gameModel->SelectGameAndTeam();
-        $gameAndTeams = [];
+        $gameListWithTeams = [];
 
         foreach ($result as $row) {
             $gameId = $row['idgame'];
 
-            if (!isset($games[$gameId])) {
-                $gameAndTeams[$gameId] = [
+            if (!isset($gameListWithTeams[$gameId])) {
+                $gameListWithTeams[$gameId] = [
                     'name' => $row['game_name'],
                     'description' => $row['description'],
                     'teams' => []
@@ -30,7 +30,7 @@ class MemberController
             }
 
             if ($row['team_name'] !== null) {
-                $gameAndTeams[$gameId]['teams'][] = [
+                $gameListWithTeams[$gameId]['teams'][] = [
                     'idteam' => $row['idteam'],
                     'team_name' => $row['team_name']
                 ];

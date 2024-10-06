@@ -3,13 +3,13 @@
         <p>Our Socials</p>
         <ul>
             <li>
-                <a href="#">Instagram <i class="fab fa-instagram"></i></a>
+                <a href="#">Instagram <i class="fa-brands fa-instagram"></i></a>
             </li>
             <li>
-                <a href="#">Facebook <i class="fab fa-facebook"></i></a>
+                <a href="#">Facebook <i class="fa-brands fa-facebook"></i></a>
             </li>
             <li>
-                <a href="#">Whatsapp <i class="fab fa-whatsapp"></i></a>
+                <a href="#">Whatsapp <i class="fa-brands fa-whatsapp"></i></a>
             </li>
             <li>
                 <a href="#">Email <i class="fa-solid fa-envelope"></i></a>

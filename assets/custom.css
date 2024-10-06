@@ -7,6 +7,8 @@
     --site-background-color: #F0F0F0;
     --cards-background-color: #FFFFFF;
     --cards-text-color: #212529;
+    --button-background-color: #343A40;
+    --button-text-color: #FFFFFF;
     --box-shadow-color: rgba(0, 0, 0, 0.1);
     --footer-background-color: #343A40;
     --footer-text-color: #FFFFFF;
@@ -138,6 +140,36 @@ main {
 .card-content p {
     margin-top: 15px;
     font-size: 1.25em;
+}
+
+.team-dropdown {
+    margin-top: 20px;
+}
+
+.team-toggle {
+    font-size: 1.1em;
+    padding: 10px;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.team-toggle:focus {
+    outline: none;
+}
+
+.team-list {
+    display: none;
+    list-style: none;
+    padding-left: 20px;
+}
+
+.team-list.open {
+    display: block;
 }
 
 aside {
