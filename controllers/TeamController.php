@@ -18,6 +18,8 @@ class  TeamController
         if (Middleware::checkAdmin()) {
             $teams = $this->model->SelectTeam();
             require_once 'views/admin/read/team.php';
+        } else {
+            header("Location: /");
         }
     }
 
@@ -25,7 +27,9 @@ class  TeamController
     {
         if (Middleware::checkAdmin()) {
             $games = $this->game->SelectGame();
-            require_once 'views/admin/Create/add_team.php';
+            require_once 'views/admin/create/add_team.php';
+        } else {
+            header("Location: /");
         }
     }
 
@@ -36,6 +40,8 @@ class  TeamController
             $games = $this->game->SelectGame();
             $team = $this->model->SelectTeamId($id);
             require_once 'views/admin/update/edit_team.php';
+        } else {
+            header("Location: /");
         }
         //form nya memang lom ada ya?
     }
@@ -51,6 +57,8 @@ class  TeamController
             } else {
                 header('Location: /admin/team?message=Error%20adding%20new%20team');
             }
+        } else {
+            header("Location: /");
         }
     }
 
@@ -65,8 +73,8 @@ class  TeamController
             } else {
                 header('Location: /admin/team?message=Error%20editing%20team');
             }
-
-            header('Location: /admin/team');
+        } else {
+            header("Location: /");
         }
     }
 
@@ -82,6 +90,8 @@ class  TeamController
             }
 
             header('Location: /admin/team'); //
+        } else {
+            header("Location: /");
         }
     }
 }

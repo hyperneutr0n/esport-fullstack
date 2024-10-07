@@ -22,6 +22,8 @@ class JoinProposalController
         if (Middleware::checkAdmin()) {
             $joinProposals = $this->model->SelectJoinProposal();
             require_once 'views/admin/read/joinproposal.php';
+        } else {
+            header("Location: /");
         }
     }
 
@@ -31,6 +33,8 @@ class JoinProposalController
             $members = $this->member->SelectMember();
             $teams = $this->team->SelectTeam();
             require_once 'views/member/join_proposal.php';
+        } else {
+            header("Location: /");
         }
     }
 
@@ -42,8 +46,9 @@ class JoinProposalController
             $teams = $this->team->SelectTeam();
             $joinproposal = $this->model->SelectJoinProposalId($id);
             require_once 'views/admin/update/edit_join_proposal.php';
+        } else {
+            header("Location: /");
         }
-        //form nya memang lom ada ya?
     }
 
     public function addJoinProposal()
@@ -55,10 +60,12 @@ class JoinProposalController
             $status = "waiting";
 
             if ($this->model->AddJoinProposal($idteam, $idmember, $description, $status)) {
-                echo "<script>alert('Join Proposal Added Successfully');</script>";
+                header('Location: /admin/joinproposal?message=Succesfully%20added%20join%20proposal');
             } else {
-                echo "<script>alert('Failed to add Join Proposal.');</script>";
+                header('Location: /admin/joinproposal?message=Failed%20adding%20join%20proposal');
             }
+        } else {
+            header("Location: /");
         }
     }
 
@@ -76,10 +83,12 @@ class JoinProposalController
             // $_SESSION['message'] = "Proposal has been changed successfully";
 
             if ($this->model->EditJoinProposal($id, $idteam, $idmember, $description, $status)) {
-                echo "<script>alert('Proposal has been changed successfully');</script>";
+                header('Location: /admin/joinproposal?message=Succesfully%20updated%20join%20proposal');
             } else {
-                echo "<script>alert('Failed to edit Proposal.');</script>";
+                header('Location: /admin/joinproposal?message=Failed%20updating%20join%20proposal');
             }
+        } else {
+            header("Location: /");
         }
     }
 
@@ -92,10 +101,12 @@ class JoinProposalController
             // $_SESSION['message'] = "Proposal berhasil";
 
             if ($this->model->DeleteJoinProposal($id)) {
-                echo "<script>alert('Proposal successfully deleted');</script>";
+                header('Location: /admin/joinproposal?message=Succesfully%20deleted%20join%20proposal');
             } else {
-                echo "<script>alert('Failed to delete Proposal.');</script>";
+                header('Location: /admin/joinproposal?message=Failed%20deleting%20join%20proposal');
             }
+        } else {
+            header("Location: /");
         }
     }
 }

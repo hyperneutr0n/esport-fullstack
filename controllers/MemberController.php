@@ -50,11 +50,12 @@ class MemberController
                 header("Location: /");
                 exit;
             } else {
-                header("Location: /member/login?error=invalidusernameorpassword");
+                header("Location: /member/login?message=Invalid%20username%20or%20password");
                 return;
             }
+        } else {
+            header("Location: /member/login");
         }
-        require_once 'views/login.php';
     }
 
     public function Edit()
@@ -64,10 +65,12 @@ class MemberController
             $fname = $_POST["fname"];
             $lname = $_POST["lname"];
             if ($this->model->EditMember($idmember, $fname, $lname)) {
-                echo "<script>alert('Member updated successfully.');</script>";
+                header("Location: /admin/member?message=Succesfully%20updated%20member");
             } else {
-                echo "<script>alert('Failed to update member.');</script>";
+                header("Location: /admin/member?message=Failed%20updating%20member");
             }
+        } else {
+            header("Location: /");
         }
     }
 
@@ -76,10 +79,12 @@ class MemberController
         if (Middleware::checkAdmin()) {
             $idmember = $_GET["id"];
             if ($this->model->DeleteMember($idmember)) {
-                echo "<script>alert('Member deleted successfully.');</script>";
+                header("Location: /admin/member?message=Succesfully%20deleted%20member");
             } else {
-                echo "<script>alert('Failed to delete member.');</script>";
+                header("Location: /admin/member?message=Failed%20deleting%20member");
             }
+        } else {
+            header("Location: /");
         }
     }
 
@@ -93,22 +98,20 @@ class MemberController
             $password = $_POST["password"];
 
             if ($this->model->Register($fname, $lname, $username, $password)) {
-                echo "<script>alert('Registration successful! You can now log in.');</script>";
-                header("Location: /");
+                header("Location: /?message=Registered%20successfully");
                 exit;
             } else {
-                echo "<script>alert('Failed to register. Please try again.');</script>";
-                require_once 'views/register.php';
-                return;
+                header("Location: /member/register?message=Failed%20to%20register");
             }
+        } else {
+            header("Location: /");
         }
     }
 
     public function Logout()
     {
         $this->model->Logout();
-        echo "<script>alert('You have logged out.');</script>";
-        header("Location: /");
+        header("Location: /?message=You%20are%20logged%20out");
     }
 
     public function showMemberForm()
@@ -116,6 +119,8 @@ class MemberController
         if (Middleware::checkAdmin()) {
             $members = $this->model->SelectMember();
             require_once 'views/admin/read/member.php';
+        } else {
+            header("Location: /");
         }
     }
 
@@ -125,6 +130,8 @@ class MemberController
             $id = $_GET["id"];
             $member = $this->model->SelectMemberId($id);
             require_once 'views/admin/update/edit_member.php';
+        } else {
+            header("Location: /");
         }
         // harusnya require once
     }

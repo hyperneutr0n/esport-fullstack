@@ -1,4 +1,11 @@
 <?php require __DIR__ . '/../../components/header.php'; ?>
+<?php if (isset($_GET["message"])) {
+
+    $message = $_GET["message"];
+    echo "<script>";
+    echo 'alert(' . json_encode($message) . ')';
+    echo "</script>";
+} ?>
 <div class="d-flex justify-content-center align-items-center mt-5 mb-5">
 
     <table border="1">

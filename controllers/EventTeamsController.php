@@ -22,6 +22,8 @@ class EventTeamsController
         if (Middleware::checkAdmin()) {
             $eventTeams = $this->model->SelectEventTeam();
             require_once 'views/admin/read/eventteams.php';
+        } else {
+            header("Location: /");
         }
     }
 
@@ -31,6 +33,8 @@ class EventTeamsController
             $events = $this->event->SelectEvent();
             $teams = $this->team->SelectTeam();
             require_once 'views/admin/create/add_eventTeams.php';
+        } else {
+            header("Location: /");
         }
     }
 
@@ -43,6 +47,8 @@ class EventTeamsController
             $teams = $this->team->SelectTeam();
             $eventteam = $this->model->SelectEventTeamId($idevent, $idteam);
             require_once 'views/admin/update/edit_eventTeams.php';
+        } else {
+            header("Location: /");
         }
     }
 
@@ -53,10 +59,12 @@ class EventTeamsController
             $idteam = $_POST["idteam"];
 
             if ($this->model->AddEventTeam($idevent, $idteam)) {
-                echo "<script>alert('Event Team Added Successfully');</script>"; 
+                header('Location: /admin/eventteams?message=Succesfully%20added%20event%20teams');
             } else {
-                echo "<script>alert('Failed to add Event Team.');</script>"; 
+                header('Location: /admin/event?message=Failed%20adding%20event%20teams');
             }
+        } else {
+            header("Location: /");
         }
     }
 
@@ -69,12 +77,14 @@ class EventTeamsController
             $idteam_after = $_POST['idteam_after'];
 
             if ($this->model->EditEventTeam($idevent_before, $idteam_before, $idevent_after, $idteam_after)) {
-                echo "<script>alert('Edit Event Team Success.');</script>"; 
+                header('Location: /admin/eventteams?message=Succesfully%20updated%20event%20teams');
             } else {
-                echo "<script>alert('Failed to edit Event Team.');</script>"; 
+                header('Location: /admin/event?message=Failed%20updating%20event%20teams');
             }
             // session_start();
             // $_SESSION['message'] = "Edit berhasil";
+        } else {
+            header("Location: /");
         }
     }
 
@@ -83,15 +93,17 @@ class EventTeamsController
         if (Middleware::checkAdmin()) {
             $idevent = $_GET['idevent'];
             $idteam = $_GET['idteam'];
-            
+
             if ($this->model->DeleteEventTeam($idevent, $idteam)) {
-                echo "<script>alert('Delete Event Team Success.');</script>";
+                header('Location: /admin/eventteams?message=Succesfully%20deleted%20event%20teams');
             } else {
-                echo "<script>alert('Failed to delete Event Team.');</script>"; 
+                header('Location: /admin/event?message=Failed%20deleting%20event%20teams');
             }
 
             // session_start();
             // $_SESSION['message'] = "Delete berhasil";
+        } else {
+            header("Location: /");
         }
     }
 }

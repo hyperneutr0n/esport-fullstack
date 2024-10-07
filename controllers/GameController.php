@@ -18,10 +18,12 @@ class GameController
       $description = $_POST["description"];
 
       if ($this->model->addGame($name, $description)) {
-        echo "<script>alert('Game Added Successfully');</script>"; 
+        header('Location: /admin/game?message=Succesfully%20added%20game');
       } else {
-        echo "<script>alert('Failed to add game');</script>";
+        header('Location: /admin/game?message=Failed%20adding%20game');
       }
+    } else {
+      header("Location: /");
     }
   }
 
@@ -30,12 +32,12 @@ class GameController
     if (Middleware::checkAdmin()) {
       $idgame = $_GET["id"];
       if ($this->model->deleteGame($idgame)) {
-        echo "<script>alert('Game Deleted');</script>";
+        header('Location: /admin/game?message=Succesfully%20deleted%20game');
       } else {
-        echo "<script>alert('Failed to delete game');</script>";
+        header('Location: /admin/game?message=Failed%20deleting%20game');
       }
     } else {
-      echo "<script>alert('Game not found');</script>";
+      header("Location: /");
     }
   }
 
@@ -47,12 +49,12 @@ class GameController
       $description = $_POST["description"];
 
       if ($this->model->updateGame($idgame, $name, $description)) {
-        echo "<script>alert('Edit game success');</script>";
+        header('Location: /admin/game?message=Succesfully%20updated%20game');
       } else {
-        echo "<script>alert('Failed to edit game');</script>";
+        header('Location: /admin/game?message=Failed%20updating%20game');
       }
     } else {
-      echo "<script>alert('Game not found');</script>";
+      header("Location: /");
     }
   }
 
@@ -62,14 +64,17 @@ class GameController
       $games = $this->model->SelectGame();
       require_once 'views/admin/read/game.php';
     }
+    header("Location: /");
   }
 
   public function showAddGameForm()
   {
-    // intinya bikin method buat select semua game
+    if (Middleware::checkAdmin()) {
 
-     // intinya bikin method buat select semua game
-    require_once  'views/admin/create/add_game.php';
+      require_once  'views/admin/create/add_game.php';
+    } else {
+      header("Location: /");
+    }
   }
 
   public function showEditGameForm()
@@ -78,7 +83,8 @@ class GameController
       $id = $_GET["id"];
       $game = $this->model->SelectGameId($id);
       require_once 'views/admin/update/edit_game.php';
+    } else {
+      header("Location: /");
     }
-     // harusnya require once
   }
 }

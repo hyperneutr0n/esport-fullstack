@@ -1,4 +1,11 @@
 <?php require __DIR__ . '/components/header.php'; ?>
+<?php if (isset($_GET["message"])) {
+
+    $message = $_GET["message"];
+    echo "<script>";
+    echo 'alert(' . json_encode($message) . ')';
+    echo "</script>";
+} ?>
 <div class="jumbotron">
     <h1>Welcome to INFORMATICS E-SPORTS CLUB</h1>
 </div>

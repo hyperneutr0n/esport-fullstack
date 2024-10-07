@@ -1,14 +1,12 @@
-<?php require __DIR__ . '/components/header.php';
+<?php require __DIR__ . '/components/header.php'; ?>
 
-if (isset($_GET["error"])) {
-    echo '
-    <script>
-        alert("Incorrect username or password!");
-    </script>';
-}
+<?php if (isset($_GET["message"])) {
 
-
-?>
+    $message = $_GET["message"];
+    echo "<script>";
+    echo 'alert(' . json_encode($message) . ')';
+    echo "</script>";
+} ?>
 
 <div class="d-flex justify-content-center align-items-center mt-5">
 

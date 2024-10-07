@@ -19,6 +19,8 @@ class AchievementController
         if (Middleware::checkAdmin()) {
             $achievements = $this->model->SelectAchievement();
             require_once 'views/admin/read/achievement.php';
+        } else {
+            header("Location: /");
         }
         // harusnya require once
     }
@@ -29,6 +31,8 @@ class AchievementController
             $achievements = $this->model->SelectAchievement();
             //buat method di modelnya supaya nnti achievement yg muncul hnya yg berelasi 
             require_once 'views/member/achievement.php';
+        } else {
+            header("Location: /");
         }
     }
 
@@ -37,6 +41,8 @@ class AchievementController
         if (Middleware::checkAdmin()) {
             $teams = $this->team->SelectTeam();
             require_once 'views/admin/Create/add_achievement.php';
+        } else {
+            header("Location: /");
         }
         // harusnya require once
     }
@@ -49,6 +55,8 @@ class AchievementController
             $teams = $this->team->SelectTeam();
             $achievement = $this->model->SelectAchievementId($id);
             require_once 'views/admin/update/edit_achievement.php';
+        } else {
+            header("Location: /");
         }
         // harusnya require once
     }
@@ -66,6 +74,8 @@ class AchievementController
             } else {
                 header("Location: /admin/achievement?message=Error%20adding%20achievement");
             }
+        } else {
+            header("Location: /");
         }
     }
 
@@ -91,6 +101,8 @@ class AchievementController
             } else {
                 header("Location: /admin/achievement?message=Error%20editing%20achievement");
             }
+        } else {
+            header("Location: /");
         }
     }
 
