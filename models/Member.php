@@ -22,7 +22,7 @@ class Member
             $result = $stmt->get_result();
             $row = $result->fetch_assoc();
 
-            if ($password == $row["password"]) {
+            if (/*Cryptography::PasswordVerify($password, $row['password']) */$password === $row['password']) {
                 session_start();
                 $role = $row['profile'];
 
@@ -56,7 +56,7 @@ class Member
     public function Register($fname, $lname, $username, $password): bool
     {
         $profile = 'member';
-        //$hashedPassword = Cryptography::PasswordHash($password);
+        $hashedPassword = Cryptography::PasswordHash($password);
 
         $sql = 'INSERT INTO member (fname, lname, username, password, profile) VALUES (?, ?, ?, ?, ?)';
         $stmt = $this->db->prepare($sql);
@@ -97,10 +97,21 @@ class Member
 
     public function SelectMember()
     {
-        //$sql = 'SELECT fname,lname,username FROM member';
-        $sql = 'SELECT*FROM member';
+        $sql = 'SELECT idmember, fname,lname,username, profile FROM member';
 
         $resultset = $this->db->query($sql);
+        $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+        return $resultarray;
+    }
+
+    public function SelectMemberLimit($rowCount, $offset)
+    {
+        $sql = 'SELECT idmember, fname,lname,username, profile FROM member LIMIT ? OFFSET ?';
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('ii', $rowCount, $offset);
+        $stmt->execute();
+
+        $resultset = $stmt->get_result();
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
         return $resultarray;
     }

@@ -15,7 +15,6 @@ echo "</script>";
                 <th>First name</th>
                 <th>Last name</th>
                 <th>Username</th>
-                <th>Password</th>
                 <th>Profile</th>
                 <th colspan="2">Aksi</th>
             </tr>
@@ -28,7 +27,6 @@ echo "</script>";
                     <th><?= $member["fname"] ?></th>
                     <th><?= $member["lname"] ?></th>
                     <th><?= $member["username"] ?></th>
-                    <th><?= $member["password"] ?></th>
                     <th><?= $member["profile"] ?></th>
                     <td><a href="/admin/updatemember?id=<?= $id ?>" class="action-link update-link">Update</a></td>
                     <td><a href="/process/deletemember?id=<?= $id ?>" class="action-link delete-link">Delete</a></td>

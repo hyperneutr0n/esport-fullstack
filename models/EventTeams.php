@@ -59,6 +59,18 @@
             return $resultarray;
         }
 
+        public function SelectEventTeamLimit($rowCount, $offset)
+        {
+            $sql = 'SELECT * FROM event_teams LIMIT ? OFFSET ?';
+            $stmt = $this->db->prepare($sql);
+            $stmt->bind_param('ii', $rowCount, $offset);
+            $stmt->execute();
+    
+            $resultset = $stmt->get_result();
+            $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+            return $resultarray;
+        }
+
         public function SelectEventTeamId($idevent, $idteam)
         {
             $sql = 'SELECT * FROM event_teams WHERE idevent=? AND idteam=?';

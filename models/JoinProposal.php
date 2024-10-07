@@ -59,6 +59,18 @@
             return $resultarray;
         }
 
+        public function SelectJoinProposalLimit($rowCount, $offset)
+        {
+            $sql = 'SELECT * FROM join_proposal LIMIT ? OFFSET ?';
+            $stmt = $this->db->prepare($sql);
+            $stmt->bind_param('ii', $rowCount, $offset);
+            $stmt->execute();
+    
+            $resultset = $stmt->get_result();
+            $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+            return $resultarray;
+        }
+
         public function SelectJoinProposalId($id)
         {
             $sql = 'SELECT * FROM join_proposal WHERE idjoin_proposal=?';
