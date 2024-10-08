@@ -25,9 +25,9 @@ function DisplayTable($teamMemberDisplayed)
         $idmember = $teammember["idmember"];
         ?>
         <tr>
-            <th><?= $idteam ?></th>
-            <th><?= $idmember ?></th>
-            <th><?= $teammember["description"] ?></th>
+            <td><?= $idteam ?></td>
+            <td><?= $idmember ?></td>
+            <td><?= $teammember["description"] ?></td>
             <td><a href="/admin/updateteammembers?idteam=<?= $idteam ?>&idmember=<?= $idmember ?>" class="action-link update-link">Update</a></td>
             <td><a href="/process/deleteteammembers?idteam=<?= $idteam ?>&idmember=<?= $idmember ?>" class="action-link delete-link">Delete</a></td>
         </tr>

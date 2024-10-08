@@ -63,8 +63,9 @@ class GameController
     if (Middleware::checkAdmin()) {
       $games = $this->model->SelectGame();
       require_once 'views/admin/read/game.php';
+    } else {
+      header("Location: /");
     }
-    header("Location: /");
   }
 
   public function showAddGameForm()

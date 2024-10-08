@@ -34,7 +34,7 @@ function DisplayTable($joinProposalDisplayed)
 }
 ?>
 
-<div class="d-flex justify-content-center align-items-center mt-5 mb-5">
+<div class="d-flex justify-content-center align-items-center mt-5 mb-5 flex-column">
     <table border="1">
         <thead>
             <tr>

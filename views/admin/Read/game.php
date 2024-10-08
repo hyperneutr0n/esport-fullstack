@@ -32,8 +32,8 @@ function DisplayTable($gameDisplayed)
 }
 ?>
 
-<div class="d-flex justify-content-center align-items-center mt-5 mb-5">
-    <a href="/admin/addgame" class="action-link update-link">Add Member</a>
+<div class="d-flex justify-content-center align-items-center mt-5 mb-5 flex-column">
+    <a href="/admin/addgame" class="action-link update-link">Add Game</a>
     <table border="1">
         <thead>
             <tr>
