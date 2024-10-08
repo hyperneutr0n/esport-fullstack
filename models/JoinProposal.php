@@ -52,7 +52,7 @@
 
         public function SelectJoinProposal()
         {
-            $sql = 'SELECT * FROM join_proposal';
+            $sql = 'SELECT jp.*, m.username AS member_username, t.name AS team_name FROM join_proposal jp INNER JOIN member m ON m.idmember=jp.idmember INNER JOIN team t ON t.idteam=jp.idteam';
 
             $resultset = $this->db->query($sql);
             $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);

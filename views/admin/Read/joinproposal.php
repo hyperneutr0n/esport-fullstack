@@ -24,7 +24,9 @@ function DisplayTable($joinProposalDisplayed)
         <tr>
             <th><?= $id ?></th>
             <th><?= $joinproposal["idmember"] ?></th>
+            <th><?= $joinproposal["member_username"] ?></th>
             <th><?= $joinproposal["idteam"] ?></th>
+            <th><?= $joinproposal["team_name"] ?></th>
             <th><?= $joinproposal["description"] ?></th>
             <th><?= $joinproposal["status"] ?></th>
             <td><a href="/admin/updatejoinproposal?id=<?= $id ?>">Update</a></td>
@@ -39,8 +41,10 @@ function DisplayTable($joinProposalDisplayed)
         <thead>
             <tr>
                 <th>ID Proposal</th>
-                <th>ID Member </th>
+                <th>ID Member</th>
+                <th>Member Name</th>
                 <th>ID Team</th>
+                <th>Team Name</th>
                 <th>Description</th>
                 <th>Status</th>
                 <th colspan="2">Aksi</th>
