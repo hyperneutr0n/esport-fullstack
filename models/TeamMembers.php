@@ -58,18 +58,6 @@ class TeamMembers
         return $resultarray;
     }
 
-    public function SelectTeamMemberLimit($rowCount, $offset)
-    {
-        $sql = 'SELECT * FROM team_members LIMIT ? OFFSET ?';
-        $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('ii', $rowCount, $offset);
-        $stmt->execute();
-
-        $resultset = $stmt->get_result();
-        $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
-        return $resultarray;
-    }
-
     public function SelectTeamMemberId($idteam, $idmember)
     {
         $sql = 'SELECT * FROM team_members WHERE idteam=? AND idmember=?';

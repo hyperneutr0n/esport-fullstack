@@ -104,18 +104,6 @@ class Member
         return $resultarray;
     }
 
-    public function SelectMemberLimit($rowCount, $offset)
-    {
-        $sql = 'SELECT idmember, fname,lname,username, profile FROM member LIMIT ? OFFSET ?';
-        $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('ii', $rowCount, $offset);
-        $stmt->execute();
-
-        $resultset = $stmt->get_result();
-        $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
-        return $resultarray;
-    }
-
     public function SelectMemberId($id)
     {
         $sql = 'SELECT idmember, fname,lname,username, profile FROM member WHERE idmember = ?';
