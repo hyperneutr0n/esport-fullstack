@@ -2,15 +2,22 @@
 require_once 'Middleware.php';
 require_once __DIR__ . '/../models/Team.php';
 require_once __DIR__ . '/../models/Game.php';
+require_once __DIR__ . '/../models/Event.php';
+require_once __DIR__ . '/../models/Achievement.php';
+
 class  TeamController
 {
     private $model;
     private $game;
+    private $event;
+    private $achievement;
 
     public function __construct()
     {
         $this->model = new Team();
         $this->game = new Game();
+        $this->event = new Event();
+        $this->achievement = new Achievement();
     }
 
     public function showTeamForm()
@@ -43,9 +50,22 @@ class  TeamController
         } else {
             header("Location: /");
         }
-        //form nya memang lom ada ya?
     }
 
+    public function showTeamDetailsForm()
+    {
+        if (Middleware::checkAdmin()) {
+            $idteam = $_GET["id"];
+            $games = $this->game->SelectGame();
+            $team = $this->model->SelectTeamId($idteam);
+            $events = $this->event->SelectEventWithTeam($idteam);
+            $achievements = $this->achievement->SelectAchievementWithTeam($idteam);
+
+            require_once 'views/admin/details/detail_team.php';
+        } else {
+            header("Location: /");
+        }
+    }
     public function addTeam()
     {
         if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {

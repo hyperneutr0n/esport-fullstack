@@ -72,6 +72,18 @@ class Achievement
         return $resultarray;
     }
 
+    public function SelectAchievementWithTeam($idteam)
+    {
+        $sql = 'SELECT * FROM achievement WHERE idteam=?';
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('i', $idteam);
+        $stmt->execute();
+
+        $resultset = $stmt->get_result();
+        $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+        return $resultarray;
+    }
+
     public function SelectAchievementWithmember($id)
     {
         $sql = 'SELECT*FROM achievement 

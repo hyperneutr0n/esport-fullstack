@@ -99,6 +99,12 @@ switch ($uriSegments[0]) {
                 case 'eventteams':
                     $eventTeamsController->showEventTeamForm();
                     break;
+
+                    //SHOW DETAIL FORM
+                case 'details':
+                    if ($uriSegments[2] === 'team') $teamController->showTeamDetailsForm();
+                    break;
+
                     //ADD DATA FORM
                 case 'addgame':
                     $gameController->showAddGameForm();

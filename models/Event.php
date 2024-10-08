@@ -70,6 +70,18 @@ class Event
         return $resultarray;
     }
 
+    public function SelectEventWithTeam($idteam)
+    {
+        $sql = 'SELECT e.*, et.idteam FROM event e INNER JOIN event_teams et ON e.idevent=et.idevent WHERE idteam=?';
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('i', $idteam);
+        $stmt->execute();
+
+        $resultset = $stmt->get_result();
+        $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+        return $resultarray;
+    }
+
     public function SelectEventWithMembers($id)
     {
         $sql = '
