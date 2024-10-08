@@ -60,7 +60,7 @@ class Member
 
         $sql = 'INSERT INTO member (fname, lname, username, password, profile) VALUES (?, ?, ?, ?, ?)';
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param('sssss', $fname, $lname, $username, $password, $profile);
+        $stmt->bind_param('sssss', $fname, $lname, $username, $hashedPassword, $profile);
 
         if ($stmt->execute()) {
             return true;

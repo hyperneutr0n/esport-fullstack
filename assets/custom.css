@@ -196,6 +196,7 @@ table {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  table-layout: fixed;
 }
 
 thead tr {
@@ -209,12 +210,27 @@ td {
   padding: 12px 15px;
 }
 
+td {
+  word-wrap: break-word;
+}
+
 tbody tr:nth-child(even) {
   background-color: #f3f3f3;
 }
 
 tbody tr:hover {
   background-color: #f1f1f1;
+}
+
+button.btnAction {
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  font-size: 0.9em;
+  margin: 0 5px;
+  background-color: #007bff;
 }
 
 a.action-link {
@@ -284,6 +300,10 @@ footer {
 
 .d-flex {
   display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
 }
 
 .justify-content-center {

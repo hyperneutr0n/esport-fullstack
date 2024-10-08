@@ -49,17 +49,16 @@
     </div>
 </main>
 <script>
-    document.querySelectorAll('.team-toggle').forEach(button => {
-        button.addEventListener('click', () => {
-            const teamList = button.nextElementSibling;
-            teamList.classList.toggle('open');
+    $('.team-toggle').each(function() {
+        $(this).on('click', function() {
+            const teamList = $(this).next();
+            teamList.toggleClass('open');
 
-            // Toggle Font Awesome arrow direction
-            const arrow = button.querySelector('.arrow');
-            if (teamList.classList.contains('open')) {
-                arrow.classList.replace('fa-chevron-down', 'fa-chevron-up'); // Change to up arrow
+            const arrow = $(this).find('.arrow');
+            if (teamList.hasClass('open')) {
+                arrow.removeClass('fa-chevron-down').addClass('fa-chevron-up');
             } else {
-                arrow.classList.replace('fa-chevron-up', 'fa-chevron-down'); // Change to down arrow
+                arrow.removeClass('fa-chevron-up').addClass('fa-chevron-down');
             }
         });
     });
