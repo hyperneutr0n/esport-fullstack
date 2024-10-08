@@ -28,8 +28,8 @@ class AchievementController
     public function showMemberAchievementForm()
     {
         if (Middleware::checkMember()) {
-            $achievements = $this->model->SelectAchievement();
-            //buat method di modelnya supaya nnti achievement yg muncul hnya yg berelasi 
+            $id = $_SESSION["id"];
+            $achievements = $this->model->SelectAchievementWithmember($id);
             require_once 'views/member/achievement.php';
         } else {
             header("Location: /");

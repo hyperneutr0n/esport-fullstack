@@ -91,7 +91,8 @@ class EventController
     public function showMemberEventForm()
     {
         if (Middleware::checkMember()) {
-            $events = $this->model->SelectEvent();
+            $id = $_SESSION["id"];
+            $events = $this->model->SelectEventWithMembers($id);
             require_once 'views/member/event.php';
         } else {
             header("Location: /");

@@ -69,4 +69,23 @@ class Event
         $resultarray = $resultset->fetch_assoc();
         return $resultarray;
     }
+
+    public function SelectEventWithMembers($id)
+    {
+        $sql = '
+        SELECT*FROM event INNER JOIN event_teams on event_teams.idevent = event.idevent 
+        INNER JOIN team on team.idteam =  event_teams.idteam 
+        INNER JOIN team_members on team_members.idteam = team.idteam 
+        INNER JOIN member on member.idmember = team_members.idmember 
+        WHERE member.idmember = ?;
+        ';
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+
+        $resultset = $stmt->get_result();
+        $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+        return $resultarray;
+    }
 }

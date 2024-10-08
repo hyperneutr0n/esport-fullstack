@@ -71,4 +71,23 @@ class Achievement
         $resultarray = $resultset->fetch_assoc();
         return $resultarray;
     }
+
+    public function SelectAchievementWithmember($id)
+    {
+        $sql = 'SELECT*FROM achievement 
+        INNER JOIN team on team.idteam = achievement.idteam 
+        INNER JOIN team_members on team_members.idteam = team.idteam 
+        INNER JOIN member on member.idmember = team_members.idmember 
+        WHERE member.idmember=?;
+        ';
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+
+        $resultset = $stmt->get_result();
+        $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+
+        return $resultarray;
+    }
 }
