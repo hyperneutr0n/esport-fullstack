@@ -1,7 +1,9 @@
 <?php require __DIR__ . '/../components/header.php'; ?>
 
-<div>
+<div class="d-flex justify-content-center align-items-center mt-5">
     <h1>This is join proposal form</h1>
+</div>
+<div class="d-flex justify-content-center align-items-center-mt-5 mb-5">
 
     <form action="/process/addjoinproposal" method="POST" id="addteamForm">
 
@@ -17,9 +19,7 @@
         <div>
             <label for="">Select ID Member: </label>
             <select name="idmember" id="idmember" required>
-                <?php foreach ($members as $member) { ?>
-                    <option value="<?= $member["idmember"] ?>"><?= $member["username"] ?></option>
-                <?php } ?>
+                <option value="<?= $member["idmember"] ?>"><?= $member["username"] ?></option>
             </select>
         </div>
 

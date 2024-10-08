@@ -12,7 +12,7 @@ class Member
 
     public function Login($username, $password): bool
     {
-        $sql = 'SELECT username,password,profile FROM member WHERE username = ?';
+        $sql = 'SELECT idmember, username,password,profile FROM member WHERE username = ?';
 
         $stmt = $this->db->prepare($sql);
 
@@ -34,6 +34,7 @@ class Member
                     $_SESSION['adminLogged'] = true;
                     $_SESSION['userLogged'] = false;
                 }
+                $_SESSION["id"] = $row["idmember"];
                 return true;
             } else {
                 return false;

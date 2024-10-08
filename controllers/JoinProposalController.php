@@ -30,7 +30,8 @@ class JoinProposalController
     public function showAddJoinProposalForm()
     {
         if (Middleware::checkMember()) {
-            $members = $this->member->SelectMember();
+            $id = $_SESSION["id"];
+            $member = $this->member->SelectMemberId($id);
             $teams = $this->team->SelectTeam();
             require_once 'views/member/join_proposal.php';
         } else {
