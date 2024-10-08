@@ -222,19 +222,45 @@ tbody tr:hover {
   background-color: #f1f1f1;
 }
 
-button.btnAction {
-  padding: 5px 10px;
-  border-radius: 5px;
-  text-decoration: none;
-  color: white;
+.allowed {
   cursor: pointer;
-  font-size: 0.9em;
-  margin: 0 5px;
-  background-color: #007bff;
+}
+
+a:link.enabled,
+a:visited.enabled,
+a:active.enabled {
+  color: blue;
+}
+
+.not-allowed {
+  cursor: not-allowed;
+}
+
+a:link.disabled,
+a:visited.disabled,
+a:active.disabled {
+  color: gray;
+}
+
+.bottom-nav {
+  display: flex;
+  justify-content: space-between !important;
+  flex-direction: row;
+  gap: 5rem;
+}
+
+.pagination-links {
+  gap: 1.5em;
+  display: flex;
+}
+
+a.disabled {
+  pointer-events: none;
+  text-decoration: none;
 }
 
 a.action-link {
-  padding: 5px 10px;
+  padding: 10px 15px;
   border-radius: 5px;
   text-decoration: none;
   color: white;
@@ -243,11 +269,11 @@ a.action-link {
   margin: 0 5px;
 }
 
-a.update-link {
+a.blue-link {
   background-color: #007bff;
 }
 
-a.delete-link {
+a.red-link {
   background-color: #dc3545;
 }
 
@@ -328,6 +354,10 @@ footer {
   border-color: #343a40;
   background-color: #343a40;
   color: #ffffff;
+}
+
+.mt-3 {
+  margin-top: 3%;
 }
 
 .mt-5 {
