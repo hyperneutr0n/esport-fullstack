@@ -35,6 +35,11 @@ function DisplayTable($teamDisplayed)
             <td><?= $team["idgame"] ?></td>
             <td><?= $team["game_name"] ?></td>
             <td>
+                <a href="/admin/details/team?id=<?= $id ?>" class="action-link blue-link">
+                    Details
+                </a>
+            </td>
+            <td>
                 <a href="/admin/updateteam?id=<?= $id ?>" class="action-link blue-link">
                     Update
                 </a>
@@ -58,7 +63,7 @@ function DisplayTable($teamDisplayed)
                 <th>Name</th>
                 <th>ID Game</th>
                 <th>Game Name</th>
-                <th colspan="2">Aksi</th>
+                <th colspan="3">Aksi</th>
             </tr>
         </thead>
         <tbody>
