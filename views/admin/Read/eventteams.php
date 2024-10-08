@@ -24,8 +24,10 @@ function DisplayTable($eventTeamDisplayed)
         $idteam = $eventteam["idteam"] ?>
 
         <tr>
-            <th><?= $idevent ?></th>
-            <th><?= $idteam ?></th>
+            <td><?= $idevent ?></td>
+            <td><?= $eventteam["event_name"] ?></td>
+            <td><?= $idteam ?></td>
+            <td><?= $eventteam["team_name"] ?></td>
             <td><a href="/admin/updateeventteams?idevent=<?= $idevent ?>&idteam=<?= $idteam ?>" class="action-link update-link">Update</a></td>
             <td><a href="/process/deleteeventteams?idevent=<?= $idevent ?>&idteam=<?= $idteam ?>" class="action-link delete-link">Delete</a></td>
         </tr>
@@ -39,7 +41,9 @@ function DisplayTable($eventTeamDisplayed)
         <thead>
             <tr>
                 <th>ID Event</th>
-                <th>ID Team </th>
+                <th>Event Name</th>
+                <th>ID Team</th>
+                <th>Team Name</th>
                 <th colspan="2">Aksi</th>
             </tr>
         </thead>

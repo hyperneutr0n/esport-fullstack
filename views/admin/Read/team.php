@@ -26,6 +26,7 @@ function DisplayTable($teamDisplayed)
             <td><?= $id ?></td>
             <td><?= $team["name"] ?></td>
             <td><?= $team["idgame"] ?></td>
+            <td><?= $team["game_name"] ?></td>
             <td>
                 <a href="/admin/updateteam?id=<?= $id ?>" class="action-link update-link">
                     Update
@@ -42,21 +43,14 @@ function DisplayTable($teamDisplayed)
 ?>
 
 <div class="d-flex justify-content-center align-items-center mt-5 mb-5 flex-column">
-    <!-- <form id="rowsForm">
-        <label for="rows">Rows per page:</label>
-        <select id="rows" name="rows">
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="20">20</option>
-        </select>
-    </form> -->
     <a href="/admin/addteam" class="action-link update-link">Add Team</a>
     <table border="1">
         <thead>
             <tr>
                 <th>ID Team</th>
                 <th>Name</th>
-                <th>ID Game </th>
+                <th>ID Game</th>
+                <th>Game Name</th>
                 <th colspan="2">Aksi</th>
             </tr>
         </thead>

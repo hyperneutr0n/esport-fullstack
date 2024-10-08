@@ -53,7 +53,7 @@ class Achievement
 
     public function SelectAchievement()
     {
-        $sql = 'SELECT * FROM achievement';
+        $sql = 'SELECT a.*, t.name AS team_name FROM achievement a INNER JOIN team t ON t.idteam=a.idteam';
 
         $resultset = $this->db->query($sql);
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);

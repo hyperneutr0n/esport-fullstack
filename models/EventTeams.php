@@ -52,7 +52,7 @@
 
         public function SelectEventTeam()
         {
-            $sql = 'SELECT * FROM event_teams';
+            $sql = 'SELECT et.*, e.name AS event_name, t.name AS team_name FROM event_teams et INNER JOIN event e ON e.idevent=et.idevent INNER JOIN team t ON t.idteam=et.idteam';
 
             $resultset = $this->db->query($sql);
             $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);

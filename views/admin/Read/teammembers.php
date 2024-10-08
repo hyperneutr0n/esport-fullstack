@@ -26,7 +26,9 @@ function DisplayTable($teamMemberDisplayed)
         ?>
         <tr>
             <td><?= $idteam ?></td>
+            <td><?= $teammember["team_name"] ?></td>
             <td><?= $idmember ?></td>
+            <td><?= $teammember["member_username"] ?></td>
             <td><?= $teammember["description"] ?></td>
             <td><a href="/admin/updateteammembers?idteam=<?= $idteam ?>&idmember=<?= $idmember ?>" class="action-link update-link">Update</a></td>
             <td><a href="/process/deleteteammembers?idteam=<?= $idteam ?>&idmember=<?= $idmember ?>" class="action-link delete-link">Delete</a></td>
@@ -41,7 +43,9 @@ function DisplayTable($teamMemberDisplayed)
         <thead>
             <tr>
                 <th>ID Team</th>
+                <th>Team Name</th>
                 <th>ID Member </th>
+                <th>Member Username</th>
                 <th>Description</th>
                 <th colspan="2">Aksi</th>
             </tr>

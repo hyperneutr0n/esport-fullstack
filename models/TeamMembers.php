@@ -51,7 +51,7 @@ class TeamMembers
 
     public function SelectTeamMember()
     {
-        $sql = 'SELECT * FROM team_members';
+        $sql = 'SELECT tm.*, t.name AS team_name, m.username AS member_username FROM team_members tm INNER JOIN team t ON t.idteam = tm.idteam INNER JOIN member m ON m.idmember = tm.idmember';
 
         $resultset = $this->db->query($sql);
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);

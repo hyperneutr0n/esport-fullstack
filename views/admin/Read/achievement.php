@@ -22,8 +22,9 @@ function DisplayTable($achievementDisplayed)
         <?php $id = $achievement["idachievement"]; ?>
         <tr>
             <td><?= $achievement["idachievement"] ?></td>
-            <td><?= $achievement["idteam"] ?></td>
             <td><?= $achievement["name"] ?></td>
+            <td><?= $achievement["idteam"] ?></td>
+            <td><?= $achievement["team_name"] ?></td>
             <td><?= $achievement["date"] ?></td>
             <td><?= $achievement["description"] ?></td>
             <td><a href="/admin/updateachievement?id=<?= $id ?>" class="action-link update-link">Update</a></td>
@@ -39,8 +40,9 @@ function DisplayTable($achievementDisplayed)
         <thead>
             <tr>
                 <th>ID Achievement</th>
-                <th>ID Team</th>
                 <th>Name</th>
+                <th>ID Team</th>
+                <th>Team Name</th>
                 <th>Date</th>
                 <th>Description</th>
                 <th colspan=" 2">Aksi</th>
