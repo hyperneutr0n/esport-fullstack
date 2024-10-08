@@ -50,7 +50,7 @@ function DisplayTable($teamDisplayed)
             <option value="20">20</option>
         </select>
     </form> -->
-    <a href="" class="action-link update-link">Add Team</a>
+    <a href="/admin/addteam" class="action-link update-link">Add Team</a>
     <table border="1">
         <thead>
             <tr>

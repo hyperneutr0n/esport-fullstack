@@ -36,7 +36,7 @@ function DisplayTable($teamMemberDisplayed)
 ?>
 
 <div class="d-flex justify-content-center align-items-center mt-5 mb-5 flex-column">
-    <a href="" class="action-link update-link">Add Team Member</a>
+    <a href="/admin/addteammembers" class="action-link update-link">Add Team Member</a>
     <table border="1">
         <thead>
             <tr>

@@ -35,7 +35,6 @@ function DisplayTable($joinProposalDisplayed)
 ?>
 
 <div class="d-flex justify-content-center align-items-center mt-5 mb-5">
-    <a href="" class="action-link update-link">Add Member</a>
     <table border="1">
         <thead>
             <tr>

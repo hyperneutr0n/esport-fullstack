@@ -1,7 +1,9 @@
 <?php require __DIR__ . '/../../components/header.php'; ?>
 
-<div>
+<div class="d-flex justify-content-center align-items-center  mt-5">
     <h1>This is add event teams form</h1>
+</div>
+<div class="d-flex justify-content-center align-items-center mt-5 mb-5">
 
     <form action="/process/addeventteams" method="POST" id="addteamForm">
 
@@ -23,7 +25,7 @@
             </select>
         </div>
 
-        <input type="submit" id="submit" name="submit">
+        <input type="submit" id="submit" name="submit" class="btn-primary">
     </form>
 </div>
 

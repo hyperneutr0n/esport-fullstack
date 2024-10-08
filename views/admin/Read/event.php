@@ -33,7 +33,7 @@ function DisplayTable($eventDisplayed)
 ?>
 
 <div class="d-flex justify-content-center align-items-center mt-5 mb-5 flex-column">
-    <a href="" class="action-link update-link">Add Event</a>
+    <a href="/admin/addevent" class="action-link update-link">Add Event</a>
     <table border="1">
         <thead>
             <tr>

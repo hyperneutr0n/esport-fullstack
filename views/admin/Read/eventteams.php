@@ -34,7 +34,7 @@ function DisplayTable($eventTeamDisplayed)
 ?>
 
 <div class="d-flex justify-content-center align-items-center mt-5 mb-5 flex-column">
-    <a href="" class="action-link update-link">Add Event Teams</a>
+    <a href="/admin/addeventteams" class="action-link update-link">Add Event Teams</a>
     <table border="1">
         <thead>
             <tr>
