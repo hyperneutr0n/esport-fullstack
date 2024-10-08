@@ -22,7 +22,7 @@ class Member
             $result = $stmt->get_result();
             $row = $result->fetch_assoc();
 
-            if (/*Cryptography::PasswordVerify($password, $row['password']) */$password === $row['password']) {
+            if (Cryptography::PasswordVerify($password, $row['password'])) {
                 session_start();
                 $role = $row['profile'];
 
