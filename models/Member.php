@@ -47,11 +47,7 @@ class Member
     public function Logout()
     {
         session_start();
-        if (isset($_SESSION['adminLogged'])) {
-            unset($_SESSION['adminLogged']);
-        } else if (isset($_SESSION['userLogged'])) {
-            unset($_SESSION['userLogged']);
-        }
+        session_destroy();
     }
 
     public function Register($fname, $lname, $username, $password): bool
