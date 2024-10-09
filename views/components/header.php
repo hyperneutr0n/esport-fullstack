@@ -25,7 +25,7 @@
     <header>
         <nav>
             <div class="text-logo">
-                <h2>Informatics Club</h2>
+                <h2><a href="/">Informatics Club</a></h2>
             </div>
             <ul>
                 <?php if (isset($_SESSION["userLogged"]) && $_SESSION["userLogged"] == true) { ?>
