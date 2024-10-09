@@ -30,19 +30,19 @@
             <ul>
                 <?php if (isset($_SESSION["userLogged"]) && $_SESSION["userLogged"] == true) { ?>
 
-                    <li><a href="/member/joinproposal">Proposal</a></li>
-                    <li><a href="/member/event">Events</a></li>
-                    <li><a href="/member/achievement">Achievements</a></li>
-                    <li><a href="/process/logout">Logout</a></li>
+                    <li><a href="/member/joinproposal"><i class="fa-solid fa-file-signature"></i> Proposal</a></li>
+                    <li><a href="/member/event"><i class="fa-regular fa-calendar-days"></i> Events</a></li>
+                    <li><a href="/member/achievement"><i class="fa-solid fa-medal"></i> Achievements</a></li>
+                    <li><a href="/process/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
 
                 <?php } else if (isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"] == true) { ?>
 
-                    <li><a href="/admin/home">Admin</a></li>
-                    <li><a href="/process/logout">Logout</a></li>
+                    <li><a href="/admin/home"><i class="fa-solid fa-user-tie"></i> Admin</a></li>
+                    <li><a href="/process/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
 
                 <?php } else { ?>
 
-                    <li><a href="/member/login">Login</a></li>
+                    <li><a href="/member/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
 
                 <?php } ?>
             </ul>
