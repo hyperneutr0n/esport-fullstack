@@ -84,7 +84,7 @@ function DisplayTable($achievementDisplayed)
                 </div>
             <?php } ?>
         </div>
-        <a href="/admin/addgame" class="action-link blue-link">Add Game</a>
+        <a href="/admin/addachievement" class="action-link blue-link">Add Achievement</a>
     </div>
 </div>
 </body>

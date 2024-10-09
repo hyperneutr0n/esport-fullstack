@@ -82,7 +82,6 @@ function DisplayTable($memberDisplayed)
                 </div>
             <?php } ?>
         </div>
-        <a href="/admin/addgame" class="action-link blue-link">Add Game</a>
     </div>
 </div>
 </body>

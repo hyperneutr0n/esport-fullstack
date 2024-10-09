@@ -86,7 +86,7 @@ function DisplayTable($teamMemberDisplayed)
                 </div>
             <?php } ?>
         </div>
-        <a href="/admin/addgame" class="action-link blue-link">Add Game</a>
+        <a href="/admin/addteammembers" class="action-link blue-link">Add Team Members</a>
     </div>
 </div>
 </body>

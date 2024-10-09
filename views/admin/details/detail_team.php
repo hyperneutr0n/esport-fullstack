@@ -1,36 +1,11 @@
 <?php require __DIR__ . '/../../components/header.php'; ?>
 
-<h1>This is team details form</h1>
+<div class="jumbotron">
+  <h1><?= $team["name"] ?></h1>
+  <p><?= $team["game_name"] ?></p>
+</div>
 <div class="d-flex justify-content-center align-items-center mt-5 mb-5 flex-column">
 
-  <form action="/process/updateteam" method="POST" id="addteamForm">
-    <div>
-      <label for="">ID team:</label>
-      <input type="text" name="ids" disabled value="<?= $team["idteam"] ?>">
-      <input type="hidden" name="id" value="<?= $team["idteam"] ?>">
-    </div>
-    <div>
-      <label for="">Select game: </label>
-      <select name="idgame" id="idgame" disabled value="<?= $team["idgame"] ?>">
-        <?php foreach ($games as $game) { ?>
-          <?php
-
-          if ($game["idgame"] == $team["idgame"]) { ?>
-            <option value="<?= $game["idgame"] ?>" selected><?= $game["name"] ?></option>
-
-          <?php
-          } else { ?>
-            <option value="<?= $game["idgame"] ?>"><?= $game["name"] ?></option>
-          <?php } ?>
-
-        <?php } ?>
-      </select>
-    </div>
-    <div>
-      <label for="">Name:</label>
-      <input type="text" id="name" name="name" disabled value="<?= $team["name"] ?>">
-    </div>
-  </form>
   <h2>This team past and upcoming events</h2>
   <table border="1">
     <thead>
