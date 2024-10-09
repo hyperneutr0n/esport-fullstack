@@ -60,7 +60,7 @@ class Team
 
     public function SelectTeamId($id)
     {
-        $sql = 'SELECT * FROM team WHERE idteam=?';
+        $sql = 'SELECT t.*, g.name AS game_name FROM team t INNER JOIN game g ON g.idgame=t.idgame WHERE idteam=?';
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('i', $id);
         $stmt->execute();
