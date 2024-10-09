@@ -13,7 +13,8 @@
 
         <div>
             <label for="">Select team: </label>
-            <select name="idteam" id="idteam" required value="<?= $joinproposal["idteam"] ?>">
+            <input type="hidden" id="idteam" name="idteam" value="<?= $joinproposal['idteam'] ?>">
+            <select name="idteam2" id="idteam2" required value="<?= $joinproposal["idteam"] ?>" disabled>
                 <?php foreach ($teams as $team) { ?>
 
                     <?php
@@ -30,7 +31,8 @@
 
         <div>
             <label for="">Select ID Member: </label>
-            <select name="idmember" id="idmember" required value="<?= $joinproposal["idmember"] ?>">
+            <input type="hidden" name="idmember" id="idmember" value="<?= $joinproposal["idmember"] ?>">
+            <select name="idmember2" id="idmember2" required value="<?= $joinproposal["idmember"] ?>" disabled>
                 <?php foreach ($members as $member) { ?>
 
                     <?php
@@ -48,15 +50,29 @@
 
         <div>
             <label for="">Description: </label>
-            <input type="text" id="description" name="description" value="<?= $joinproposal["description"] ?>">
+            <input type="text" id="description2" name="description" value="<?= $joinproposal["description"] ?>" disabled>
+            <input type="hidden" id="description" name="description" value="<?= $joinproposal["description"] ?>">
         </div>
 
         <div>
             <label for="">Status: </label>
             <select name="status" id="status">
-                <option value="waiting">Waiting</option>
-                <option value="approved">Approved</option>
-                <option value="rejected">Rejected</option>
+                <?php if ($joinproposal["status"] == "waiting") { ?>
+                    <option value="waiting" selected>Waiting</option>
+                    <option value="approved">Approved</option>
+                    <option value="rejected">Rejected</option>
+
+                <?php } else if ($joinproposal["status"] == "approved") { ?>
+                    <option value="waiting" disabled>Waiting</option>
+                    <option value="approved" selected disabled>Approved</option>
+                    <option value="rejected" disabled>Rejected</option>
+
+                <?php } else if ($joinproposal["status"] == "rejected") { ?>
+                    <option value="waiting" disabled>Waiting</option>
+                    <option value="approved" disabled>Approved</option>
+                    <option value="rejected" selected disabled>Rejected</option>
+                <?php } ?>
+
             </select>
         </div>
 
