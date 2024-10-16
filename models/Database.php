@@ -10,10 +10,6 @@ class Database
 
     public function __construct()
     {
-        $host = 'localhost';
-        $dbName = 'esport';
-        $username = 'root';
-        $password = '';
         $this->conn = new mysqli(DATABASE_HOST, DATABASE_USERNAME, DATABASE_PASSWORD, DATABASE_NAME);
 
         if ($this->conn->connect_error) {
