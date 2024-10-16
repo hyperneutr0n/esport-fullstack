@@ -16,6 +16,7 @@ if ($page < 1) {
 $rowCount = isset($_GET['row']) ? (int)$_GET['row'] : 5;
 $totalEventTeam = count($eventTeams);
 $totalPages = ceil($totalEventTeam / $rowCount);
+$totalPages = $totalEventTeam > 0 ? ceil($totalEventTeam / $rowCount) : 1;
 if ($page > $totalPages) {
     header("Location: " . parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) . "?page=" . $totalPages);
     die;
@@ -36,7 +37,7 @@ function DisplayTable($eventTeamDisplayed)
             <td><?= $idteam ?></td>
             <td><?= $eventteam["team_name"] ?></td>
             <td><a href="/admin/updateeventteams?idevent=<?= $idevent ?>&idteam=<?= $idteam ?>" class="action-link blue-link">Update</a></td>
-            <td><a href="/process/deleteeventteams?idevent=<?= $idevent ?>&idteam=<?= $idteam ?>" class="action-link delete-link">Delete</a></td>
+            <td><a href="/process/deleteeventteams?idevent=<?= $idevent ?>&idteam=<?= $idteam ?>" class="action-link red-link">Delete</a></td>
         </tr>
 <?php }
 }

@@ -16,6 +16,7 @@ if ($page < 1) {
 $rowCount = isset($_GET['row']) ? (int)$_GET['row'] : 5;
 $totalAchievement = count($achievements);
 $totalPages = ceil($totalAchievement / $rowCount);
+$totalPages = $totalAchievement > 0 ? ceil($totalAchievement / $rowCount) : 1;
 if ($page > $totalPages) {
     header("Location: " . parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) . "?page=" . $totalPages);
     die;

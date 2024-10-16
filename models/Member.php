@@ -1,5 +1,4 @@
 <?php
-require_once 'Cryptography.php';
 require_once 'Database.php';
 class Member
 {
@@ -22,7 +21,7 @@ class Member
             $result = $stmt->get_result();
             $row = $result->fetch_assoc();
 
-            if (Cryptography::PasswordVerify($password, $row['password'])) {
+            if (password_verify($password, $row['password'])) {
                 session_start();
                 $role = $row['profile'];
 
@@ -53,7 +52,7 @@ class Member
     public function Register($fname, $lname, $username, $password): bool
     {
         $profile = 'member';
-        $hashedPassword = Cryptography::PasswordHash($password);
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         $sql = 'INSERT INTO member (fname, lname, username, password, profile) VALUES (?, ?, ?, ?, ?)';
         $stmt = $this->db->prepare($sql);
@@ -98,8 +97,8 @@ class Member
 
         $resultset = $this->db->query($sql);
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
-        $resultarray = array_map(function($row) {
-            return array_map(function($value) {
+        $resultarray = array_map(function ($row) {
+            return array_map(function ($value) {
                 return is_string($value) ? htmlspecialchars($value, ENT_QUOTES) : $value;
             }, $row);
         }, $resultarray);
@@ -115,7 +114,7 @@ class Member
 
         $resultset = $stmt->get_result();
         $resultarray = $resultset->fetch_assoc();
-        $resultarray = array_map(function($value) {
+        $resultarray = array_map(function ($value) {
             return is_string($value) ? htmlspecialchars($value, ENT_QUOTES) : $value;
         }, $resultarray);
         return $resultarray;
@@ -126,8 +125,8 @@ class Member
         $sql = "SELECT member.idmember, member.username FROM team_members INNER JOIN member on member.idmember = team_members.idmember;";
         $resultset = $this->db->query($sql);
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
-        $resultarray = array_map(function($row) {
-            return array_map(function($value) {
+        $resultarray = array_map(function ($row) {
+            return array_map(function ($value) {
                 return is_string($value) ? htmlspecialchars($value, ENT_QUOTES) : $value;
             }, $row);
         }, $resultarray);

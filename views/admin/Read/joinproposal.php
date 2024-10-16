@@ -15,7 +15,7 @@ if ($page < 1) {
 }
 $rowCount = isset($_GET['row']) ? (int)$_GET['row'] : 5;
 $totalJoinProposal = count($joinProposals);
-$totalPages = ceil($totalJoinProposal / $rowCount);
+$totalPages = $totalJoinProposal > 0 ? ceil($totalJoinProposal / $rowCount) : 1;
 if ($page > $totalPages) {
     header("Location: " . parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) . "?page=" . $totalPages);
     die;
@@ -29,15 +29,15 @@ function DisplayTable($joinProposalDisplayed)
 
         <?php $id = $joinproposal["idjoin_proposal"] ?>
         <tr>
-            <th><?= $id ?></th>
-            <th><?= $joinproposal["idmember"] ?></th>
-            <th><?= $joinproposal["member_username"] ?></th>
-            <th><?= $joinproposal["idteam"] ?></th>
-            <th><?= $joinproposal["team_name"] ?></th>
-            <th><?= $joinproposal["description"] ?></th>
-            <th><?= $joinproposal["status"] ?></th>
-            <td><a href="/admin/updatejoinproposal?id=<?= $id ?>">Update</a></td>
-            <td><a href="/process/delete?id=<?= $id ?>">Delete</a></td>
+            <td><?= $id ?></td>
+            <td><?= $joinproposal["idmember"] ?></td>
+            <td><?= $joinproposal["member_username"] ?></td>
+            <td><?= $joinproposal["idteam"] ?></td>
+            <td><?= $joinproposal["team_name"] ?></td>
+            <td><?= $joinproposal["description"] ?></td>
+            <td><?= $joinproposal["status"] ?></td>
+            <td><a href="/admin/updatejoinproposal?id=<?= $id ?>" class="action-link blue-link">Update</a></td>
+            <td><a href="/process/deletejoinproposal?id=<?= $id ?>" class="action-link red-link">Delete</a></td>
         </tr>
 <?php }
 }
