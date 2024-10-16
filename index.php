@@ -1,11 +1,5 @@
 <?php
 
-//MODELS
-require_once 'models/Member.php';
-require_once 'models/Game.php';
-require_once 'models/Event.php';
-
-
 //CONTROLLERS
 require_once 'controllers/MemberController.php';
 require_once 'controllers/GameController.php';

@@ -55,6 +55,11 @@ class Team
 
         $resultset = $this->db->query($sql);
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+        $resultarray = array_map(function($row) {
+            return array_map(function($value) {
+                return is_string($value) ? htmlspecialchars($value, ENT_QUOTES) : $value;
+            }, $row);
+        }, $resultarray);
         return $resultarray;
     }
 
@@ -67,6 +72,9 @@ class Team
 
         $resultset = $stmt->get_result();
         $resultarray = $resultset->fetch_assoc();
+        $resultarray = array_map(function($value) {
+            return is_string($value) ? htmlspecialchars($value, ENT_QUOTES) : $value;
+        }, $resultarray);
         return $resultarray;
     }
 
@@ -75,6 +83,11 @@ class Team
         $sql = "SELECT team.* FROM achievement INNER JOIN team on achievement.idteam = team.idteam;";
         $resultset = $this->db->query($sql);
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+        $resultarray = array_map(function($row) {
+            return array_map(function($value) {
+                return is_string($value) ? htmlspecialchars($value, ENT_QUOTES) : $value;
+            }, $row);
+        }, $resultarray);
         return $resultarray;
     }
 
@@ -83,6 +96,11 @@ class Team
         $sql = "SELECT team.* FROM team_members INNER JOIN team on team.idteam = team_members.idteam;";
         $resultset = $this->db->query($sql);
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+        $resultarray = array_map(function($row) {
+            return array_map(function($value) {
+                return is_string($value) ? htmlspecialchars($value, ENT_QUOTES) : $value;
+            }, $row);
+        }, $resultarray);
         return $resultarray;
     }
 }
