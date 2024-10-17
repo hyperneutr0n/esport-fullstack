@@ -277,12 +277,27 @@ a.action-link {
   margin: 0 5px;
 }
 
+a.disabled-link {
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  cursor: not-allowed;
+  font-size: 0.9em;
+  margin: 0 5px;
+}
+
 a.blue-link {
   background-color: #007bff;
 }
 
 a.red-link {
   background-color: #dc3545;
+}
+
+a.gray-link {
+  background-color: lightgray;
+  color: gray;
 }
 
 a.action-link:hover {

@@ -242,9 +242,12 @@ switch ($uriSegments[0]) {
                     $teamMembersController->deleteTeamMembers();
                     break;
                 case 'deletejoinproposal':
-                    $joinProposalController->deleteJJoinProposal();
+                    $joinProposalController->deleteJoinProposal();
                     break;
 
+                case 'processjoinproposal':
+                    $joinProposalController->processJoinProposal();
+                    break;
 
 
                 default:

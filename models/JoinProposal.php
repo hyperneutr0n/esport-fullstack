@@ -78,4 +78,22 @@
             }, $resultarray);
             return $resultarray;
         }
+
+        public function ProcessJoinProposal($status, $id)
+        {
+            $sql = 'UPDATE join_proposal SET status=? WHERE idjoin_proposal=?';
+            $stmt = $this->db->prepare($sql);
+
+            if ($status == 'approved' || $status == 'rejected') {
+                $stmt->bind_param('si',  $status, $id);
+            } else {
+                return false;
+            }
+
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }

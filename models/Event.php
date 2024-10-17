@@ -55,8 +55,8 @@ class Event
 
         $resultset = $this->db->query($sql);
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
-        $resultarray = array_map(function($row) {
-            return array_map(function($value) {
+        $resultarray = array_map(function ($row) {
+            return array_map(function ($value) {
                 return is_string($value) ? htmlspecialchars($value, ENT_QUOTES) : $value;
             }, $row);
         }, $resultarray);
@@ -72,7 +72,7 @@ class Event
 
         $resultset = $stmt->get_result();
         $resultarray = $resultset->fetch_assoc();
-        $resultarray = array_map(function($value) {
+        $resultarray = array_map(function ($value) {
             return is_string($value) ? htmlspecialchars($value, ENT_QUOTES) : $value;
         }, $resultarray);
         return $resultarray;
@@ -87,8 +87,8 @@ class Event
 
         $resultset = $stmt->get_result();
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
-        $resultarray = array_map(function($row) {
-            return array_map(function($value) {
+        $resultarray = array_map(function ($row) {
+            return array_map(function ($value) {
                 return is_string($value) ? htmlspecialchars($value, ENT_QUOTES) : $value;
             }, $row);
         }, $resultarray);
@@ -98,7 +98,7 @@ class Event
     public function SelectEventWithMembers($id)
     {
         $sql = '
-        SELECT*FROM event INNER JOIN event_teams on event_teams.idevent = event.idevent 
+        SELECT event.* FROM event INNER JOIN event_teams on event_teams.idevent = event.idevent 
         INNER JOIN team on team.idteam =  event_teams.idteam 
         INNER JOIN team_members on team_members.idteam = team.idteam 
         INNER JOIN member on member.idmember = team_members.idmember 
@@ -111,8 +111,8 @@ class Event
 
         $resultset = $stmt->get_result();
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
-        $resultarray = array_map(function($row) {
-            return array_map(function($value) {
+        $resultarray = array_map(function ($row) {
+            return array_map(function ($value) {
                 return is_string($value) ? htmlspecialchars($value, ENT_QUOTES) : $value;
             }, $row);
         }, $resultarray);

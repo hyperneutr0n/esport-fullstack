@@ -3,18 +3,21 @@ require_once 'Middleware.php';
 require_once __DIR__ . '/../models/JoinProposal.php';
 require_once __DIR__ . '/../models/Member.php';
 require_once __DIR__ . '/../models/Team.php';
+require_once __DIR__ . '/../models/TeamMembers.php';
 
 class JoinProposalController
 {
     private $model;
     private $member;
     private $team;
+    private $teamMember;
 
     public function __construct()
     {
         $this->model = new JoinProposal();
         $this->member = new Member();
         $this->team = new Team();
+        $this->teamMember = new TeamMembers();
     }
 
     public function showJoinProposalForm()
@@ -70,6 +73,30 @@ class JoinProposalController
         }
     }
 
+    public function processJoinProposal()
+    {
+        if (Middleware::checkAdmin()) {
+            $id = $_GET['id'];
+            $status = $_GET['status'];
+            $idmember = $_GET['idmember'];
+            $idteam = $_GET['idteam'];
+
+            if ($this->model->ProcessJoinProposal($status, $id)) {
+                if ($status == 'approved') {
+                    $this->teamMember->AddTeamMember($idteam, $idmember, null);
+                }
+                $message = 'Successfully updated join proposal status';
+                $message = rawurlencode($message);
+                header('Location: /admin/joinproposal?message=' . $message);
+            } else {
+                $message = 'Failed to update join proposal status';
+                $message = rawurlencode($message);
+                header('Location: /admin/joinproposal?message=' . $message);
+            }
+        } else {
+            header('Location: /');
+        }
+    }
 
     public function editJoinProposal()
     {
@@ -79,9 +106,6 @@ class JoinProposalController
             $idmember = $_POST['idmember'];
             $description = $_POST['description'];
             $status = $_POST['status'];
-
-            // session_start();
-            // $_SESSION['message'] = "Proposal has been changed successfully";
 
             if ($this->model->EditJoinProposal($id, $idteam, $idmember, $description, $status)) {
                 header('Location: /admin/joinproposal?message=Succesfully%20updated%20join%20proposal');
@@ -93,13 +117,10 @@ class JoinProposalController
         }
     }
 
-    public function deleteJJoinProposal()
+    public function deleteJoinProposal()
     {
         if (Middleware::checkAdmin()) {
             $id = $_GET['id'];
-
-            // session_start();
-            // $_SESSION['message'] = "Proposal berhasil";
 
             if ($this->model->DeleteJoinProposal($id)) {
                 header('Location: /admin/joinproposal?message=Succesfully%20deleted%20join%20proposal');

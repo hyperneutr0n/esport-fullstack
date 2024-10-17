@@ -36,7 +36,19 @@ function DisplayTable($joinProposalDisplayed)
             <td><?= $joinproposal["team_name"] ?></td>
             <td><?= $joinproposal["description"] ?></td>
             <td><?= $joinproposal["status"] ?></td>
-            <td><a href="/admin/updatejoinproposal?id=<?= $id ?>" class="action-link blue-link">Update</a></td>
+            <?php
+            if ($joinproposal["status"] === 'waiting') { ?>
+                <td>
+                    <a href="/process/processjoinproposal?id=<?= $id ?>&status=approved&
+                    idmember=<?= $joinproposal["idmember"] ?>&idteam=<?= $joinproposal['idteam'] ?>" class="action-link blue-link">
+                        Accept
+                    </a>
+                </td>
+                <td><a href="/process/processjoinproposal?id=<?= $id ?>&status=rejected" class="action-link red-link">Reject</a></td>
+            <?php } else { ?>
+                <td><a href="javascript:void(0)" class="disabled-link gray-link">Accept</a></td>
+                <td><a href="javascript:void(0)" class="disabled-link gray-link">Reject</a></td>
+            <?php } ?>
             <td><a href="/process/deletejoinproposal?id=<?= $id ?>" class="action-link red-link">Delete</a></td>
         </tr>
 <?php }
@@ -55,7 +67,7 @@ function DisplayTable($joinProposalDisplayed)
                 <th>Team Name</th>
                 <th>Description</th>
                 <th>Status</th>
-                <th colspan="2">Aksi</th>
+                <th colspan="3">Aksi</th>
             </tr>
         </thead>
         <tbody>

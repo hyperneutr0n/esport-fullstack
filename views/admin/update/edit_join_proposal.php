@@ -1,3 +1,5 @@
+<?php // THIS PAGE IS USELESS AND REDUNDANT ?>
+
 <?php require __DIR__ . '/../../components/header.php'; ?>
 
 <h1>This is join proposal form</h1>
