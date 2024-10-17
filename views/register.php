@@ -8,37 +8,43 @@
     echo "</script>";
 } ?>
 
-<div>
-    <h1>This is register form</h1>
+<div class="d-flex justify-content-center align-items-center mt-5">
+    <h1>Register</h1>
+</div>
+<div class="d-flex justify-content-center align-items-center mb-5">
 
     <form action="/process/register" method="POST" id="registrationForm">
+        <label for="">First name:</label>
         <div>
-            <label for="">First name:</label>
             <input type="text" id="fname" name="fname" required>
         </div>
 
+        <label for="">Last name:</label>
         <div>
-            <label for="">Last name:</label>
             <input type="text" id="lname" name="lname" required>
         </div>
 
+        <label for="">Username:</label>
         <div>
-            <label for="">Username:</label>
             <input type="text" id="username" name="username" required>
         </div>
 
+        <label for="">Password:</label>
         <div>
-            <label for="">Password:</label>
             <input type="password" id="password" name="password" required>
         </div>
 
+        <label for="">Repeat password:</label>
         <div>
-            <label for="">Repeat password:</label>
             <input type="password" id="repeatpassword" name="repeatpassword" required>
         </div>
 
 
-        <input type="submit" id="submit" name="submit">
+        <div class="d-flex" style="justify-content: space-between;">
+            <a href="/member/login">Login </a>
+
+            <input type="submit" id="submit" name="submit" class="btn-primary">
+        </div>
 
     </form>
 

@@ -26,7 +26,10 @@
             <input type="checkbox" id="showPassword" name="showPassword">
         </div>
 
-        <div class="d-flex justify-content-end mt-5">
+
+        <div class="d-flex mt-5" style="justify-content:space-between">
+            <a href="/member/register">Register</a>
+
             <input type="submit" id="submit" name="submit" class="btn-primary">
         </div>
 
