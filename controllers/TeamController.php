@@ -72,8 +72,10 @@ class  TeamController
             $idgame = $_POST['idgame'];
             $name = $_POST['name'];
 
-            if ($this->model->AddTeam($idgame, $name)) {
-                header('Location: /admin/team?message=Successfully%20added%20team');
+            $generatedID = $this->model->AddTeam($idgame, $name);
+            if ($generatedID) {
+                $message = rawurlencode('Successfully added team');
+                header("Location: /admin/team?id=$generatedID&message=$message");
             } else {
                 header('Location: /admin/team?message=Error%20adding%20new%20team');
             }

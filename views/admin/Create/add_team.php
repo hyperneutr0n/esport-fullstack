@@ -5,9 +5,6 @@
 </div>
 <div class="d-flex justify-content-center align-items-center mt-5 mb-5">
 
-    <!-- buat nampilin alert notification -->
-
-
     <form action="/process/addteam" method="POST" id="addteamForm">
         <div>
             <label for="">Select game: </label>
