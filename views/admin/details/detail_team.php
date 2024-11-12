@@ -3,6 +3,9 @@
 <div class="jumbotron">
   <h1><?= $team["name"] ?></h1>
   <p><?= $team["game_name"] ?></p>
+  <div class="justify-content-center align-items-center">
+    <img src="../../images/public/<?=$idteam?>.jpg" alt="">
+  </div>
 </div>
 <div class="d-flex justify-content-center align-items-center mt-5 mb-5 flex-column">
 

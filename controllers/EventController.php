@@ -118,4 +118,11 @@ class EventController
             header("Location: /");
         }
     }
+
+    public function showMemberTeamEventsForm()
+    {
+        $idteam = $_GET["id"];
+        $teamEvents = $this->model->SelectTeamEvent($idteam);
+        require_once 'views/member/team_events.php';
+    }
 }

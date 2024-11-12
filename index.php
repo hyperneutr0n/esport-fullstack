@@ -52,6 +52,18 @@ switch ($uriSegments[0]) {
                 case 'achievement':
                     $achievementController->showMemberAchievementForm();
                     break;
+                case 'team':
+                    $teamController->showMemberTeamForm();
+                    break;
+                case 'teammembers':
+                    $teamMembersController->showMemberTeamMembersForm();
+                    break;
+                case 'teamachievements':
+                    $achievementController->showMemberTeamAchievementForm();
+                        break;
+                case 'teamevents':
+                    $eventController->showMemberTeamEventsForm();
+                    break;
                 default:
                     $memberController->showHome();
                     break;

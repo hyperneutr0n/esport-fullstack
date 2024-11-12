@@ -122,9 +122,19 @@ class  TeamController
                 header('Location: /admin/team?message=Error%20deleting%20team');
             }
 
-            header('Location: /admin/team'); //
+            header('Location: /admin/team');
         } else {
             header("Location: /");
+        }
+    }
+
+    public function showMemberTeamForm()
+    {
+        if (Middleware::checkMember()) {
+            $id = $_SESSION["id"];
+            $teams = $this->model->SelectTeamInTeamMembers($id);
+
+            require_once 'views/member/team.php';
         }
     }
 }

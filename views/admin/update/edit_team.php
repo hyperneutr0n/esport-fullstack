@@ -3,7 +3,7 @@
 <h1>This is edit team form</h1>
 <div class="d-flex justify-content-center align-items-center mt-5 mb-5">
 
-    <form action="/process/updateteam" method="POST" id="addteamForm">
+    <form action="/process/updateteam" method="POST" id="addteamForm" enctype="multipart/form-data">
         <div>
             <label for="">ID team:</label>
             <input type="text" name="ids" disabled value="<?= $team["idteam"] ?>">

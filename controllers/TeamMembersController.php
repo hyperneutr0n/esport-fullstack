@@ -109,4 +109,12 @@ class TeamMembersController
             header("Location: /");
         }
     }
+
+    public function showMemberTeamMembersForm(){
+        $id = $_GET["id"];
+        $teamMembers = $this->model->SelectTeamMembers($id);
+
+        require_once 'views/member/team_members.php';
+    
+    }
 }

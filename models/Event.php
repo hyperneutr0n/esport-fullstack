@@ -118,4 +118,21 @@ class Event
         }, $resultarray);
         return $resultarray;
     }
+
+    public function SelectTeamEvent($id)
+    {
+        $sql = 'SELECT DISTINCT team.*, event.* FROM team_members INNER JOIN team on team.idteam = team_members.idteam INNER JOIN event_teams on team.idteam = event_teams.idteam INNER JOIN event on event_teams.idevent = event.idevent WHERE team.idteam = ?;';
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+
+        $resultset = $stmt->get_result();
+        $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+        $resultarray = array_map(function ($row) {
+            return array_map(function ($value) {
+                return is_string($value) ? htmlspecialchars($value, ENT_QUOTES) : $value;
+            }, $row);
+        }, $resultarray);
+        return $resultarray;
+    }
 }

@@ -7,7 +7,7 @@ class TeamMembers
 
     public function __construct()
     {
-        $this->db = Database::getInstance()->getConnection();
+        $this->db = Database::getInstance()->getConnection();   
     }
 
     public function AddTeamMember($idteam, $idmember, $description)
@@ -55,8 +55,8 @@ class TeamMembers
 
         $resultset = $this->db->query($sql);
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
-        $resultarray = array_map(function($row) {
-            return array_map(function($value) {
+        $resultarray = array_map(function ($row) {
+            return array_map(function ($value) {
                 return is_string($value) ? htmlspecialchars($value, ENT_QUOTES) : $value;
             }, $row);
         }, $resultarray);
@@ -72,9 +72,31 @@ class TeamMembers
 
         $resultset = $stmt->get_result();
         $resultarray = $resultset->fetch_assoc();
-        $resultarray = array_map(function($value) {
+        $resultarray = array_map(function ($value) {
             return is_string($value) ? htmlspecialchars($value, ENT_QUOTES) : $value;
         }, $resultarray);
+        return $resultarray;
+    }
+
+    public function SelectTeamMembers($id)
+    {
+        $sql = 'SELECT member.username
+            FROM team_members
+            INNER JOIN team on team.idteam = team_members.idteam
+            INNER JOIN member on member.idmember = team_members.idmember
+            WHERE team.idteam = ?';
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+
+        $resultset = $stmt->get_result();
+        $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+        $resultarray = array_map(function ($row) {
+            return array_map(function ($value) {
+                return is_string($value) ? htmlspecialchars($value, ENT_QUOTES) : $value;
+            }, $row);
+        }, $resultarray);
+
         return $resultarray;
     }
 }

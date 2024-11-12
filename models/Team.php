@@ -42,8 +42,8 @@ class Team
             $imagePath = $image['tmp_name'];
             $fileExtension = pathinfo($image['name'], PATHINFO_EXTENSION);
 
-            $tmpDir = __DIR__ . '/../images/tmp';
-            $publicDir = __DIR__ . '/../images/public';
+            $tmpDir = __DIR__ . '/../images/tmp/';
+            $publicDir = __DIR__ . '/../images/public/';
 
             $tmpFilePath = $tmpDir . basename($image['name']);
 
@@ -124,9 +124,9 @@ class Team
         return $resultarray;
     }
 
-    public function SelectTeamInTeamMembers()
+    public function SelectTeamInTeamMembers($id)
     {
-        $sql = "SELECT team.* FROM team_members INNER JOIN team on team.idteam = team_members.idteam;";
+        $sql = "SELECT team.* FROM team_members INNER JOIN team on team.idteam = team_members.idteam WHERE idmember=$id;";
         $resultset = $this->db->query($sql);
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
         $resultarray = array_map(function ($row) {

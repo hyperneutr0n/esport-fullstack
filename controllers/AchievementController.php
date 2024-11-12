@@ -120,4 +120,14 @@ class AchievementController
             header("Location: /");
         }
     }
+
+    public function showMemberTeamAchievementForm()
+    {
+        $id = $_GET["id"];
+
+        $achievements = $this->model->SelectAchievementWithTeam($id);
+
+
+        require_once 'views/member/team_achievements.php';
+    }
 }
