@@ -127,7 +127,11 @@ class Team
     public function SelectTeamInTeamMembers($id)
     {
         $sql = "SELECT team.* FROM team_members INNER JOIN team on team.idteam = team_members.idteam WHERE idmember=$id;";
-        $resultset = $this->db->query($sql);
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+
+        $resultset = $stmt->get_result();
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
         $resultarray = array_map(function ($row) {
             return array_map(function ($value) {
