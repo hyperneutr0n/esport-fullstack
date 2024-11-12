@@ -31,6 +31,18 @@
             <input type="text" id="name" name="name" required value="<?= $team["name"] ?>">
         </div>
 
+        <?php
+        $logoPath = '../../images/public/' . $team['idteam'] . '.jpg';
+        ?>
+
+        <div>
+            <img src="<?= $logoPath ?>" alt="Team logo doesn't exist yet">
+        </div>
+
+        <div>
+            <label for="logo">Edit Team:</label>
+            <input type="file" id="logo" name="logo" accept=".jpg" required>
+        </div>
         <input type="submit" id="submit" name="submit" class="btn-primary">
     </form>
 </div>

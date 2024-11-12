@@ -71,11 +71,18 @@ class  TeamController
         if (Middleware::checkPostMethod() && Middleware::checkAdmin()) {
             $idgame = $_POST['idgame'];
             $name = $_POST['name'];
+            $logo = $_FILES['logo'];
 
             $generatedID = $this->model->AddTeam($idgame, $name);
             if ($generatedID) {
-                $message = rawurlencode('Successfully added team');
-                header("Location: /admin/team?id=$generatedID&message=$message");
+                $validation = $this->model->ImageValidation($generatedID, $logo);
+                if ($validation) {
+                    $message = rawurlencode('Successfully added team');
+                    header("Location: /admin/team?id=$generatedID&message=$message");
+                } else {
+                    $message = rawurlencode('Successfully added team, but failed to upload image');
+                    header("Location: /admin/team?id=$generatedID&message=$message");
+                }
             } else {
                 header('Location: /admin/team?message=Error%20adding%20new%20team');
             }
@@ -90,7 +97,11 @@ class  TeamController
             $id = $_POST['id'];
             $idgame = $_POST['idgame'];
             $name = $_POST['name'];
+            $logo = $_FILES['logo'];
             if ($this->model->editTeam($id, $idgame, $name)) {
+                if (isset($logo)) {
+                    $this->model->ImageValidation($id, $logo);
+                }
                 header('Location: /admin/team?message=Successfully%20edit%20team');
             } else {
                 header('Location: /admin/team?message=Error%20editing%20team');

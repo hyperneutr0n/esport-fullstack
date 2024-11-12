@@ -36,6 +36,39 @@ class Team
         }
     }
 
+    public function ImageValidation($id, $image)
+    {
+        if (isset($image) && $image['error'] === UPLOAD_ERR_OK) {
+            $imagePath = $image['tmp_name'];
+            $fileExtension = pathinfo($image['name'], PATHINFO_EXTENSION);
+
+            $tmpDir = __DIR__ . '/../images/tmp';
+            $publicDir = __DIR__ . '/../images/public';
+
+            $tmpFilePath = $tmpDir . basename($image['name']);
+
+            if (!move_uploaded_file($imagePath, $tmpFilePath)) {
+                return false;
+            }
+
+            if (strtolower($fileExtension) !== 'jpg') {
+                unlink($imagePath);
+                return false;
+            }
+
+            $newName = $id . '.jpg';
+            $publicFilePath = $publicDir . $newName;
+
+            if (!rename($tmpFilePath, $publicFilePath)) {
+                return false;
+            }
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function DeleteTeam($id)
     {
         $sql = 'DELETE FROM team WHERE idteam=?';
