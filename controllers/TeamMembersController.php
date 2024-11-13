@@ -46,7 +46,7 @@ class TeamMembersController
             $idteam = $_GET["idteam"];
             $idmember = $_GET["idmember"];
             $teammember = $this->model->SelectTeamMemberId($idteam, $idmember);
-            $teams = $this->team->SelectTeamInTeamMembers();
+            $teams = $this->team->SelectTeamInTeamMembers($idmember);
             $members = $this->member->SelectMember();
             require_once 'views/admin/update/edit_teamMembers.php';
         } else {

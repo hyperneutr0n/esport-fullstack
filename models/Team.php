@@ -130,7 +130,7 @@ class Team
 
     public function SelectTeamInTeamMembers($id)
     {
-        $sql = "SELECT team.* FROM team_members INNER JOIN team on team.idteam = team_members.idteam WHERE idmember=$id;";
+        $sql = "SELECT team.* FROM team_members INNER JOIN team on team.idteam = team_members.idteam WHERE idmember=?;";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('i', $id);
         $stmt->execute();
@@ -147,17 +147,14 @@ class Team
 
     public function SelectTeamNotJoined($id)
     {
-        $sql = "
-SELECT t.*,team_members.*, g.name AS game_name 
-FROM team t 
-INNER JOIN game g ON g.idgame=t.idgame
-INNER JOIN team_members on t.idteam = team_members.idteam
-WHERE team_members.idmember !=?;
-";
+        $sql = 'SELECT t.*, tm.*, g.name as game_name
+        FROM team t
+        INNER JOIN game g ON g.idgame=t.idgame
+        LEFT JOIN team_members tm ON t.idteam = tm.idteam AND tm.idmember = ?
+        WHERE tm.idmember IS NULL;';
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param('i', $id);
         $stmt->execute();
-
         $resultset = $stmt->get_result();
         $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
         $resultarray = array_map(function ($row) {
