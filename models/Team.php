@@ -76,6 +76,10 @@ class Team
         $stmt->bind_param('i', $id);
 
         if ($stmt->execute()) {
+            $imagePath = __DIR__ . "/../images/public/$id.jpg";
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
             return true;
         } else {
             return false;
