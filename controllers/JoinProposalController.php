@@ -35,7 +35,7 @@ class JoinProposalController
         if (Middleware::checkMember()) {
             $id = $_SESSION["id"];
             $member = $this->member->SelectMemberId($id);
-            $teams = $this->team->SelectTeam();
+            $teams = $this->team->SelectTeamNotJoined($id);
             require_once 'views/member/join_proposal.php';
         } else {
             header("Location: /");

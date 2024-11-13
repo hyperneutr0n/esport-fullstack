@@ -144,4 +144,27 @@ class Team
         }, $resultarray);
         return $resultarray;
     }
+
+    public function SelectTeamNotJoined($id)
+    {
+        $sql = "
+SELECT t.*,team_members.*, g.name AS game_name 
+FROM team t 
+INNER JOIN game g ON g.idgame=t.idgame
+INNER JOIN team_members on t.idteam = team_members.idteam
+WHERE team_members.idmember !=?;
+";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+
+        $resultset = $stmt->get_result();
+        $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+        $resultarray = array_map(function ($row) {
+            return array_map(function ($value) {
+                return is_string($value) ? htmlspecialchars($value, ENT_QUOTES) : $value;
+            }, $row);
+        }, $resultarray);
+        return $resultarray;
+    }
 }
