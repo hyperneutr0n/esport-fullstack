@@ -33,7 +33,7 @@ function DisplayTable($teamDisplayed)
             <?php $id = $team["idteam"] ?>
             <td><?= $id ?></td>
             <td><?= $team["name"] ?></td>
-            <td><img src="../../images/public/<?=$id?>.jpg" alt="No logo" class = "logo-image-table"></td>
+            <td><img src="../../images/public/<?=$id?>.jpg" alt="No logo yet" class = "logo-image-table"></td>
             <td><?= $team["idgame"] ?></td>
             <td><?= $team["game_name"] ?></td>
             <td>
