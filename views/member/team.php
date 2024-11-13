@@ -11,6 +11,7 @@
             <article>
                 <div class="cards">
                     <div class="card-content">
+                        <img src="../../images/public/<?=$team['idteam']?>.jpg" alt="No logo yet" class = "logo-image">
                         <h3><?= $team['name'] ?></h3>
                         <div class="d-flex justify-content-center">
                             <a href="/member/teammembers?id=<?= $team['idteam'] ?>" class="btn-primary" style="margin-right:5px;">Show members</a>

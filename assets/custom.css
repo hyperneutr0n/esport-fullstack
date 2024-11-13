@@ -391,6 +391,16 @@ footer {
   margin-bottom: 5%;
 }
 
+.logo-image{
+  width:300px;
+  height:300px;
+}
+
+.logo-image-table{
+  width:100px;
+  height:100px;
+}
+
 /* @media screen and (max-width: 1200px) {
     main {
         flex-flow: column nowrap;
