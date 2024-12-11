@@ -147,7 +147,7 @@ class Team
 
     public function SelectTeamNotJoined($id)
     {
-        $sql = 'SELECT t.*, tm.*, g.name as game_name
+        $sql = 'SELECT t.*, g.name as game_name
         FROM team t
         INNER JOIN game g ON g.idgame=t.idgame
         LEFT JOIN team_members tm ON t.idteam = tm.idteam AND tm.idmember = ?
