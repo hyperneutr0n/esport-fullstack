@@ -43,7 +43,7 @@
         <div class="d-flex" style="justify-content: space-between;">
             <a href="/member/login">Login </a>
 
-            <input type="submit" id="submit" name="submit" class="btn-primary">
+            <input type="submit" id="submit" name="submit" value="Register" class="btn-primary">
         </div>
 
     </form>

@@ -30,7 +30,7 @@
         <div class="d-flex mt-5" style="justify-content:space-between">
             <a href="/member/register">Register</a>
 
-            <input type="submit" id="submit" name="submit" class="btn-primary">
+            <input type="submit" id="submit" name="submit" value="Login" class="btn-primary">
         </div>
 
     </form>
