@@ -94,6 +94,29 @@ class Event
         }, $resultarray);
         return $resultarray;
     }
+    public function SelectEventWithTeamId($id)
+    {
+        $sql = '
+        SELECT event.* FROM event INNER JOIN event_teams on event_teams.idevent = event.idevent 
+        INNER JOIN team on team.idteam =  event_teams.idteam 
+        INNER JOIN team_members on team_members.idteam = team.idteam 
+        INNER JOIN member on member.idmember = team_members.idmember 
+        WHERE team.idteam = ?;
+        ';
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+
+        $resultset = $stmt->get_result();
+        $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+        $resultarray = array_map(function ($row) {
+            return array_map(function ($value) {
+                return is_string($value) ? htmlspecialchars($value, ENT_QUOTES) : $value;
+            }, $row);
+        }, $resultarray);
+        return $resultarray;
+    }
 
     public function SelectEventWithMembers($id)
     {
