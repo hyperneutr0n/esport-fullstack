@@ -68,6 +68,43 @@ nav .text-logo a {
 nav ul {
   display: flex;
   padding-inline: 1rem;
+  flex-direction: row;
+}
+
+nav .hamburger {
+  display: none;
+  cursor: pointer;
+  color: var(--navbar-text-color);
+  font-size: 1.5rem;
+}
+
+@media (max-width: 1000px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    padding-inline: 0;
+    width: 100%;
+    background-color: var(--navbar-background-color);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    z-index: 1;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  nav li a {
+    padding: 1rem;
+    text-align: center;
+    display: block;
+  }
+
+  nav .hamburger {
+    display: block;
+  }
 }
 
 nav li {

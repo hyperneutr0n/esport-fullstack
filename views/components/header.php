@@ -27,25 +27,33 @@
             <div class="text-logo">
                 <h2><a href="/">Informatics Club</a></h2>
             </div>
+            <div class="hamburger">
+                <i class="fa fa-bars"></i>
+            </div>
             <ul>
                 <?php if (isset($_SESSION["userLogged"]) && $_SESSION["userLogged"] == true) { ?>
-
                     <li><a href="/member/joinproposal"><i class="fa-solid fa-file-signature"></i> Join a Team</a></li>
                     <li><a href="/member/team"><i class="fa-solid fa-file-signature"></i> Teams</a></li>
                     <li><a href="/member/event"><i class="fa-regular fa-calendar-days"></i> Events</a></li>
                     <li><a href="/member/achievement"><i class="fa-solid fa-medal"></i> Achievements</a></li>
                     <li><a href="/process/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
-
                 <?php } else if (isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"] == true) { ?>
-
                     <li><a href="/admin/home"><i class="fa-solid fa-user-tie"></i> Admin</a></li>
                     <li><a href="/process/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
-
                 <?php } else { ?>
-
                     <li><a href="/member/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
-
                 <?php } ?>
             </ul>
         </nav>
+
     </header>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const hamburger = document.querySelector(".hamburger");
+            const navLinks = document.querySelector("nav ul");
+
+            hamburger.addEventListener("click", () => {
+                navLinks.classList.toggle("show");
+            });
+        });
+    </script>
