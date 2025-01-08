@@ -145,6 +145,45 @@ class Team
         return $resultarray;
     }
 
+    public function SelectJoinedTeamDetails($id)
+    {
+        $sql =
+            'SELECT 
+                t.idteam AS team_id,
+                t.name AS team_name,
+                e.idevent AS event_id,
+                e.name AS event_name,
+                e.date AS event_date,
+                a.idachievement AS achievement_id,
+                a.name AS achievement_name,
+                a.date AS achievement_date
+            FROM 
+                team_members tm
+            JOIN 
+                team t ON tm.idteam = t.idteam
+            LEFT JOIN 
+                event_teams et ON t.idteam = et.idteam
+            LEFT JOIN 
+                event e ON et.idevent = e.idevent
+            LEFT JOIN 
+                achievement a ON t.idteam = a.idteam
+            WHERE 
+                tm.idmember = ?';
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+
+        $resultset = $stmt->get_result();
+        $resultarray = $resultset->fetch_all(MYSQLI_ASSOC);
+        $resultarray = array_map(function ($row) {
+            return array_map(function ($value) {
+                return is_string($value) ? htmlspecialchars($value, ENT_QUOTES) : $value;
+            }, $row);
+        }, $resultarray);
+        return $resultarray;
+    }
+
     public function SelectTeamNotJoined($id)
     {
         $sql = 'SELECT t.*, g.name as game_name

@@ -132,7 +132,40 @@ class  TeamController
     {
         if (Middleware::checkMember()) {
             $id = $_SESSION["id"];
-            $teams = $this->model->SelectTeamInTeamMembers($id);
+            $results = $this->model->SelectJoinedTeamDetails($id);
+            $teamList = [];
+
+            $tm = new TeamMembers();
+            foreach ($results as $row) {
+                $idteam = $row['team_id'];
+
+                if (!isset($teamList[$idteam])) {
+                    $teamList[$idteam] = [
+                        "idteam" => $row['team_id'],
+                        "team_name" => $row['team_name'],
+                        "team_members" => $tm->SelectTeamMembers($row['team_id']),
+                        "joined_events" => [],
+                        "team_achievements" => []
+                    ];
+                }
+
+                if (!isset($row['event_id'])) {
+                    $teamList[$idteam]['joined_events'][] = [
+                        "idevent" => $row['event_id'],
+                        "event_name" => $row['event_name'],
+                        "event_date" => $row['event_date']
+                    ];
+                }
+
+                if (!isset($row['achievement_id'])) {
+                    $teamList[$idteam]['team_achievements'][] = [
+                        "idachievement" => $row['achievement_id'],
+                        "achievement_name" => $row['achievement_name'],
+                        "achievement_date" => $row['achievement_date']
+                    ];
+                }
+            }
+
 
             require_once 'views/member/team.php';
         }

@@ -205,6 +205,24 @@ main {
   font-size: 1.25em;
 }
 
+.team-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.team-details ul {
+  list-style: none;
+}
+
+.team-details h1 {
+  font-size: 2em;
+}
+
+.team-details h2 {
+  font-size: 1.5em;
+}
+
 .team-dropdown {
   margin-top: 20px;
 }
