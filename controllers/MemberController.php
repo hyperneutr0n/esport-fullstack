@@ -2,6 +2,7 @@
 require_once 'Middleware.php';
 require_once __DIR__ . '/../models/Member.php';
 require_once __DIR__ . '/../models/Game.php';
+require_once __DIR__ . '/../models/TeamMembers.php';
 
 class MemberController
 {
@@ -18,6 +19,8 @@ class MemberController
         $result = $gameModel->SelectGameAndTeam();
         $gameListWithTeams = [];
 
+        $teamMemberModel = new TeamMembers();
+
         foreach ($result as $row) {
             $gameId = $row['idgame'];
 
@@ -25,14 +28,15 @@ class MemberController
                 $gameListWithTeams[$gameId] = [
                     'name' => $row['game_name'],
                     'description' => $row['description'],
-                    'teams' => []
+                    'teams' => [],
                 ];
             }
 
             if ($row['team_name'] !== null) {
                 $gameListWithTeams[$gameId]['teams'][] = [
                     'idteam' => $row['idteam'],
-                    'team_name' => $row['team_name']
+                    'team_name' => $row['team_name'],
+                    'team_members' => $teamMemberModel->SelectTeamMembers($row['idteam']),
                 ];
             }
         }

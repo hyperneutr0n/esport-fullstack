@@ -7,7 +7,7 @@ class TeamMembers
 
     public function __construct()
     {
-        $this->db = Database::getInstance()->getConnection();   
+        $this->db = Database::getInstance()->getConnection();
     }
 
     public function AddTeamMember($idteam, $idmember, $description)
@@ -80,7 +80,7 @@ class TeamMembers
 
     public function SelectTeamMembers($id)
     {
-        $sql = 'SELECT member.username
+        $sql = 'SELECT member.*
             FROM team_members
             INNER JOIN team on team.idteam = team_members.idteam
             INNER JOIN member on member.idmember = team_members.idmember

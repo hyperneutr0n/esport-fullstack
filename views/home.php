@@ -11,18 +11,33 @@
 </div>
 <main>
     <div id="content">
-        <h2>Check out our teams!</h2>
-
+        <h1>Check out our teams!</h1>
         <?php foreach ($gameListWithTeams as $row) { ?>
 
             <article>
 
                 <div class="cards">
                     <div class="card-content">
-                        <h3><?= $row['name'] ?></h3>
+                        <h2><?= $row['name'] ?></h2>
                         <p><?= $row['description'] ?></p>
+                        <br>
+                        <h2>Check out the teams!</h2>
+                        <?php foreach ($row['teams'] as $team) { ?>
+                            <div class="teams-content">
+                                <img src="../../images/public/<?= $team['idteam'] ?>.jpg" alt="No logo yet" class="logo-image">
+                                <div class="team-details">
+                                    <h2><?= $team['team_name'] ?></h2>
 
-                        <div class="team-dropdown">
+                                    <ul class="team-members-list">
+                                        <?php foreach ($team['team_members'] as $member) { ?>
+                                            <li><?= $member["fname"] . ' "' . $member["username"] . '" ' . $member["lname"] ?></li>
+                                        <?php } ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        <?php } ?>
+
+                        <!-- <div class="team-dropdown">
                             <button class="team-toggle">
                                 Our teams...
                                 <i class="fa-solid fa-chevron-down arrow"></i>
@@ -40,7 +55,7 @@
                                     <p>We don't have team in this game yet.</p>
                                 <?php } ?>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </article>

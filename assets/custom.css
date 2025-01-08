@@ -78,7 +78,7 @@ nav .hamburger {
   font-size: 1.5rem;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
   nav ul {
     display: none;
     flex-direction: column;
@@ -143,10 +143,13 @@ input:disabled {
 }
 
 .jumbotron {
+  display: flex;
   background-color: var(--jumbotron-background-color);
   color: var(--jumbotron-text-color);
   font-size: 1.5em;
   text-align: center;
+  align-items: center;
+  justify-content: center;
   padding: 3em;
 }
 
@@ -204,6 +207,44 @@ main {
 
 .team-dropdown {
   margin-top: 20px;
+}
+
+.teams-content {
+  padding: 1em;
+  display: flex;
+  margin: 1em;
+  gap: 3em;
+}
+
+@media (min-width: 769px) {
+  .teams-content:hover {
+    background-color: #ccc;
+  }
+}
+
+@media (max-width: 768px) {
+  .cards {
+    padding: 0;
+    text-align: center;
+    flex-flow: column;
+    align-items: center;
+  }
+
+  .teams-content {
+    flex-direction: column;
+    background-color: #ccc;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+
+.team-members-list {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  list-style: none;
 }
 
 .team-toggle {
